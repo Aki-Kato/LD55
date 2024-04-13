@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerMoneyManager : MonoBehaviour
 {
@@ -30,6 +31,11 @@ public class PlayerMoneyManager : MonoBehaviour
 
     }
 
+    public void IncrementMoney(int _delta)
+    {
+        playerMoney += _delta;
+        UpdateMoney();
+    }
     public bool TryDecrementMoney(int _cost)
     {
         if (playerMoney >= _cost)

@@ -60,8 +60,7 @@ public class MissionManager : MonoBehaviour
             Mission _nextMission = new Mission(numberOfMission, 1, 60, 5);
             _randomBuilding.SetMission(_nextMission);
 
-            listOfNonPossibleMissionLocations.Add(_randomBuilding);
-            listOfPossibleMissionLocations.Remove(_randomBuilding);
+            UpdatePossibleMissionLocation(_randomBuilding, false);
 
             createdMission?.Invoke(_nextMission);
         }
@@ -70,10 +69,28 @@ public class MissionManager : MonoBehaviour
     public void CompletedMission(Building building)
     {
         completedMission?.Invoke(building.currentMission);
+        UpdatePossibleMissionLocation(building, true);
+
     }
 
     public void FailedMission(Building building)
     {
         failedMission?.Invoke(building.currentMission);
+        UpdatePossibleMissionLocation(building, true);
+    }
+
+    private void UpdatePossibleMissionLocation(Building building, bool ifAddingPotentialNewMissionLocation)
+    {
+        if (ifAddingPotentialNewMissionLocation)
+        {
+            listOfNonPossibleMissionLocations.Remove(building);
+            listOfPossibleMissionLocations.Add(building);
+        }
+
+        else
+        {
+            listOfNonPossibleMissionLocations.Add(building);
+            listOfPossibleMissionLocations.Remove(building);
+        }
     }
 }

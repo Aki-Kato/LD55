@@ -39,10 +39,8 @@ public class SummonSystemView : MonoBehaviour
     }
 
 
-    void onSummonedEmployee()
+    void onSummonedEmployee(Employee employee)
     {
-        Debug.Log("test");
-        Employee employee = SummonSystem.instance.summonedEmployee;
         if (employee != null)
         {
             sendEmployeeButton.gameObject.SetActive(true);
@@ -56,7 +54,7 @@ public class SummonSystemView : MonoBehaviour
         }
     }
 
-    void onSentEmployee()
+    void onSentEmployee(Employee employee)
     {
         sendEmployeeButton.gameObject.SetActive(false);
     }

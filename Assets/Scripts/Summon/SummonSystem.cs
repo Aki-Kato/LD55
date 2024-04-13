@@ -16,8 +16,8 @@ public class SummonSystem : MonoBehaviour
     public Queue<Employee> queueOfAvailableEmployees;
     private int oldNumberOfEmployees;
 
-    public event Action summonedEmployeeEvent;
-    public event Action sentEmployeeEvent;
+    public event Action<Employee> summonedEmployeeEvent;
+    public event Action<Employee> sentEmployeeEvent;
     public event Action changeEmployeeCountEvent;
     void Awake()
     {
@@ -82,18 +82,13 @@ public class SummonSystem : MonoBehaviour
         }
 
         summonedEmployee = queueOfAvailableEmployees.Dequeue();
-        summonedEmployeeEvent?.Invoke();
+        summonedEmployeeEvent?.Invoke(summonedEmployee);
     }
 
     public void SendEmployee()
     {
         //Insert sending employee to mission code here..
-
-        //Debug/prototype
-        summonedEmployee = null;
-        Debug.Log("Sent Employee");
-
-        sentEmployeeEvent?.Invoke();
+        sentEmployeeEvent?.Invoke(summonedEmployee);
     }
 
     public void HireNewEmployeeImmediately()

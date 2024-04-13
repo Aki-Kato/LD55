@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,6 +15,16 @@ namespace Navigation.Graph
             }
 
             gameObject.SetActive(!active);
+        }
+
+        private void OnDrawGizmos()
+        {
+            if (NextNodes != null && NextNodes.Count > 0)
+            {
+                Gizmos.color = Color.red;
+                foreach (var node in NextNodes)
+                    Gizmos.DrawLine(transform.position, node.transform.position);
+            }
         }
     }
 }

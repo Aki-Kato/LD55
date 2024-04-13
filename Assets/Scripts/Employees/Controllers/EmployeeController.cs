@@ -22,7 +22,7 @@ namespace Employees.Controllers
             agent.SendBy(pathPoints);
 
 
-        private void Agent_OnFinalDestinationReached()
+        private void Agent_OnFinalDestinationReached(EmployeeAgent employeeAgent)
         {
             throw new System.NotImplementedException();
         }

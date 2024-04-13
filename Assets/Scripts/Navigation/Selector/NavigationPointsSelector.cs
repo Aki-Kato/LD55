@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Utilities.UI;
+using Map.Views;
 
 namespace Navigation.Selector
 {
@@ -14,20 +14,22 @@ namespace Navigation.Selector
 
         [SerializeField] private LayerMask selectionLayerMask;
         [SerializeField] private NavigationPointView selectedPointPrefab;
-        [SerializeField] private MapView map;
+
+        [SerializeField] private MapView mapController;
         [SerializeField] private GraphController graphController;
 
         private EmployeeController _employeeController;
 
-        private LinkedList<NavigationPointView> _selectedPoints = new LinkedList<NavigationPointView>();
-
-        private NavigationPointView _lastSelectedPoint;
-
         public bool IsSelectionActive { get => enabled; set => enabled = value; }
+
+        private void OnEnable()
+        {
+            graphController.StartBuildingPath();
+        }
 
         private void OnDisable()
         {
-            ClearAllPoints();
+            graphController.StopBuildingPath();
         }
 
         private void Update()
@@ -38,19 +40,18 @@ namespace Navigation.Selector
             }
             else if (Input.GetKeyDown(KeyCode.Mouse1))
             {
-                DeleteSelectedPoint();
+                graphController.RemoveLastNode();
             }
         }
 
         public void SetEmployeeForSelection(EmployeeController employeeController)
         {
             _employeeController = employeeController;
-            CreateSelectedPoint(_employeeController.transform.position);
         }
 
         private void TrySetPoint()
         {
-            map.TryGetCursorWorldCoordinates(out Ray? ray);
+            mapController.TryGetCursorWorldCoordinates(out Ray? ray);
             if (!ray.HasValue)
                 return;
 
@@ -75,48 +76,17 @@ namespace Navigation.Selector
 
             GraphNode graphNode = selectedObject.GetComponent<GraphNode>();
             graphController.AddNode(graphNode);
-            CreateSelectedPoint(hitInfo.point);
         }
 
         private void CompleteThePath(INavigationFinalPoint finalPoint)
         {
-            CreateSelectedPoint(finalPoint.EntryPosition);
             LinkedList<Vector3> points =
-                new LinkedList<Vector3>(_selectedPoints.Select(x => x.transform.position));
+                new LinkedList<Vector3>(graphController.SelectedGraphNodes.Select(x => x.transform.position));
 
             _employeeController.SendBy(points);
+            graphController.StopBuildingPath();
+
             PathCompleted?.Invoke();
-        }
-
-        private void CreateSelectedPoint(Vector3 point)
-        {
-            if (_lastSelectedPoint != null)
-                _lastSelectedPoint.SetNextPoint(point);
-
-            _lastSelectedPoint = Instantiate(selectedPointPrefab, point, Quaternion.identity);
-            _selectedPoints.AddLast(_lastSelectedPoint);
-        }
-
-        private void DeleteSelectedPoint()
-        {
-            graphController.RemoveLastNode();
-            if (_selectedPoints.Count > 1)
-            {
-                _selectedPoints.RemoveLast();
-                Destroy(_lastSelectedPoint.gameObject);
-
-                _lastSelectedPoint = _selectedPoints.Last.Value;
-                _lastSelectedPoint.RemoveNextPoint();
-            }
-        }
-
-        private void ClearAllPoints()
-        {
-            while (_selectedPoints.Count != 0)
-            {
-                Destroy(_selectedPoints.Last.Value.gameObject);
-                _selectedPoints.RemoveLast();
-            }
         }
     }
 }

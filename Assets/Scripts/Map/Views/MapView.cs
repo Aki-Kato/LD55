@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Utilities.UI
+namespace Map.Views
 {
     public sealed class MapView : MonoBehaviour
     {
@@ -19,6 +19,14 @@ namespace Utilities.UI
             position.x /= rectTransform.rect.width;
             position.y /= rectTransform.rect.height;
             ray = cam.ViewportPointToRay(position);
+        }
+
+        public Vector2 GetWorldPositionOnMap(Vector3 position)
+        {
+            Vector2 viewportPosition = cam.WorldToViewportPoint(position);
+            viewportPosition.x *= rectTransform.rect.width;
+            viewportPosition.y *= rectTransform.rect.height;
+            return rectTransform.TransformPoint(viewportPosition);
         }
     }
 }

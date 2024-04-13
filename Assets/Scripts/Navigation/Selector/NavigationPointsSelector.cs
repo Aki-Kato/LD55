@@ -1,6 +1,8 @@
 using Navigation.Employee;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Navigation.Selector
 {
@@ -8,26 +10,37 @@ namespace Navigation.Selector
     {
         [SerializeField] private Camera cam;
         [SerializeField] private LayerMask selectionLayerMask;
-        [SerializeField] private Transform selectedPointPrefab;
+        [SerializeField] private NavigationPointView selectedPointPrefab;
 
         [Space]
         // Only for testing purposes. Must be removed further.
         // Must be replace by Employee Controller or something like that.
         [SerializeField] private EmployeeAgent agent;
 
-        private LinkedList<Vector3> _selectedPoints = new LinkedList<Vector3>();
+        private LinkedList<NavigationPointView> _selectedPoints = new LinkedList<NavigationPointView>();
+
+        private NavigationPointView _lastSelectedPoint;
 
         private void Awake()
         {
             if (!cam)
                 cam = Camera.main;
+
+            CreateSelectedPoint(agent.transform.position);
         }
 
         private void Update()
         {
+            if (EventSystem.current.IsPointerOverGameObject())
+                return;
+
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 TrySetPoint();
+            }
+            else if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                DeleteSelectedPoint();
             }
         }
 
@@ -40,8 +53,7 @@ namespace Navigation.Selector
                 var selectedObject = hitInfo.collider.gameObject;
                 if (selectedObject.TryGetComponent(out INavigationFinalPoint finalPoint))
                 {
-                    CreateSelectedPoint(finalPoint.EntryPosition);
-                    agent.SendBy(_selectedPoints);
+                    CompleteThePath(finalPoint);
                     return;
                 }
 
@@ -53,10 +65,44 @@ namespace Navigation.Selector
             }
         }
 
+        private void CompleteThePath(INavigationFinalPoint finalPoint)
+        {
+            CreateSelectedPoint(finalPoint.EntryPosition);
+            LinkedList<Vector3> points =
+                new LinkedList<Vector3>(_selectedPoints.Select(x => x.transform.position));
+
+            agent.SendBy(points);
+            enabled = false;
+        }
+
         private void CreateSelectedPoint(Vector3 point)
         {
-            _selectedPoints.AddLast(point);
-            Instantiate(selectedPointPrefab, point, Quaternion.identity);
+            if (_lastSelectedPoint != null)
+                _lastSelectedPoint.SetNextPoint(point);
+
+            _lastSelectedPoint = Instantiate(selectedPointPrefab, point, Quaternion.identity);
+            _selectedPoints.AddLast(_lastSelectedPoint);
+        }
+
+        private void DeleteSelectedPoint()
+        {
+            if (_selectedPoints.Count > 1)
+            {
+                _selectedPoints.RemoveLast();
+                Destroy(_lastSelectedPoint.gameObject);
+
+                _lastSelectedPoint = _selectedPoints.Last.Value;
+                _lastSelectedPoint.RemoveNextPoint();
+            }
+        }
+
+        private void ClearAllPoints()
+        {
+            while (_selectedPoints.Count != 0)
+            {
+                Destroy(_selectedPoints.Last.Value.gameObject);
+                _selectedPoints.RemoveLast();
+            }
         }
     }
 }

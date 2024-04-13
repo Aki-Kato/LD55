@@ -67,7 +67,16 @@ public class SummonSystemView : MonoBehaviour
     {
         if (numberOfAvailableEmployeeText != null)
         {
-            numberOfAvailableEmployeeText.text = $"{SummonSystem.instance.queueOfAvailableEmployees.Count} Employees Available";
+            int numberOfEmployees = SummonSystem.instance.queueOfAvailableEmployees.Count;
+            if (numberOfEmployees > 0)
+            {
+                numberOfAvailableEmployeeText.text = $"{numberOfEmployees} Employees Available";
+            }
+
+            else
+            {
+                numberOfAvailableEmployeeText.text = "No Employees Available!";
+            }
         }
 
         if (timerToNewEmployeeText != null)

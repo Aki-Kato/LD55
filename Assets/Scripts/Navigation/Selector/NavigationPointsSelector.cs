@@ -1,9 +1,9 @@
 using Employees.Controllers;
+using Navigation.Graph;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using Utilities.UI;
 
 namespace Navigation.Selector
@@ -15,6 +15,7 @@ namespace Navigation.Selector
         [SerializeField] private LayerMask selectionLayerMask;
         [SerializeField] private NavigationPointView selectedPointPrefab;
         [SerializeField] private MapView map;
+        [SerializeField] private GraphController graphController;
 
         private EmployeeController _employeeController;
 
@@ -72,6 +73,8 @@ namespace Navigation.Selector
                 return;
             }
 
+            GraphNode graphNode = selectedObject.GetComponent<GraphNode>();
+            graphController.AddNode(graphNode);
             CreateSelectedPoint(hitInfo.point);
         }
 
@@ -96,6 +99,7 @@ namespace Navigation.Selector
 
         private void DeleteSelectedPoint()
         {
+            graphController.RemoveLastNode();
             if (_selectedPoints.Count > 1)
             {
                 _selectedPoints.RemoveLast();

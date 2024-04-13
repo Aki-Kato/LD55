@@ -10,9 +10,6 @@ public sealed class EmployeesWorkController : MonoBehaviour
     [SerializeField] private EmployeeControllerFactory employeeControllerFactory;
     [SerializeField] private NavigationPointsSelector pointsSelector;
 
-    [Header("Local Data")]
-    [SerializeField] private Transform employeeSpawnPosition;
-
     private void Awake()
     {
         summonSystem.sentEmployeeEvent += SummonSystem_OnSentEmployee;

@@ -6,11 +6,14 @@ using UnityEngine.UI;
 
 public class SummonSystemView : MonoBehaviour
 {
+    //Summon Employee
+    public Button summonEmployeeButton;
+
     public TMP_Text numberOfAvailableEmployeeText;
     public TMP_Text timerToNewEmployeeText;
 
     //Send Employee
-    public Button employeeStatsButton;
+    public Button sendEmployeeButton;
     public TMP_Text employeeStats;
 
     //HireNewEmployee Immediately
@@ -23,7 +26,7 @@ public class SummonSystemView : MonoBehaviour
         //Needed to add this instead of summonSystem.instance because it will run first before the SummonSystem.instance is initialised, resulting in error
         summonSystem.summonedEmployeeEvent += onSummonedEmployee;
         summonSystem.sentEmployeeEvent += onSentEmployee;
-        summonSystem.noMoreEmployeeEvent += onNoMoreEmployee;
+        summonSystem.changeEmployeeCountEvent += onChangedEmployeeCount;
 
 
     }
@@ -32,17 +35,15 @@ public class SummonSystemView : MonoBehaviour
     {
         summonSystem.summonedEmployeeEvent -= onSummonedEmployee;
         summonSystem.sentEmployeeEvent -= onSentEmployee;
-        summonSystem.noMoreEmployeeEvent -= onNoMoreEmployee;
+        summonSystem.changeEmployeeCountEvent -= onChangedEmployeeCount;
     }
 
 
-    void onSummonedEmployee()
+    void onSummonedEmployee(Employee employee)
     {
-        Debug.Log("test");
-        Employee employee = SummonSystem.instance.summonedEmployee;
         if (employee != null)
         {
-            employeeStatsButton.gameObject.SetActive(true);
+            sendEmployeeButton.gameObject.SetActive(true);
             employeeStats.text = $"Name: <Randomised Name>\nSpeed: {employee.speed}";
             Debug.Log($"Employee: {employee.employeeName}. Speed: {employee.speed}");
         }
@@ -53,14 +54,18 @@ public class SummonSystemView : MonoBehaviour
         }
     }
 
-    void onSentEmployee()
+    void onSentEmployee(Employee employee)
     {
-        employeeStatsButton.gameObject.SetActive(false);
+        sendEmployeeButton.gameObject.SetActive(false);
     }
 
-    void onNoMoreEmployee()
+    void onChangedEmployeeCount()
     {
-        hireNewEmployeeButton.gameObject.SetActive(true);
+        //If there are no more employees, enable the Hire New Employee button, and disable the summonEmployee button. Otherwise, do the opposite.
+        int employeeCount = SummonSystem.instance.queueOfAvailableEmployees.Count;
+        bool ifNoMoreEmployee = employeeCount == 0 ? true : false;
+        hireNewEmployeeButton.gameObject.SetActive(ifNoMoreEmployee);
+        summonEmployeeButton.gameObject.SetActive(!ifNoMoreEmployee);
     }
 
     void Update()

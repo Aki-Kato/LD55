@@ -11,7 +11,7 @@ namespace Navigation.Employee
     {
         private const float CHECK_FOR_DESTINATION_REACHED_TICK = 0.1f;
 
-        public event Action<EmployeeAgent> FinalDestinationReached;
+        public event Action FinalDestinationReached;
 
         [SerializeField] private float reachPointDistance;
 
@@ -19,6 +19,8 @@ namespace Navigation.Employee
 
         private LinkedList<Vector3> _pathPoints;
         private LinkedListNode<Vector3> _currentDestination;
+
+        public float Speed { get => _agent.acceleration; set => _agent.acceleration = value; }
 
         private void Awake()
         {
@@ -72,7 +74,7 @@ namespace Navigation.Employee
             }
 
             _agent.isStopped = true;
-            FinalDestinationReached?.Invoke(this);
+            FinalDestinationReached?.Invoke();
         }
     }
 }

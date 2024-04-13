@@ -1,39 +1,36 @@
-using Navigation.Employee;
+using Employees.Controllers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Utilities.UI;
 
 namespace Navigation.Selector
 {
     public sealed class NavigationPointsSelector : MonoBehaviour
     {
-        [SerializeField] private Camera cam;
+        public event Action PathCompleted;
+
         [SerializeField] private LayerMask selectionLayerMask;
         [SerializeField] private NavigationPointView selectedPointPrefab;
+        [SerializeField] private MapView map;
 
-        [Space]
-        // Only for testing purposes. Must be removed further.
-        // Must be replace by Employee Controller or something like that.
-        [SerializeField] private EmployeeAgent agent;
+        private EmployeeController _employeeController;
 
         private LinkedList<NavigationPointView> _selectedPoints = new LinkedList<NavigationPointView>();
 
         private NavigationPointView _lastSelectedPoint;
 
-        private void Awake()
-        {
-            if (!cam)
-                cam = Camera.main;
+        public bool IsSelectionActive { get => enabled; set => enabled = value; }
 
-            CreateSelectedPoint(agent.transform.position);
+        private void OnDisable()
+        {
+            ClearAllPoints();
         }
 
         private void Update()
         {
-            if (EventSystem.current.IsPointerOverGameObject())
-                return;
-
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 TrySetPoint();
@@ -44,25 +41,38 @@ namespace Navigation.Selector
             }
         }
 
+        public void SetEmployeeForSelection(EmployeeController employeeController)
+        {
+            _employeeController = employeeController;
+            CreateSelectedPoint(_employeeController.transform.position);
+        }
+
         private void TrySetPoint()
         {
-            var mousePosition = Input.mousePosition;
-            Ray ray = cam.ScreenPointToRay(mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hitInfo, float.MaxValue, selectionLayerMask))
-            {
-                var selectedObject = hitInfo.collider.gameObject;
-                if (selectedObject.TryGetComponent(out INavigationFinalPoint finalPoint))
-                {
-                    CompleteThePath(finalPoint);
-                    return;
-                }
+            map.TryGetCursorWorldCoordinates(out Ray? ray);
+            if (!ray.HasValue)
+                return;
 
-                CreateSelectedPoint(hitInfo.point);
+            if (Physics.Raycast(ray.Value, out RaycastHit hitInfo, float.MaxValue, selectionLayerMask))
+            {
+                AddPathPoint(hitInfo);
             }
             else
             {
                 Debug.LogWarning("There is no applicable surface for setting point.");
             }
+        }
+
+        private void AddPathPoint(RaycastHit hitInfo)
+        {
+            var selectedObject = hitInfo.collider.gameObject;
+            if (selectedObject.TryGetComponent(out INavigationFinalPoint finalPoint))
+            {
+                CompleteThePath(finalPoint);
+                return;
+            }
+
+            CreateSelectedPoint(hitInfo.point);
         }
 
         private void CompleteThePath(INavigationFinalPoint finalPoint)
@@ -71,8 +81,8 @@ namespace Navigation.Selector
             LinkedList<Vector3> points =
                 new LinkedList<Vector3>(_selectedPoints.Select(x => x.transform.position));
 
-            agent.SendBy(points);
-            enabled = false;
+            _employeeController.SendBy(points);
+            PathCompleted?.Invoke();
         }
 
         private void CreateSelectedPoint(Vector3 point)

@@ -20,6 +20,8 @@ namespace Navigation.Employee
         private LinkedList<Vector3> _pathPoints;
         private LinkedListNode<Vector3> _currentDestination;
 
+        public float Speed { get => _agent.acceleration; set => _agent.acceleration = value; }
+
         private void Awake()
         {
             _agent = GetComponent<NavMeshAgent>();

@@ -4,11 +4,25 @@ using UnityEngine;
 
 public class PlayerMoneyManager : MonoBehaviour
 {
+    public static PlayerMoneyManager instance = null;
     public int playerMoney = 30;
     public event Action onMoneyChanged;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
     void Start()
     {
-
+        UpdateMoney();
     }
 
     void Update()
@@ -16,7 +30,7 @@ public class PlayerMoneyManager : MonoBehaviour
 
     }
 
-    public bool TryPurchaseSomething(int _cost)
+    public bool TryDecrementMoney(int _cost)
     {
         if (playerMoney >= _cost)
         {

@@ -9,7 +9,6 @@ using UnityEngine;
 public class MissionManager : MonoBehaviour
 {
     public static MissionManager instance = null;
-    public float debugcurrentTimer;
     private float timerToCreateNextMission;
     private static int numberOfMission = 0;
     [SerializeField] private float missionCreationInterval = 20f;
@@ -39,7 +38,7 @@ public class MissionManager : MonoBehaviour
 
     public void TryCreateMission()
     {
-        debugcurrentTimer = timerToCreateNextMission += Time.deltaTime;
+        timerToCreateNextMission += Time.deltaTime;
 
         //Timer Guard
         if (timerToCreateNextMission <= missionCreationInterval)
@@ -56,6 +55,7 @@ public class MissionManager : MonoBehaviour
             Building _randomBuilding = listOfPossibleMissionLocations[UnityEngine.Random.Range(0, listOfPossibleMissionLocations.Count)];
             numberOfMission++;
 
+            //GAME DESIGN ADJUSTMENT TO BE MADE HERE
             //Hardcoded numbers 2, 60 and 5 can be amended and randomised in accordance to an algorithm
             Mission _nextMission = new Mission(numberOfMission, 1, 60, 5);
             _randomBuilding.SetMission(_nextMission);

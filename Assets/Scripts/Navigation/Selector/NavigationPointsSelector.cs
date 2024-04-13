@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Utilities.UI;
 
 namespace Navigation.Selector
 {
@@ -11,9 +12,9 @@ namespace Navigation.Selector
     {
         public event Action PathCompleted;
 
-        [SerializeField] private Camera cam;
         [SerializeField] private LayerMask selectionLayerMask;
         [SerializeField] private NavigationPointView selectedPointPrefab;
+        [SerializeField] private MapView map;
 
         private EmployeeController _employeeController;
 
@@ -23,12 +24,6 @@ namespace Navigation.Selector
 
         public bool IsSelectionActive { get => enabled; set => enabled = value; }
 
-        private void Awake()
-        {
-            if (!cam)
-                cam = Camera.main;
-        }
-
         private void OnDisable()
         {
             ClearAllPoints();
@@ -36,9 +31,6 @@ namespace Navigation.Selector
 
         private void Update()
         {
-            if (EventSystem.current.IsPointerOverGameObject())
-                return;
-
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 TrySetPoint();
@@ -57,9 +49,11 @@ namespace Navigation.Selector
 
         private void TrySetPoint()
         {
-            var mousePosition = Input.mousePosition;
-            Ray ray = cam.ScreenPointToRay(mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hitInfo, float.MaxValue, selectionLayerMask))
+            map.TryGetCursorWorldCoordinates(out Ray? ray);
+            if (!ray.HasValue)
+                return;
+
+            if (Physics.Raycast(ray.Value, out RaycastHit hitInfo, float.MaxValue, selectionLayerMask))
             {
                 AddPathPoint(hitInfo);
             }

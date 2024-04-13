@@ -6,9 +6,9 @@ public class Mission
 {
     public int id;
     private int currentWorkDone;
-    public int numberOfWorkRequired;
+    [SerializeField] private int numberOfWorkRequired;
     private float currentDuration;
-    public float missionDuration;
+    [SerializeField] private float missionDuration;
     public float reward;
 
     public Mission(int missionId, int numberOfWorkUnits, float missionDuration, float missionReward)
@@ -32,6 +32,7 @@ public class Mission
     public void MissionComplete()
     {
         //Reward Player
+        MissionManager.instance.CompletedMission(this);
 
         //Destroy Mission
     }

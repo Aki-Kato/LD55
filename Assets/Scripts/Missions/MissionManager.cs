@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Buildings;
+using Unity.Collections;
 using UnityEngine;
 
 
@@ -48,8 +49,16 @@ public class MissionManager : MonoBehaviour
             //Select Random Location from a list of pre-determined Buildings positioned around the map
             int _rng = UnityEngine.Random.Range(0, listOfPossibleMissionLocations.Count);
             numberOfMission++;
-            listOfPossibleMissionLocations[_rng].SetMission(new Mission(numberOfMission, 2, 60, 5));
+
+            //Hardcoded numbers 2, 60 and 5 can be amended and randomised in accordance to an algorithm
+            Mission _nextMission = new Mission(numberOfMission, 2, 60, 5);
+
+            listOfPossibleMissionLocations[_rng].SetMission(_nextMission);
+            createdMission?.Invoke(_nextMission);
         }
     }
 
+    public void CompletedMission(Mission mission){
+        completedMission?.Invoke(mission);
+    }
 }

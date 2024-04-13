@@ -9,13 +9,16 @@ using UnityEngine;
 public class MissionManager : MonoBehaviour
 {
     public static MissionManager instance = null;
+    public float debugcurrentTimer;
     private float timerToCreateNextMission;
     private static int numberOfMission = 0;
     [SerializeField] private float missionCreationInterval = 20f;
     [SerializeField] private List<Building> listOfPossibleMissionLocations;
+    private List<Building> listOfNonPossibleMissionLocations = new List<Building>();
 
     public event Action<Mission> createdMission;
     public event Action<Mission> completedMission;
+    public event Action<Mission> failedMission;
     void Awake()
     {
         if (instance == null)
@@ -36,29 +39,41 @@ public class MissionManager : MonoBehaviour
 
     public void TryCreateMission()
     {
+        debugcurrentTimer = timerToCreateNextMission += Time.deltaTime;
+
         //Timer Guard
         if (timerToCreateNextMission <= missionCreationInterval)
         {
             return;
         }
 
-        else
+        //Possible Mission Locations Guard
+        else if (listOfPossibleMissionLocations.Count > 0)
         {
             timerToCreateNextMission = 0;
 
             //Select Random Location from a list of pre-determined Buildings positioned around the map
-            int _rng = UnityEngine.Random.Range(0, listOfPossibleMissionLocations.Count);
+            Building _randomBuilding = listOfPossibleMissionLocations[UnityEngine.Random.Range(0, listOfPossibleMissionLocations.Count)];
             numberOfMission++;
 
             //Hardcoded numbers 2, 60 and 5 can be amended and randomised in accordance to an algorithm
-            Mission _nextMission = new Mission(numberOfMission, 2, 60, 5);
+            Mission _nextMission = new Mission(numberOfMission, 1, 60, 5);
+            _randomBuilding.SetMission(_nextMission);
 
-            listOfPossibleMissionLocations[_rng].SetMission(_nextMission);
+            listOfNonPossibleMissionLocations.Add(_randomBuilding);
+            listOfPossibleMissionLocations.Remove(_randomBuilding);
+
             createdMission?.Invoke(_nextMission);
         }
     }
 
-    public void CompletedMission(Mission mission){
-        completedMission?.Invoke(mission);
+    public void CompletedMission(Building building)
+    {
+        completedMission?.Invoke(building.currentMission);
+    }
+
+    public void FailedMission(Building building)
+    {
+        failedMission?.Invoke(building.currentMission);
     }
 }

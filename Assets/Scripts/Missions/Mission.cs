@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Mission
 {
     public int id;
@@ -10,6 +11,12 @@ public class Mission
     private float currentDuration;
     [SerializeField] private float missionDuration;
     public float reward;
+    public bool ifMissionAvailable = false;
+
+    public int CurrentWorkDone => currentWorkDone;
+    public int NumberOfWorkRequired => numberOfWorkRequired;
+    public float CurrentDuration => currentDuration;
+    public float MissionDuration => missionDuration;
 
     public Mission(int missionId, int numberOfWorkUnits, float missionDuration, float missionReward)
     {
@@ -23,29 +30,14 @@ public class Mission
     public void IncrementWorkUnit(int workUnit)
     {
         currentWorkDone += workUnit;
-        if (currentWorkDone >= numberOfWorkRequired)
-        {
-            MissionComplete();
-        }
     }
 
-    public void MissionComplete()
+    public void IncrementMissionTimer(float _time)
     {
-        //Reward Player
-        MissionManager.instance.CompletedMission(this);
-
-        //Destroy Mission
-    }
-
-    public void IncrementMissionTimer(float _time){
         currentDuration += _time;
-        if (currentDuration >= missionDuration){
-            MissionFail();
-        }
     }
 
-    public void MissionFail(){
-        //Destroy Mission
+    public void SetMissionAvailability(bool _state){
+        ifMissionAvailable = _state;
     }
-
 }

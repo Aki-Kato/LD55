@@ -19,11 +19,8 @@ public sealed class EmployeesWorkController : MonoBehaviour
         pointsSelector.PathCompleted += PointsSelector_OnPathCompleted;
     }
 
-    private void SummonSystem_OnSentEmployee()
+    private void SummonSystem_OnSentEmployee(Employee employee)
     {
-        // TODO: Delete this. Must be sent through parameter.
-        Employee employee = null;
-
         EmployeeController controller = employeeControllerFactory.Create(employee);
         EnableSelectionMode(controller);
     }

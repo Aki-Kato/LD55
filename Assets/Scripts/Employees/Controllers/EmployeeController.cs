@@ -10,7 +10,7 @@ namespace Employees.Controllers
 
         private void Awake()
         {
-            agent.FinalDestinationReached += Agent_FinalDestinationReached;
+            agent.FinalDestinationReached += Agent_OnFinalDestinationReached;
         }
 
         public void Initialise(float speed)
@@ -22,7 +22,7 @@ namespace Employees.Controllers
             agent.SendBy(pathPoints);
 
 
-        private void Agent_FinalDestinationReached(EmployeeAgent obj)
+        private void Agent_OnFinalDestinationReached()
         {
             throw new System.NotImplementedException();
         }

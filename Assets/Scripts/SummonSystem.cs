@@ -14,10 +14,11 @@ public class SummonSystem : MonoBehaviour
     public List<Employee> debugEmployeeToStart;
     public Employee debugEmployeeToQueue;
     public Queue<Employee> queueOfAvailableEmployees;
+    private int oldNumberOfEmployees;
 
     public event Action summonedEmployeeEvent;
     public event Action sentEmployeeEvent;
-    public event Action noMoreEmployeeEvent;
+    public event Action changeEmployeeCountEvent;
     void Awake()
     {
         if (instance == null)
@@ -50,9 +51,9 @@ public class SummonSystem : MonoBehaviour
             UpdateNewEmployeeAvailable();
         }
 
-        CheckEmployeeLeft();
+        CheckEmployeeAmount();
 
-    
+
         timerToNewEmployee += Time.deltaTime;
     }
 
@@ -62,15 +63,12 @@ public class SummonSystem : MonoBehaviour
         queueOfAvailableEmployees.Enqueue(debugEmployeeToQueue);
     }
 
-    private void CheckEmployeeLeft(){
-        if (queueOfAvailableEmployees.Count <= 0){
-            if (summonedEmployee != null)
-            return;
-
-            else {
-                noMoreEmployeeEvent?.Invoke();
-            }
-        }
+    private void CheckEmployeeAmount()
+    {
+        if (queueOfAvailableEmployees.Count != oldNumberOfEmployees)
+            changeEmployeeCountEvent?.Invoke();
+        
+        oldNumberOfEmployees = queueOfAvailableEmployees.Count;
     }
 
 
@@ -87,7 +85,8 @@ public class SummonSystem : MonoBehaviour
         summonedEmployeeEvent?.Invoke();
     }
 
-    public void SendEmployee(){
+    public void SendEmployee()
+    {
         //Insert sending employee to mission code here..
 
         //Debug/prototype
@@ -97,7 +96,8 @@ public class SummonSystem : MonoBehaviour
         sentEmployeeEvent?.Invoke();
     }
 
-    public void HireNewEmployeeImmediately(){
+    public void HireNewEmployeeImmediately()
+    {
         //Check if enough money
 
         UpdateNewEmployeeAvailable();

@@ -2551,9 +2551,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f482be2d952f80740917a63f99a9972b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  summonEmployeeButton: {fileID: 958212519}
   numberOfAvailableEmployeeText: {fileID: 51912574}
   timerToNewEmployeeText: {fileID: 984511943}
-  employeeStatsButton: {fileID: 1861308476}
+  sendEmployeeButton: {fileID: 1861308476}
   employeeStats: {fileID: 1551332447}
   hireNewEmployeeButton: {fileID: 899754383}
   summonSystem: {fileID: 1905190082}
@@ -2786,9 +2787,9 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 24618659}
+  - {fileID: 899754381}
   - {fileID: 958212518}
   - {fileID: 1861308472}
-  - {fileID: 899754381}
   - {fileID: 51912573}
   - {fileID: 984511942}
   m_Father: {fileID: 702891756}

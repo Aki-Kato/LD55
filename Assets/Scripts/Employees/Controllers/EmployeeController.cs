@@ -190,10 +190,13 @@ namespace Employees.Controllers
         public void CatapultTo(Vector3 point)
         {
             agent.Enabled = false;
-            StartCoroutine(CatapultingRoutine(point));
+            if (_travelOption == TravelOptions.Catapult)
+                StartCoroutine(CatapultingRoutine(point));
+            else
+                transform.position = point;
         }
 
-        public IEnumerator CatapultingRoutine(Vector3 endPoint)
+        private IEnumerator CatapultingRoutine(Vector3 endPoint)
         {
             Vector3 startPosition = transform.position;
 

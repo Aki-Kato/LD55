@@ -5,12 +5,14 @@ using WorldEvent;
 
 public class FairEvent : BaseEvent
 {
-    public float eventReward;
+    public int eventReward;
 
     public override void OnTriggerEnter(Collider collider)
     {
-        if (collider.TryGetComponent(out EmployeeController employee)){
+        if (collider.TryGetComponent(out EmployeeController employee))
+        {
             //Grant Gold to PlayerMoneyManager
+            PlayerMoneyManager.instance.IncrementMoney(eventReward);
 
             //Immediately Ends Event After
             EndEvent();
@@ -29,9 +31,6 @@ public class FairEvent : BaseEvent
 
     protected override void EndEvent()
     {
-        throw new System.NotImplementedException();
+        base.EndEvent();
     }
-
-
-
 }

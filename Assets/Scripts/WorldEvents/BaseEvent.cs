@@ -25,7 +25,9 @@ namespace WorldEvent
             }
         }
 
-        protected abstract void EndEvent();
+        protected virtual void EndEvent(){
+            Destroy(gameObject);
+        }
 
         
     }

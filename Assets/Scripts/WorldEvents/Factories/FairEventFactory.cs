@@ -6,7 +6,7 @@ namespace WorldEvent
 {
     public class FairEventFactory : BaseEventFactory
     {
-        public float eventRewardToSet;
+        public int eventRewardToSet;
         [SerializeField] private GameObject fairEventPrefab;
         public override BaseEvent CreateEvent(Vector3 position)
         {

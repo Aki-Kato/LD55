@@ -37,10 +37,10 @@ namespace Navigation.Controllers
             NodeSelected?.Invoke(node, nextNotVisitedNodes);
 
             lineRenderer.positionCount++;
-            lineRenderer.SetPosition(lineRenderer.positionCount - 1, node.transform.position);
+            lineRenderer.SetPosition(lineRenderer.positionCount - 1, transform.position - node.transform.position);
 
             if (nextNotVisitedNodes.Count == 1)
-                AddNode(node.NextNodes[0]);
+                AddNode(nextNotVisitedNodes[0]);
 
             if (node.IsFinalNode)
                 FinalNodeReached?.Invoke(true);

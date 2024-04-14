@@ -1808,6 +1808,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 513889034}
   m_CullTransparentMesh: 1
+--- !u!114 &524527294 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7118503385181381285, guid: ce88ec18b6461aa4782a54fba0d5269e, type: 3}
+  m_PrefabInstance: {fileID: 2065473370}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 615756140109b5140a9b141bedb930e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &538466571
 GameObject:
   m_ObjectHideFlags: 0
@@ -3700,17 +3711,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 838530372}
   m_CullTransparentMesh: 1
---- !u!114 &880572600 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6035731017577008975, guid: ce88ec18b6461aa4782a54fba0d5269e, type: 3}
-  m_PrefabInstance: {fileID: 2065473370}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70374f6a9e15c4b47bca3a0451526302, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &881868021
 GameObject:
   m_ObjectHideFlags: 0
@@ -10348,7 +10348,7 @@ PrefabInstance:
     - target: {fileID: 1409956525370335015, guid: ce88ec18b6461aa4782a54fba0d5269e, type: 3}
       propertyPath: listOfFactories.Array.data[0]
       value: 
-      objectReference: {fileID: 880572600}
+      objectReference: {fileID: 524527294}
     - target: {fileID: 1409956525370335015, guid: ce88ec18b6461aa4782a54fba0d5269e, type: 3}
       propertyPath: listOfFactories.Array.data[1]
       value: 
@@ -10404,6 +10404,10 @@ PrefabInstance:
     - target: {fileID: 6834576995580071261, guid: ce88ec18b6461aa4782a54fba0d5269e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7118503385181381285, guid: ce88ec18b6461aa4782a54fba0d5269e, type: 3}
+      propertyPath: eventDurationToSet
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

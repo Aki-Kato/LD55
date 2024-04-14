@@ -23,6 +23,8 @@ namespace Employees.Controllers
         private bool HasGuards =>
             _travelOption == TravelOptions.Guard;
 
+        private bool HasHorse;
+
         private void Awake()
         {
             agent.FinalDestinationReached += Agent_OnFinalDestinationReached;
@@ -45,6 +47,10 @@ namespace Employees.Controllers
 
         public void SetHorse()
         {
+            if (HasHorse)
+                return;
+
+            HasHorse = true;
             var speed = agent.Speed * HORSE_SPEED_MODIFIER;
             SetSpeed(speed);
         }

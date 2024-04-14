@@ -10,17 +10,16 @@ public class AuctionEvent : BaseEvent
         if (collider.TryGetComponent(out EmployeeController employee))
         {
             //Give Employee horse travel option
+            employee.SetHorse();
         }
     }
 
     public override void OnTriggerStay(Collider collider)
     {
-        throw new System.NotImplementedException();
     }
 
     public override void OnTriggerExit(Collider collider)
     {
-        throw new System.NotImplementedException();
     }
 
     protected override void EndEvent()

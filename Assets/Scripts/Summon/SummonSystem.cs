@@ -82,6 +82,8 @@ public class SummonSystem : MonoBehaviour
         }
 
         summonedEmployee = queueOfAvailableEmployees.Dequeue();
+        SendEmployee();
+        
         summonedEmployeeEvent?.Invoke(summonedEmployee);
     }
 

@@ -35,13 +35,13 @@ namespace Map.Views
             graphController.AddNode(graphNode);
         }
 
-        private void GraphController_OnNodeSelected(GraphNodeController node)
+        private void GraphController_OnNodeSelected(GraphNodeController node, List<GraphNodeController> nextNodes)
         {
             gameObject.SetActive(true);
             Vector2 position = map.GetWorldPositionOnMap(node.transform.position);
             transform.position = position;
 
-            RotateArrowsTowardsNextNodes(node.NextNodes);
+            RotateArrowsTowardsNextNodes(nextNodes);
         }
 
         private void GraphController_OnGraphCleared()

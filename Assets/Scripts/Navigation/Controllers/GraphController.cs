@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Navigation.Controllers
 {
     public sealed class GraphController : MonoBehaviour
     {
-        public event Action<GraphNodeController> NodeSelected;
+        public event Action<GraphNodeController, List<GraphNodeController>> NodeSelected;
         public event Action GraphCleared;
         public event Action<bool> FinalNodeReached;
 
@@ -32,12 +33,13 @@ namespace Navigation.Controllers
         public void AddNode(GraphNodeController node)
         {
             _selectedGraphNodes.AddLast(node);
-            NodeSelected?.Invoke(node);
+            var nextNotVisitedNodes = node.NextNodes.Except(_selectedGraphNodes).ToList();
+            NodeSelected?.Invoke(node, nextNotVisitedNodes);
 
             lineRenderer.positionCount++;
             lineRenderer.SetPosition(lineRenderer.positionCount - 1, node.transform.position);
 
-            if (node.NextNodes.Count == 1)
+            if (nextNotVisitedNodes.Count == 1)
                 AddNode(node.NextNodes[0]);
 
             if (node.IsFinalNode)
@@ -58,7 +60,7 @@ namespace Navigation.Controllers
                     FinalNodeReached?.Invoke(false);
 
                 newLast = _selectedGraphNodes.Last.Value;
-                NodeSelected?.Invoke(newLast);
+                NodeSelected?.Invoke(newLast, newLast.NextNodes);
                 lineRenderer.positionCount--;
             }
             while (newLast.NextNodes.Count == 1 && _selectedGraphNodes.Count > 1);
@@ -73,7 +75,8 @@ namespace Navigation.Controllers
             }
 
             FinalNodeReached?.Invoke(false);
-            NodeSelected?.Invoke(_selectedGraphNodes.Last.Value);
+            var lastNode = _selectedGraphNodes.Last.Value;
+            NodeSelected?.Invoke(lastNode, lastNode.NextNodes);
         }
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SummonSystem : MonoBehaviour
@@ -11,6 +12,7 @@ public class SummonSystem : MonoBehaviour
     public float timerToNewEmployee;
     public float IntervalToNewEmployee { get { return intervalToNewEmployee; } }
     [SerializeField] private float intervalToNewEmployee = 30f;
+    [SerializeField] private List<GameObject> modelsForEmployees;
 
     public List<Employee> debugEmployeeToStart;
     public Employee debugEmployeeToQueue;
@@ -58,20 +60,28 @@ public class SummonSystem : MonoBehaviour
         timerToNewEmployee += Time.deltaTime;
     }
 
+    //////Algorithm to spawn/select new Employees
     private void UpdateNewEmployeeAvailable()
     {
-        //Algorithm to spawn/select new Employees
-        queueOfAvailableEmployees.Enqueue(debugEmployeeToQueue);
+        Employee _newEmployee = new Employee
+        {
+            employeeName = NameGenerator.GenerateName(),
+
+            //Algorithm for determining speed to be included here.
+            speed = 3,
+
+            model = modelsForEmployees[UnityEngine.Random.Range(0, modelsForEmployees.Count)]
+        };
+        queueOfAvailableEmployees.Enqueue(_newEmployee);
     }
 
     private void CheckEmployeeAmount()
     {
         if (queueOfAvailableEmployees.Count != oldNumberOfEmployees)
             changeEmployeeCountEvent?.Invoke();
-        
+
         oldNumberOfEmployees = queueOfAvailableEmployees.Count;
     }
-
 
     public void SummonEmployee()
     {
@@ -86,7 +96,7 @@ public class SummonSystem : MonoBehaviour
 
         currentEmployee = queueOfAvailableEmployees.Dequeue();
         SendEmployee();
-        
+
         summonedEmployeeEvent?.Invoke(currentEmployee);
     }
 
@@ -95,7 +105,8 @@ public class SummonSystem : MonoBehaviour
         sentEmployeeEvent?.Invoke(currentEmployee);
     }
 
-    public void ResetEmployee(){
+    public void ResetEmployee()
+    {
         ifSummonedEmployee = false;
         currentEmployee = null;
     }

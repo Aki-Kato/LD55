@@ -257,11 +257,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6098016}
   m_CullTransparentMesh: 1
---- !u!1 &10442032 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5014386381031903308, guid: 903f6a8fce468714a8345439134d5728, type: 3}
-  m_PrefabInstance: {fileID: 1701571170}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &85958383
 GameObject:
   m_ObjectHideFlags: 0
@@ -985,18 +980,27 @@ MonoBehaviour:
   currentEmployee:
     employeeName: 
     speed: 0
+    model: {fileID: 0}
   timerToNewEmployee: 0
   intervalToNewEmployee: 3
+  modelsForEmployees:
+  - {fileID: 5519517615891118298, guid: 3aa27207b80a9634789e889e7c0d622b, type: 3}
+  - {fileID: 2529200766735639936, guid: 632931809c2d5494fa60254050299dc5, type: 3}
+  - {fileID: 8339982445696153959, guid: 5f3ad80f571e84f4292f08a57ff58cb6, type: 3}
   debugEmployeeToStart:
   - employeeName: test1
     speed: 3
+    model: {fileID: 919132149155446097, guid: 4fa20bbbb5db2c94ba0f9837265d32d4, type: 3}
   - employeeName: test2
     speed: 3
+    model: {fileID: 919132149155446097, guid: b513b5c59ebc35b4eb2e3b9b0fa68402, type: 3}
   - employeeName: test3
     speed: 3
+    model: {fileID: 919132149155446097, guid: 921b057d0d5337f4f8cab9d1ee8f4a4f, type: 3}
   debugEmployeeToQueue:
     employeeName: test444
     speed: 4
+    model: {fileID: 0}
 --- !u!1 &253222272
 GameObject:
   m_ObjectHideFlags: 0
@@ -4437,17 +4441,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 995138527}
   m_CullTransparentMesh: 1
---- !u!114 &1001522379 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8073142447099860793, guid: ce88ec18b6461aa4782a54fba0d5269e, type: 3}
-  m_PrefabInstance: {fileID: 2065473370}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd2bfe87987cb9345b03e3b3ef224063, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1016651024
 GameObject:
   m_ObjectHideFlags: 0
@@ -6606,17 +6599,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1297645252}
   m_CullTransparentMesh: 1
---- !u!114 &1311806103 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1725942418083991794, guid: ce88ec18b6461aa4782a54fba0d5269e, type: 3}
-  m_PrefabInstance: {fileID: 2065473370}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17238a4570866264a9162e58a5cd80b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1342607438
 GameObject:
   m_ObjectHideFlags: 0
@@ -10337,34 +10319,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: EventManager
       objectReference: {fileID: 0}
-    - target: {fileID: 1409956525370335015, guid: ce88ec18b6461aa4782a54fba0d5269e, type: 3}
-      propertyPath: intervalToCreateNewEvents
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 1409956525370335015, guid: ce88ec18b6461aa4782a54fba0d5269e, type: 3}
-      propertyPath: listOfFactories.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1409956525370335015, guid: ce88ec18b6461aa4782a54fba0d5269e, type: 3}
-      propertyPath: listOfSpawnPoints.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1409956525370335015, guid: ce88ec18b6461aa4782a54fba0d5269e, type: 3}
-      propertyPath: listOfFactories.Array.data[0]
-      value: 
-      objectReference: {fileID: 1311806103}
-    - target: {fileID: 1409956525370335015, guid: ce88ec18b6461aa4782a54fba0d5269e, type: 3}
-      propertyPath: listOfFactories.Array.data[1]
-      value: 
-      objectReference: {fileID: 1001522379}
-    - target: {fileID: 1409956525370335015, guid: ce88ec18b6461aa4782a54fba0d5269e, type: 3}
-      propertyPath: listOfFactories.Array.data[2]
-      value: 
-      objectReference: {fileID: 1001522379}
-    - target: {fileID: 1409956525370335015, guid: ce88ec18b6461aa4782a54fba0d5269e, type: 3}
-      propertyPath: listOfSpawnPoints.Array.data[0]
-      value: 
-      objectReference: {fileID: 10442032}
     - target: {fileID: 1725942418083991794, guid: ce88ec18b6461aa4782a54fba0d5269e, type: 3}
       propertyPath: eventDurationToSet
       value: 10

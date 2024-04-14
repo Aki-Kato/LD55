@@ -30,12 +30,9 @@ namespace Navigation.Views
             graphController.FinalNodeReached += GraphController_OnFinalNodeReached;
         }
 
-        private void Update()
+        private void OnDestroy()
         {
-            if (Input.GetKeyDown(KeyCode.Mouse1))
-            {
-                graphController.RemoveLastNode();
-            }
+            graphController.FinalNodeReached -= GraphController_OnFinalNodeReached;
         }
 
         private void GraphController_OnFinalNodeReached(bool reached)

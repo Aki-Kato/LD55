@@ -8,7 +8,7 @@ namespace WorldEvent
     {
         public float eventRadiusToSet;
         [SerializeField] private GameObject festivalEventPrefab;
-        public override BaseEvent CreateEvent(Vector3 position)
+        public override BaseEvent CreateEvent(Vector3 position,float _rotation, Vector2 collidersSize)
         {
             GameObject instance = Instantiate(festivalEventPrefab.gameObject, position, Quaternion.identity);
             FestivalEvent festivalEvent = instance.GetComponent<FestivalEvent>();

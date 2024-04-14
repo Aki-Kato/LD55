@@ -20,9 +20,13 @@ namespace WorldEvent
             }
         }
 
-        public void CreateNewEvent(){
+        public void CreateNewEvent()
+        {
             Debug.Log("Creating Event");
-            listOfFactories[Random.Range(0, listOfFactories.Count)].CreateEvent(GetRandomPositionOnMap());
+
+            ///////// PROTOTYPE CODE TO BE REPLACED
+            listOfFactories[Random.Range(0, listOfFactories.Count)].CreateEvent(GetRandomPositionOnMap(), 45, new Vector2(2, 5));
+            ///////// PROTOTYPE CODE TO BE REPLACED
         }
 
         Vector3 GetRandomPositionOnMap()

@@ -587,6 +587,7 @@ GameObject:
   - component: {fileID: 1515498972}
   - component: {fileID: 1515498971}
   - component: {fileID: 1515498977}
+  - component: {fileID: 1515498978}
   m_Layer: 0
   m_Name: Employee
   m_TagString: Untagged
@@ -730,6 +731,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   employeeAgent: {fileID: 1515498971}
   workUnit: 1
+--- !u!114 &1515498978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1515498970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ea5d705604578b42b8272866afaf5b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 1515498971}
 --- !u!1 &1519849410
 GameObject:
   m_ObjectHideFlags: 0

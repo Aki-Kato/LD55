@@ -1,11 +1,13 @@
 using Navigation;
 using UnityEngine;
 using Employees.Controllers;
+using Unity.VisualScripting;
 
 namespace Buildings
 {
     public sealed class Building : MonoBehaviour
     {
+        public int traderReachedDestinationExtraReward = 50;
         public Mission currentMission = null;
         public void SetMission(Mission mission)
         {
@@ -71,8 +73,15 @@ namespace Buildings
         {
             if (other.TryGetComponent(out EmployeeController employee))
             {
-                //PLACEHOLDER VALUE - TO BE CHANGED TO A PROPERTY IN FINAL CODE
-                ContributeToMission(1);
+                ContributeToMission(1 * employee.work_contribution_perk_modifier);
+
+                //Check for Employee Trader Perk
+                if (employee.isTrader){
+                    //PLACEHOLDER CODE - BALANCING REQUIRED
+                    PlayerMoneyManager.instance.IncrementMoney(traderReachedDestinationExtraReward);
+                }
+
+
                 Destroy(employee);
             }
         }

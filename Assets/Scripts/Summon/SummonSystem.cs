@@ -19,6 +19,8 @@ public class SummonSystem : MonoBehaviour
     public Queue<Employee> queueOfAvailableEmployees;
     private int oldNumberOfEmployees;
 
+    private List<PerkBase> allPerks;
+
     public event Action<Employee> summonedEmployeeEvent;
     public event Action<Employee> sentEmployeeEvent;
     public event Action changeEmployeeCountEvent;
@@ -70,9 +72,22 @@ public class SummonSystem : MonoBehaviour
             //Algorithm for determining speed to be included here.
             speed = 3,
 
-            model = modelsForEmployees[UnityEngine.Random.Range(0, modelsForEmployees.Count)]
+            model = modelsForEmployees[UnityEngine.Random.Range(0, modelsForEmployees.Count)],
+
+            listOfPerks = InitialisePerksForEmployee()
         };
         queueOfAvailableEmployees.Enqueue(_newEmployee);
+    }
+
+    private List<PerkBase> InitialisePerksForEmployee(){
+        //Random
+        int _RNG = UnityEngine.Random.Range(0,3);
+        List<PerkBase> _perks = new List<PerkBase>();
+        for (int i = 0; i < _RNG; i++){
+            _perks.Add(allPerks[UnityEngine.Random.Range(0,allPerks.Count)]);
+        }
+
+        return _perks;
     }
 
     private void CheckEmployeeAmount()

@@ -8,24 +8,6 @@ public class Employee
     public float speed;
     public GameObject model;
 
-    public enum Perk{
-        None,
-    }
+    public List<PerkBase> listOfPerks;
 
-    public Perk perk1 = Perk.None;
-    public Perk perk2 = Perk.None;
-
-    public void SelectPerks(){
-        int _numberOfPerks = Random.Range(0,3);
-        switch (_numberOfPerks){
-            case 0:
-            break;
-
-            case 1:
-            break;
-            
-            case 2:
-            break;
-        }
-    }
 }

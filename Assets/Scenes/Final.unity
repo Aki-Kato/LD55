@@ -301,6 +301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 754f085c48a784b429d8957c42ed5d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  traderReachedDestinationExtraReward: 50
   currentMission:
     id: 0
     numberOfWorkRequired: 0
@@ -837,6 +838,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 754f085c48a784b429d8957c42ed5d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  traderReachedDestinationExtraReward: 50
   currentMission:
     id: 0
     numberOfWorkRequired: 0
@@ -981,6 +983,7 @@ MonoBehaviour:
     employeeName: 
     speed: 0
     model: {fileID: 0}
+    listOfPerks: []
   timerToNewEmployee: 0
   intervalToNewEmployee: 3
   modelsForEmployees:
@@ -991,16 +994,24 @@ MonoBehaviour:
   - employeeName: test1
     speed: 3
     model: {fileID: 919132149155446097, guid: 4fa20bbbb5db2c94ba0f9837265d32d4, type: 3}
+    listOfPerks: []
   - employeeName: test2
     speed: 3
     model: {fileID: 919132149155446097, guid: b513b5c59ebc35b4eb2e3b9b0fa68402, type: 3}
+    listOfPerks: []
   - employeeName: test3
     speed: 3
     model: {fileID: 919132149155446097, guid: 921b057d0d5337f4f8cab9d1ee8f4a4f, type: 3}
+    listOfPerks: []
   debugEmployeeToQueue:
     employeeName: test444
     speed: 4
     model: {fileID: 0}
+    listOfPerks:
+    - {fileID: 11400000, guid: 725e714b5e4d68344923eb5e7075d5c2, type: 2}
+    - {fileID: 11400000, guid: d3b0c7276a873574cb0e328a704824ae, type: 2}
+    - {fileID: 11400000, guid: 9de18f3ba258f7144bb39279322b7fee, type: 2}
+    - {fileID: 11400000, guid: dc0c6d4df02bee34d8fe65dd81fd92e6, type: 2}
 --- !u!1 &253222272
 GameObject:
   m_ObjectHideFlags: 0
@@ -1217,6 +1228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 754f085c48a784b429d8957c42ed5d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  traderReachedDestinationExtraReward: 50
   currentMission:
     id: 0
     numberOfWorkRequired: 0
@@ -2969,6 +2981,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 754f085c48a784b429d8957c42ed5d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  traderReachedDestinationExtraReward: 50
   currentMission:
     id: 0
     numberOfWorkRequired: 0
@@ -6295,6 +6308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 754f085c48a784b429d8957c42ed5d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  traderReachedDestinationExtraReward: 50
   currentMission:
     id: 0
     numberOfWorkRequired: 0
@@ -8231,6 +8245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 754f085c48a784b429d8957c42ed5d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  traderReachedDestinationExtraReward: 50
   currentMission:
     id: 0
     numberOfWorkRequired: 0

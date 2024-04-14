@@ -89,8 +89,11 @@ public class SummonSystem : MonoBehaviour
 
     public void SendEmployee()
     {
-        //Insert sending employee to mission code here..
         sentEmployeeEvent?.Invoke(summonedEmployee);
+    }
+
+    public void ResetEmployee(){
+        summonedEmployee = null;
     }
 
     public void HireNewEmployeeImmediately()

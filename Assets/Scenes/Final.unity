@@ -981,7 +981,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   summonedEmployee: {fileID: 0}
   timerToNewEmployee: 0
-  intervalToNewEmployee: 5
+  intervalToNewEmployee: 30
   debugEmployeeToStart:
   - {fileID: 11400000, guid: eb9bf0b8e0228bd448c63f1f3f978bfb, type: 2}
   - {fileID: 11400000, guid: eb9bf0b8e0228bd448c63f1f3f978bfb, type: 2}
@@ -1738,6 +1738,18 @@ MonoBehaviour:
       - m_Target: {fileID: 163659900}
         m_TargetAssemblyTypeName: SummonSystem, Assembly-CSharp
         m_MethodName: SendEmployee
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 163659900}
+        m_TargetAssemblyTypeName: SummonSystem, Assembly-CSharp
+        m_MethodName: ResetEmployee
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5829,6 +5841,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: SummonSystem, Assembly-CSharp
         m_MethodName: SummonEmployee
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1230133930}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

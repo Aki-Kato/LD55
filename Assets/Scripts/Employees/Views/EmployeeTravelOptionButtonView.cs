@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -43,7 +44,7 @@ namespace Employees.Views
             lockedSlot.SetActive(value);
         }
 
-        public void SetActive(bool value)
+        public void SetActive(bool value, [CallerMemberName] string kek = "")
         {
             _button.interactable = value;
         }

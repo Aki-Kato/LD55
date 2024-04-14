@@ -7,6 +7,7 @@ namespace Employees.Controllers
 {
     public class EmployeeTravelOptionController : MonoBehaviour
     {
+        [SerializeField] private SummonSystem summonSystem;
         [SerializeField] private EmployeesWorkController employeesWorkController;
         [SerializeField] private TravelOptions travelOption;
         [SerializeField] private bool isInfinite;
@@ -17,14 +18,17 @@ namespace Employees.Controllers
         [SerializeField] private Button buyInstanceButton;
         [SerializeField] private EmployeeTravelOptionButtonView view;
 
+        private bool _travelOptionSelectionMode = false;
+
         private void Start()
         {
             view.Construct(travelOption.ToString(), OnClick);
+            summonSystem.summonedEmployeeEvent += SummonSystem_OnSummonedEmployee;
+            employeesWorkController.TravelOptionUsed += EmployeesWorkController_OnTravelOptionUsed;
 
             if (isInfinite)
                 return;
 
-            employeesWorkController.TravelOptionUsed += EmployeesWorkController_OnTravelOptionUsed;
             buyInstanceButton.onClick.AddListener(OnBuyInstanceButtonClick);
             if (maxInstances == 0)
                 view.SetLocked(true);
@@ -34,6 +38,9 @@ namespace Employees.Controllers
 
         private void OnDestroy()
         {
+            summonSystem.summonedEmployeeEvent -= SummonSystem_OnSummonedEmployee;
+            employeesWorkController.TravelOptionUsed -= EmployeesWorkController_OnTravelOptionUsed;
+
             if (isInfinite)
                 return;
 
@@ -45,8 +52,17 @@ namespace Employees.Controllers
             employeesWorkController.SelectTravelOption(travelOption);
         }
 
+        private void SummonSystem_OnSummonedEmployee(Employee employee)
+        {
+            _travelOptionSelectionMode = true;
+            if (isInfinite || currentInstances > 0)
+                view.SetActive(true);
+        }
+
         private void EmployeesWorkController_OnTravelOptionUsed(TravelOptions travelOption)
         {
+            view.SetActive(false);
+            _travelOptionSelectionMode = false;
             if (isInfinite || this.travelOption != travelOption)
                 return;
 
@@ -70,7 +86,9 @@ namespace Employees.Controllers
         {
             maxInstances++;
             currentInstances++;
-            view.SetActive(true);
+            if (_travelOptionSelectionMode)
+                view.SetActive(true);
+
             SetCurrentAmount();
         }
 

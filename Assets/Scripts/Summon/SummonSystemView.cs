@@ -13,7 +13,6 @@ public class SummonSystemView : MonoBehaviour
     public TMP_Text timerToNewEmployeeText;
 
     //Send Employee
-    public Button sendEmployeeButton;
     public TMP_Text employeeStats;
 
     //HireNewEmployee Immediately
@@ -43,7 +42,7 @@ public class SummonSystemView : MonoBehaviour
     {
         if (employee != null)
         {
-            sendEmployeeButton.gameObject.SetActive(true);
+            employeeStats.gameObject.SetActive(true);
             employeeStats.text = $"Name: <Randomised Name>\nSpeed: {employee.speed}";
             Debug.Log($"Employee: {employee.employeeName}. Speed: {employee.speed}");
         }
@@ -56,7 +55,7 @@ public class SummonSystemView : MonoBehaviour
 
     void onSentEmployee(Employee employee)
     {
-        sendEmployeeButton.gameObject.SetActive(false);
+        employeeStats.gameObject.SetActive(false);
     }
 
     void onChangedEmployeeCount()

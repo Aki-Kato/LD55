@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[CreateAssetMenu(fileName = "Employee", menuName = "ScriptableObjects/New Employee")]
-public class Employee : ScriptableObject
+[System.Serializable]
+public class Employee
 {
     public string employeeName;
     public float speed;

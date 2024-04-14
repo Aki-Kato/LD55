@@ -57,7 +57,7 @@ public class MissionManager : MonoBehaviour
 
             //GAME DESIGN ADJUSTMENT TO BE MADE HERE
             //Hardcoded numbers 2, 60 and 5 can be amended and randomised in accordance to an algorithm
-            Mission _nextMission = new Mission(numberOfMission, 1, 60, 5);
+            Mission _nextMission = new Mission(numberOfMission, 3, 60, 5);
             _randomBuilding.SetMission(_nextMission);
 
             UpdatePossibleMissionLocation(_randomBuilding, false);

@@ -1,15 +1,12 @@
 using Navigation;
 using UnityEngine;
+using Employees.Controllers;
 
 namespace Buildings
 {
-    public sealed class Building : MonoBehaviour, INavigationFinalPoint
+    public sealed class Building : MonoBehaviour
     {
-        [SerializeField] private Transform buildingEntry;
         public Mission currentMission = null;
-
-        public Vector3 EntryPosition => buildingEntry.position;
-
         public void SetMission(Mission mission)
         {
             currentMission = mission;
@@ -69,7 +66,18 @@ namespace Buildings
         {
             currentMission.SetMissionAvailability(false);
         }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.TryGetComponent(out EmployeeController employee))
+            {
+                //PLACEHOLDER VALUE - TO BE CHANGED TO A PROPERTY IN FINAL CODE
+                ContributeToMission(1);
+                Destroy(employee);
+            }
+        }
     }
+
 
 }
 

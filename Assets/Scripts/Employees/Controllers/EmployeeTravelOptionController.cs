@@ -27,7 +27,7 @@ namespace Employees.Controllers
         private void Start()
         {
             view.Construct(travelOption.ToString(), OnClick);
-            summonSystem.summonedEmployeeEvent += SummonSystem_OnSummonedEmployee;
+            summonSystem.sentEmployeeEvent += SummonSystem_OnSummonedEmployee;
             employeesWorkController.TravelOptionUsed += EmployeesWorkController_OnTravelOptionUsed;
 
             if (isInfinite)
@@ -42,7 +42,7 @@ namespace Employees.Controllers
 
         private void OnDestroy()
         {
-            summonSystem.summonedEmployeeEvent -= SummonSystem_OnSummonedEmployee;
+            summonSystem.sentEmployeeEvent -= SummonSystem_OnSummonedEmployee;
             employeesWorkController.TravelOptionUsed -= EmployeesWorkController_OnTravelOptionUsed;
 
             if (isInfinite)

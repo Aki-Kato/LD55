@@ -21,6 +21,7 @@ namespace WorldEvent
         }
 
         public void CreateNewEvent(){
+            Debug.Log("Creating Event");
             listOfFactories[Random.Range(0, listOfFactories.Count)].CreateEvent(GetRandomPositionOnMap());
         }
 

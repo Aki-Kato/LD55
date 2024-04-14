@@ -7,7 +7,7 @@ namespace WorldEvent
     public class FestivalEventFactory : BaseEventFactory
     {
         public float eventRadiusToSet;
-        [SerializeField] private FestivalEvent festivalEventPrefab;
+        [SerializeField] private GameObject festivalEventPrefab;
         public override BaseEvent CreateEvent(Vector3 position)
         {
             GameObject instance = Instantiate(festivalEventPrefab.gameObject, position, Quaternion.identity);

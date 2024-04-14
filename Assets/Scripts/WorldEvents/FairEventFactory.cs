@@ -7,7 +7,7 @@ namespace WorldEvent
     public class FairEventFactory : BaseEventFactory
     {
         public float eventRewardToSet;
-        [SerializeField] private FairEvent fairEventPrefab;
+        [SerializeField] private GameObject fairEventPrefab;
         public override BaseEvent CreateEvent(Vector3 position)
         {
             GameObject instance = Instantiate(fairEventPrefab.gameObject, position, Quaternion.identity);

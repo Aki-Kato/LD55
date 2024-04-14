@@ -7,8 +7,13 @@ namespace Navigation.Graph
     {
         public List<GraphNode> NextNodes;
 
+        public bool IsFinalNode => NextNodes.Count == 0;
+
         public void SetNextNodes(bool active)
         {
+            if (IsFinalNode)
+                return;
+
             foreach (GraphNode node in NextNodes)
             {
                 node.gameObject.SetActive(active);

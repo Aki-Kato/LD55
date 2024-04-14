@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Map.Views;
+using UnityEngine.UI;
 
 namespace Navigation.Selector
 {
@@ -15,6 +16,9 @@ namespace Navigation.Selector
         [SerializeField] private LayerMask selectionLayerMask;
         [SerializeField] private MapView mapController;
         [SerializeField] private GraphController graphController;
+        [Space]
+        [SerializeField] private Button sendButton;
+        [SerializeField] private Button resetButton;
 
         private EmployeeController _employeeController;
 
@@ -23,20 +27,26 @@ namespace Navigation.Selector
         private void OnEnable()
         {
             graphController.StartBuildingPath();
+            resetButton.interactable = true;
         }
 
         private void OnDisable()
         {
             graphController.StopBuildingPath();
+            sendButton.interactable = false;
+            resetButton.interactable = false;
+        }
+
+        private void Awake()
+        {
+            graphController.FinalNodeReached += GraphController_OnFinalNodeReached;
+            sendButton.onClick.AddListener(OnSendButtonClick);
+            resetButton.onClick.AddListener(OnResetButtonClick);
         }
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                TrySetPoint();
-            }
-            else if (Input.GetKeyDown(KeyCode.Mouse1))
+            if (Input.GetKeyDown(KeyCode.Mouse1))
             {
                 graphController.RemoveLastNode();
             }
@@ -47,37 +57,14 @@ namespace Navigation.Selector
             _employeeController = employeeController;
         }
 
-        private void TrySetPoint()
+        private void GraphController_OnFinalNodeReached(bool reached)
         {
-            mapController.TryGetCursorWorldCoordinates(out Ray? ray);
-            if (!ray.HasValue)
-                return;
-
-            if (Physics.Raycast(ray.Value, out RaycastHit hitInfo, float.MaxValue, selectionLayerMask))
-            {
-                AddPathPoint(hitInfo);
-            }
-            else
-            {
-                Debug.LogWarning("There is no applicable surface for setting point.");
-            }
+            sendButton.interactable = reached;
         }
 
-        private void AddPathPoint(RaycastHit hitInfo)
+        private void OnSendButtonClick()
         {
-            var selectedObject = hitInfo.collider.gameObject;
-            if (selectedObject.TryGetComponent(out INavigationFinalPoint finalPoint))
-            {
-                CompleteThePath(finalPoint);
-                return;
-            }
-
-            GraphNode graphNode = selectedObject.GetComponent<GraphNode>();
-            graphController.AddNode(graphNode);
-        }
-
-        private void CompleteThePath(INavigationFinalPoint finalPoint)
-        {
+            sendButton.interactable = false;
             LinkedList<Vector3> points =
                 new LinkedList<Vector3>(graphController.SelectedGraphNodes.Select(x => x.transform.position));
 
@@ -85,6 +72,11 @@ namespace Navigation.Selector
             graphController.StopBuildingPath();
 
             PathCompleted?.Invoke();
+        }
+
+        private void OnResetButtonClick()
+        {
+            graphController.ClearAllNodes();
         }
     }
 }

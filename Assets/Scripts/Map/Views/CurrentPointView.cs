@@ -1,7 +1,6 @@
 using Navigation.Graph;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace Map.Views
 {
@@ -55,7 +54,6 @@ namespace Map.Views
             for (int i = 0; i < arrowViewsPool.Count; i++)
             {
                 bool lessNodesThenArrows = i >= nextNodes.Count;
-                Debug.Log(nextNodes.Count);
                 arrowViewsPool[i].gameObject.SetActive(!lessNodesThenArrows);
                 if (lessNodesThenArrows)
                     continue;

@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Navigation.Graph
@@ -10,6 +8,7 @@ namespace Navigation.Graph
     {
         public event Action<GraphNode> NodeSelected;
         public event Action GraphCleared;
+        public event Action<bool> FinalNodeReached;
 
         [SerializeField] private GraphNode firstNode;
         [SerializeField] private LineRenderer lineRenderer;
@@ -50,6 +49,9 @@ namespace Navigation.Graph
 
             if (node.NextNodes.Count == 1)
                 AddNode(node.NextNodes[0]);
+
+            if (node.IsFinalNode)
+                FinalNodeReached?.Invoke(true);
         }
 
         public void RemoveLastNode()
@@ -63,6 +65,8 @@ namespace Navigation.Graph
                 var removedNode = _selectedGraphNodes.Last.Value;
                 removedNode.SetNextNodes(false);
                 _selectedGraphNodes.RemoveLast();
+                if (removedNode.IsFinalNode)
+                    FinalNodeReached?.Invoke(false);
 
                 newLast = _selectedGraphNodes.Last.Value;
                 newLast.SetNextNodes(true);
@@ -70,6 +74,20 @@ namespace Navigation.Graph
                 lineRenderer.positionCount--;
             }
             while (newLast.NextNodes.Count == 1 && _selectedGraphNodes.Count > 1);
+        }
+
+        public void ClearAllNodes()
+        {
+            while (_selectedGraphNodes.Count > 1)
+            {
+                var removedNode = _selectedGraphNodes.Last.Value;
+                removedNode.SetNextNodes(false);
+                _selectedGraphNodes.RemoveLast();
+                lineRenderer.positionCount--;
+            }
+
+            FinalNodeReached?.Invoke(false);
+            NodeSelected?.Invoke(_selectedGraphNodes.Last.Value);
         }
     }
 }

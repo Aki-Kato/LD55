@@ -12,3 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27548c964e734484e94cff04da786770, type: 3}
   m_Name: Rider
   m_EditorClassIdentifier: 
+  perkName: Rider
+  speedModifier: 1
+  workUnitModifier: 1
+  isTrader: 0
+  horseSpeedModifier: 2
+  isEquinophobe: 0
+  isAviophobe: 0
+  isGrumpy: 0
+  isBrute: 0
+  isDubious: 0

@@ -19,7 +19,7 @@ public class SummonSystem : MonoBehaviour
     public Queue<Employee> queueOfAvailableEmployees;
     private int oldNumberOfEmployees;
 
-    private List<PerkBase> allPerks;
+    public List<PerkBase> allPerks;
 
     public event Action<Employee> summonedEmployeeEvent;
     public event Action<Employee> sentEmployeeEvent;

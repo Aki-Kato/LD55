@@ -12,3 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27548c964e734484e94cff04da786770, type: 3}
   m_Name: Agile
   m_EditorClassIdentifier: 
+  perkName: Agile
+  speedModifier: 2
+  workUnitModifier: 1
+  isTrader: 0
+  horseSpeedModifier: 1
+  isEquinophobe: 0
+  isAviophobe: 0
+  isGrumpy: 0
+  isBrute: 0
+  isDubious: 0

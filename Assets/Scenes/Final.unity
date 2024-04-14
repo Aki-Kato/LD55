@@ -257,6 +257,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6098016}
   m_CullTransparentMesh: 1
+--- !u!1 &10442032 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5014386381031903308, guid: 903f6a8fce468714a8345439134d5728, type: 3}
+  m_PrefabInstance: {fileID: 1701571170}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &85958383
 GameObject:
   m_ObjectHideFlags: 0
@@ -991,18 +996,27 @@ MonoBehaviour:
   - {fileID: 2529200766735639936, guid: 632931809c2d5494fa60254050299dc5, type: 3}
   - {fileID: 8339982445696153959, guid: 5f3ad80f571e84f4292f08a57ff58cb6, type: 3}
   debugEmployeeToStart:
-  - employeeName: test1
+  - employeeName: Gumpy
     speed: 3
     model: {fileID: 919132149155446097, guid: 4fa20bbbb5db2c94ba0f9837265d32d4, type: 3}
-    listOfPerks: []
-  - employeeName: test2
+    listOfPerks:
+    - {fileID: 11400000, guid: f05c1d13c00c4d34897fc22a0b9986bc, type: 2}
+    - {fileID: 11400000, guid: 248c02025afc5b34bad2e2bf4851dc7b, type: 2}
+  - employeeName: Brute
     speed: 3
     model: {fileID: 919132149155446097, guid: b513b5c59ebc35b4eb2e3b9b0fa68402, type: 3}
-    listOfPerks: []
-  - employeeName: test3
+    listOfPerks:
+    - {fileID: 11400000, guid: 725e714b5e4d68344923eb5e7075d5c2, type: 2}
+  - employeeName: Dubious
     speed: 3
-    model: {fileID: 919132149155446097, guid: 921b057d0d5337f4f8cab9d1ee8f4a4f, type: 3}
-    listOfPerks: []
+    model: {fileID: 919132149155446097, guid: b513b5c59ebc35b4eb2e3b9b0fa68402, type: 3}
+    listOfPerks:
+    - {fileID: 11400000, guid: bab2a160ac4c088448b9137f27e807ca, type: 2}
+  - employeeName: Dubious
+    speed: 3
+    model: {fileID: 919132149155446097, guid: b513b5c59ebc35b4eb2e3b9b0fa68402, type: 3}
+    listOfPerks:
+    - {fileID: 11400000, guid: 248c02025afc5b34bad2e2bf4851dc7b, type: 2}
   debugEmployeeToQueue:
     employeeName: test444
     speed: 4
@@ -1010,8 +1024,17 @@ MonoBehaviour:
     listOfPerks:
     - {fileID: 11400000, guid: 725e714b5e4d68344923eb5e7075d5c2, type: 2}
     - {fileID: 11400000, guid: d3b0c7276a873574cb0e328a704824ae, type: 2}
-    - {fileID: 11400000, guid: 9de18f3ba258f7144bb39279322b7fee, type: 2}
-    - {fileID: 11400000, guid: dc0c6d4df02bee34d8fe65dd81fd92e6, type: 2}
+  allPerks:
+  - {fileID: 11400000, guid: 725e714b5e4d68344923eb5e7075d5c2, type: 2}
+  - {fileID: 11400000, guid: 222fe739600d6324fa21c04fdad60ca8, type: 2}
+  - {fileID: 11400000, guid: bab2a160ac4c088448b9137f27e807ca, type: 2}
+  - {fileID: 11400000, guid: d3b0c7276a873574cb0e328a704824ae, type: 2}
+  - {fileID: 11400000, guid: 248c02025afc5b34bad2e2bf4851dc7b, type: 2}
+  - {fileID: 11400000, guid: 2c453519304995043b85630c765a8f27, type: 2}
+  - {fileID: 11400000, guid: efdd021792dc57646a5eaba3b7a9e8ef, type: 2}
+  - {fileID: 11400000, guid: f05c1d13c00c4d34897fc22a0b9986bc, type: 2}
+  - {fileID: 11400000, guid: 9de18f3ba258f7144bb39279322b7fee, type: 2}
+  - {fileID: 11400000, guid: dc0c6d4df02bee34d8fe65dd81fd92e6, type: 2}
 --- !u!1 &253222272
 GameObject:
   m_ObjectHideFlags: 0
@@ -7375,7 +7398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b46c69200a9bb1449c7befd6670b6c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMoney: 30
+  playerMoney: 9999
 --- !u!1 &1500776571
 GameObject:
   m_ObjectHideFlags: 0
@@ -10334,9 +10357,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: EventManager
       objectReference: {fileID: 0}
+    - target: {fileID: 773594152592422638, guid: ce88ec18b6461aa4782a54fba0d5269e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1409956525370335015, guid: ce88ec18b6461aa4782a54fba0d5269e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1409956525370335015, guid: ce88ec18b6461aa4782a54fba0d5269e, type: 3}
+      propertyPath: intervalToCreateNewEvents
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1409956525370335015, guid: ce88ec18b6461aa4782a54fba0d5269e, type: 3}
+      propertyPath: listOfSpawnPoints.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1409956525370335015, guid: ce88ec18b6461aa4782a54fba0d5269e, type: 3}
+      propertyPath: listOfSpawnPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 10442032}
     - target: {fileID: 1725942418083991794, guid: ce88ec18b6461aa4782a54fba0d5269e, type: 3}
       propertyPath: eventDurationToSet
-      value: 10
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 5461009281211261029, guid: ce88ec18b6461aa4782a54fba0d5269e, type: 3}
       propertyPath: eventRewardToSet
@@ -10347,8 +10390,12 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6035731017577008975, guid: ce88ec18b6461aa4782a54fba0d5269e, type: 3}
+      propertyPath: eventDurationToSet
+      value: 30000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6035731017577008975, guid: ce88ec18b6461aa4782a54fba0d5269e, type: 3}
       propertyPath: setChanceForKidnap
-      value: 30
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6834576995580071261, guid: ce88ec18b6461aa4782a54fba0d5269e, type: 3}
       propertyPath: m_LocalPosition.x

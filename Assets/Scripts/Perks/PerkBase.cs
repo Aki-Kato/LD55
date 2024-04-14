@@ -12,8 +12,8 @@ public class PerkBase : ScriptableObject
     public int workUnitModifier;
     public bool isTrader;
     public float horseSpeedModifier;
-    public bool isWillUseHorse;
-    public bool isWillUseCatapult;
+    public bool isEquinophobe;
+    public bool isAviophobe;
     public bool isGrumpy;
     public bool isBrute;
     public bool isDubious;

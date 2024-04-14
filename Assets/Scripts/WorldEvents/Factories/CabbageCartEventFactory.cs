@@ -7,14 +7,14 @@ namespace WorldEvent
     public class CabbageCartEventFactory : BaseEventFactory
     {
         [SerializeField] private GameObject cabbageCartEventPrefab;
-        public override BaseEvent CreateEvent(Vector3 position,float _rotation, Vector2 collidersSize)
+        public override BaseEvent CreateEvent(Vector3 position,float _rotation, Vector3 collidersSize)
         {
             //Instantiate Prefab in a Vector3 position, rotated around Y-axis by _rotation angles.
             GameObject instance = Instantiate(cabbageCartEventPrefab.gameObject, position, Quaternion.Euler(0,_rotation,0));
 
             //Set Colliders Size based on length and width only. Height is ignored.
             BoxCollider collider = instance.GetComponent<BoxCollider>();
-            collider.size = new Vector3(collidersSize.x, 5, collidersSize.y);
+            collider.size = collidersSize;
 
             CabbageCartEvent cabbageCartEvent = instance.GetComponent<CabbageCartEvent>();
 

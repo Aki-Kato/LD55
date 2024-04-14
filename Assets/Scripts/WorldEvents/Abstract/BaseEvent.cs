@@ -13,22 +13,43 @@ namespace WorldEvent
         public abstract void OnTriggerStay(Collider collider);
         public abstract void OnTriggerExit(Collider collider);
 
-        public event Action EventInitialise;
 
-        public virtual void Initialise(){
-            EventInitialise?.Invoke();
-        }   
-        void Update(){
+        void OnEnable(){
+            //Must be added, otherwise there is error
+            EventManager eventManager = FindObjectOfType<EventManager>();
+            eventManager.EventCreated += OnCreateEvent;
+        }
+
+        void OnDisable(){
+
+        }
+        public virtual void Initialise()
+        {
+        }
+
+        protected virtual void OnCreateEvent(BaseEvent baseEvent)
+        {
+
+        }
+        void Update()
+        {
             currentEventDuration += Time.deltaTime;
-            if (currentEventDuration >= eventDuration){
+            if (currentEventDuration >= eventDuration)
+            {
                 EndEvent();
             }
         }
 
-        protected virtual void EndEvent(){
+        protected virtual void OnDestroyEvent(BaseEvent baseEvent)
+        {
+        }
+
+        protected virtual void EndEvent()
+        {
+            EventManager.instance.DestroyedEvent(this);
             Destroy(gameObject);
         }
 
-        
+
     }
 }

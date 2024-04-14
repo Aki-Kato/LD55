@@ -5,7 +5,7 @@ using WorldEvent;
 
 public class BanditsEvent : BaseEvent
 {
-    [HideInInspector] public float chanceForKidnap;
+    [HideInInspector] public float chanceForKidnap = 50;
     public override void OnTriggerEnter(Collider collider)
     {
         if (collider.TryGetComponent(out EmployeeController employee))
@@ -13,6 +13,7 @@ public class BanditsEvent : BaseEvent
             if (Random.Range(0, 101) <= chanceForKidnap)
             {
                 //Chance to kidnap employee when crossing
+                Destroy(employee.gameObject);
             }
         }
     }

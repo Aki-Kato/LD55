@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6984359156456528568}
-  - component: {fileID: 8070777022497155142}
   - component: {fileID: 9083554454476702646}
   - component: {fileID: 3922920388127562761}
+  - component: {fileID: 3980595893715752227}
   m_Layer: 0
-  m_Name: TestFestivalEvent
+  m_Name: CabbageEvent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,19 +35,6 @@ Transform:
   - {fileID: 7479605726981780461}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8070777022497155142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2241586758698868420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8985fbc82a133c0499965a6ad3610308, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventDuration: 0
 --- !u!65 &9083554454476702646
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -96,6 +83,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3980595893715752227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2241586758698868420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63aa2f56dfb2c1f4f96404a090a891b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventDuration: 0
 --- !u!1 &8778528133014376731
 GameObject:
   m_ObjectHideFlags: 0

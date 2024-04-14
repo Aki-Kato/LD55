@@ -43,7 +43,7 @@ public class SummonSystemView : MonoBehaviour
         if (employee != null)
         {
             employeeStats.gameObject.SetActive(true);
-            employeeStats.text = $"Name: <Randomised Name>\nSpeed: {employee.speed}";
+            employeeStats.text = $"Name: {employee.employeeName}\nSpeed: {employee.speed}";
             Debug.Log($"Employee: {employee.employeeName}. Speed: {employee.speed}");
         }
 

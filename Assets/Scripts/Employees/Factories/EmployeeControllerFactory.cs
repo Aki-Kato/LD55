@@ -11,7 +11,12 @@ namespace Employees.Factories
         public EmployeeController Create(Employee employee)
         {
             EmployeeController controller = Instantiate(controllerPrefab, spawnPoint.position, spawnPoint.rotation);
-            controller.Initialise(employee.speed);
+            controller.Initialise(employee);
+
+            //Instantiates Model for Employees with offset
+            GameObject model = Instantiate(employee.model, controller.transform);
+            model.transform.localPosition = new Vector3(0,-0.5f,0);
+
             return controller;
         }
     }

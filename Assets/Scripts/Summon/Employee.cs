@@ -6,4 +6,8 @@ public class Employee
 {
     public string employeeName;
     public float speed;
+    public GameObject model;
+
+    public List<PerkBase> listOfPerks;
+
 }

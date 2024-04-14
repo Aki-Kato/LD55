@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SummonSystem : MonoBehaviour
@@ -11,11 +12,14 @@ public class SummonSystem : MonoBehaviour
     public float timerToNewEmployee;
     public float IntervalToNewEmployee { get { return intervalToNewEmployee; } }
     [SerializeField] private float intervalToNewEmployee = 30f;
+    [SerializeField] private List<GameObject> modelsForEmployees;
 
     public List<Employee> debugEmployeeToStart;
     public Employee debugEmployeeToQueue;
     public Queue<Employee> queueOfAvailableEmployees;
     private int oldNumberOfEmployees;
+
+    public List<PerkBase> allPerks;
 
     public event Action<Employee> summonedEmployeeEvent;
     public event Action<Employee> sentEmployeeEvent;
@@ -58,20 +62,41 @@ public class SummonSystem : MonoBehaviour
         timerToNewEmployee += Time.deltaTime;
     }
 
+    //////Algorithm to spawn/select new Employees
     private void UpdateNewEmployeeAvailable()
     {
-        //Algorithm to spawn/select new Employees
-        queueOfAvailableEmployees.Enqueue(debugEmployeeToQueue);
+        Employee _newEmployee = new Employee
+        {
+            employeeName = NameGenerator.GenerateName(),
+
+            //Algorithm for determining speed to be included here.
+            speed = 3,
+
+            model = modelsForEmployees[UnityEngine.Random.Range(0, modelsForEmployees.Count)],
+
+            listOfPerks = InitialisePerksForEmployee()
+        };
+        queueOfAvailableEmployees.Enqueue(_newEmployee);
+    }
+
+    private List<PerkBase> InitialisePerksForEmployee(){
+        //Random
+        int _RNG = UnityEngine.Random.Range(0,3);
+        List<PerkBase> _perks = new List<PerkBase>();
+        for (int i = 0; i < _RNG; i++){
+            _perks.Add(allPerks[UnityEngine.Random.Range(0,allPerks.Count)]);
+        }
+
+        return _perks;
     }
 
     private void CheckEmployeeAmount()
     {
         if (queueOfAvailableEmployees.Count != oldNumberOfEmployees)
             changeEmployeeCountEvent?.Invoke();
-        
+
         oldNumberOfEmployees = queueOfAvailableEmployees.Count;
     }
-
 
     public void SummonEmployee()
     {
@@ -86,7 +111,7 @@ public class SummonSystem : MonoBehaviour
 
         currentEmployee = queueOfAvailableEmployees.Dequeue();
         SendEmployee();
-        
+
         summonedEmployeeEvent?.Invoke(currentEmployee);
     }
 
@@ -95,7 +120,8 @@ public class SummonSystem : MonoBehaviour
         sentEmployeeEvent?.Invoke(currentEmployee);
     }
 
-    public void ResetEmployee(){
+    public void ResetEmployee()
+    {
         ifSummonedEmployee = false;
         currentEmployee = null;
     }

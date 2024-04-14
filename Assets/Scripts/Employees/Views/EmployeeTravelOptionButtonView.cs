@@ -11,11 +11,14 @@ namespace Employees.Views
     {
         [SerializeField] private TextMeshProUGUI optionLabel;
         [SerializeField] private TextMeshProUGUI amountLabel;
+        [SerializeField] private TextMeshProUGUI timeLabel;
 
         [SerializeField] private GameObject lockedSlot;
 
         private Button _button;
         private Action _onClickCallback;
+
+        public bool IsLocked => lockedSlot.activeSelf;
 
         private void Awake()
         {
@@ -52,6 +55,12 @@ namespace Employees.Views
         public void SetAmountText(string text)
         {
             amountLabel.text = text;
+        }
+
+        public void SetTimeLeft(int timeLeft)
+        {
+            timeLabel.gameObject.SetActive(timeLeft > 0);
+            timeLabel.text = timeLeft.ToString();
         }
     }
 }

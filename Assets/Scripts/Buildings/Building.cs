@@ -73,10 +73,10 @@ namespace Buildings
         {
             if (other.TryGetComponent(out EmployeeController employee))
             {
-                ContributeToMission(1 * employee.work_contribution_perk_modifier);
+                ContributeToMission(1 * employee._workContributionPerkModifier);
 
                 //Check for Employee Trader Perk
-                if (employee.isTrader){
+                if (employee.IsTrader){
                     //PLACEHOLDER CODE - BALANCING REQUIRED
                     PlayerMoneyManager.instance.IncrementMoney(traderReachedDestinationExtraReward);
                 }

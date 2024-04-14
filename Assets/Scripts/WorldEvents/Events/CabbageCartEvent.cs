@@ -12,7 +12,7 @@ public class CabbageCartEvent : BaseEvent
         if (collider.TryGetComponent(out EmployeeController employee))
         {
             //Check for Employee brute perk
-            if (employee.isBrute){
+            if (employee.IsBrute){
                 EndEvent();
                 return;
             }

@@ -1,3 +1,4 @@
+using Employees.Enums;
 using Navigation.Employee;
 using System;
 using System.Collections;
@@ -14,6 +15,10 @@ namespace Employees.Controllers
         [SerializeField] private AnimationCurve catapultingCurve;
         [SerializeField] private float catapultingTime;
 
+        private float _baseSpeed;
+        private bool _hasGuard;
+        private bool _hasHorse;
+
         private void Awake()
         {
             agent.FinalDestinationReached += Agent_OnFinalDestinationReached;
@@ -21,7 +26,12 @@ namespace Employees.Controllers
 
         public void Initialise(float speed)
         {
-            agent.Speed = speed;
+            _baseSpeed = speed;
+        }
+
+        public void SetHorse()
+        {
+
         }
 
         public void SendBy(LinkedList<Vector3> pathPoints) =>

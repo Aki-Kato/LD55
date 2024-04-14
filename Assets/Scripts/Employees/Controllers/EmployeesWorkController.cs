@@ -34,14 +34,14 @@ namespace Employees.Controllers
         {
             graphView.IsSelectionActive = false;
             teleportView.IsSelectionActive = false;
-            if ((travelOption & TravelOptions.GraphMovement) > 0)
-            {
-                EnableMode(graphView, _lastSummonedEmployee);
-            }
-            else
-            {
-                EnableMode(teleportView, _lastSummonedEmployee);
-            }
+
+            bool isGraphMovement = (travelOption & TravelOptions.GraphMovement) > 0;
+            AbstractPathSelectionView view = isGraphMovement ? graphView : teleportView;
+
+            if (isGraphMovement)
+                _lastSummonedEmployee.SetGraphTravelOption(travelOption);
+
+            EnableMode(view, _lastSummonedEmployee);
         }
 
         private void SummonSystem_OnSentEmployee(Employee employee)
@@ -52,11 +52,13 @@ namespace Employees.Controllers
         private void GraphView_OnPathCompleted()
         {
             graphView.IsSelectionActive = false;
+            teleportView.SetEmployeeForSelection(null);
         }
 
         private void TeleportView_OnPathCompleted()
         {
             teleportView.IsSelectionActive = false;
+            teleportView.SetEmployeeForSelection(null);
         }
 
         private void EnableMode(AbstractPathSelectionView selector, EmployeeController controller)

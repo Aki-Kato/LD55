@@ -26,6 +26,7 @@ namespace WorldEvent
 
             return fairEvent;
         }
+
     }
 }
 

@@ -5,8 +5,9 @@ using WorldEvent;
 
 public class FairEvent : BaseEvent
 {
-    public int eventReward;
+    [HideInInspector] public int eventReward;
 
+    
     public override void OnTriggerEnter(Collider collider)
     {
         if (collider.TryGetComponent(out EmployeeController employee))

@@ -5,13 +5,13 @@ using WorldEvent;
 
 public class FestivalEvent : BaseEvent
 {
-    public float eventRadius;
-
     public override void OnTriggerEnter(Collider collider)
     {
         if (collider.TryGetComponent(out EmployeeController employee))
         {
             //Slow Employee Code here...
+            Debug.Log("Slow");
+
         }
     }
 
@@ -25,6 +25,7 @@ public class FestivalEvent : BaseEvent
         if (collider.TryGetComponent(out EmployeeController employee))
         {
             //Unslow Employee Code here...
+            Debug.Log("Normal");
         }
     }
 

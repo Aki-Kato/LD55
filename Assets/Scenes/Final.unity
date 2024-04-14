@@ -979,14 +979,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60b9567d8a6b76b4fb8db6b3a425ac7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  summonedEmployee: {fileID: 0}
+  summonedEmployee:
+    employeeName: 
+    speed: 0
   timerToNewEmployee: 0
-  intervalToNewEmployee: 30
+  intervalToNewEmployee: 3
   debugEmployeeToStart:
-  - {fileID: 11400000, guid: eb9bf0b8e0228bd448c63f1f3f978bfb, type: 2}
-  - {fileID: 11400000, guid: eb9bf0b8e0228bd448c63f1f3f978bfb, type: 2}
-  - {fileID: 11400000, guid: eb9bf0b8e0228bd448c63f1f3f978bfb, type: 2}
-  debugEmployeeToQueue: {fileID: 11400000, guid: f12ee06e9d576a841979b7f662cd9a58, type: 2}
+  - employeeName: test1
+    speed: 3
+  - employeeName: test2
+    speed: 3
+  - employeeName: test3
+    speed: 3
+  debugEmployeeToQueue:
+    employeeName: test444
+    speed: 4
 --- !u!1 &253222272
 GameObject:
   m_ObjectHideFlags: 0
@@ -5308,7 +5315,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1107742829}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8c397639b18f6b429cafb62e1fad5b6, type: 3}
   m_Name: 
@@ -5327,7 +5334,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1107742829}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a76192f10d4dd7940ac70bc97816440c, type: 3}
   m_Name: 

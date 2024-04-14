@@ -6,7 +6,8 @@ using UnityEngine;
 public class SummonSystem : MonoBehaviour
 {
     public static SummonSystem instance = null;
-    public Employee summonedEmployee;
+    public Employee currentEmployee;
+    private bool ifSummonedEmployee = false;
     public float timerToNewEmployee;
     public float IntervalToNewEmployee { get { return intervalToNewEmployee; } }
     [SerializeField] private float intervalToNewEmployee = 30f;
@@ -75,25 +76,28 @@ public class SummonSystem : MonoBehaviour
     public void SummonEmployee()
     {
         //If an employee is already summoned and available to be assigned, do not summon new employee
-        if (summonedEmployee != null)
+        if (ifSummonedEmployee)
         {
             Debug.Log("Employed already Summoned");
             return;
         }
 
-        summonedEmployee = queueOfAvailableEmployees.Dequeue();
+        ifSummonedEmployee = true;
+
+        currentEmployee = queueOfAvailableEmployees.Dequeue();
         SendEmployee();
         
-        summonedEmployeeEvent?.Invoke(summonedEmployee);
+        summonedEmployeeEvent?.Invoke(currentEmployee);
     }
 
     public void SendEmployee()
     {
-        sentEmployeeEvent?.Invoke(summonedEmployee);
+        sentEmployeeEvent?.Invoke(currentEmployee);
     }
 
     public void ResetEmployee(){
-        summonedEmployee = null;
+        ifSummonedEmployee = false;
+        currentEmployee = null;
     }
 
     public void HireNewEmployeeImmediately()

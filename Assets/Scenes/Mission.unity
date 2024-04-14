@@ -1328,6 +1328,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8073142447099860793, guid: ce88ec18b6461aa4782a54fba0d5269e, type: 3}
+      propertyPath: festivalEventPrefab
+      value: 
+      objectReference: {fileID: 8070777022497155142, guid: 51f5d2eb748aa8340b517f7c3360df50, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

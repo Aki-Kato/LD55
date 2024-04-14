@@ -31,6 +31,11 @@ public class MissionManager : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        CreateMission();
+    }
+
     void Update()
     {
         TryCreateMission();
@@ -49,21 +54,26 @@ public class MissionManager : MonoBehaviour
         //Possible Mission Locations Guard
         else if (listOfPossibleMissionLocations.Count > 0)
         {
-            timerToCreateNextMission = 0;
-
-            //Select Random Location from a list of pre-determined Buildings positioned around the map
-            Building _randomBuilding = listOfPossibleMissionLocations[UnityEngine.Random.Range(0, listOfPossibleMissionLocations.Count)];
-            numberOfMission++;
-
-            //GAME DESIGN ADJUSTMENT TO BE MADE HERE
-            //Hardcoded numbers 2, 60 and 5 can be amended and randomised in accordance to an algorithm
-            Mission _nextMission = new Mission(numberOfMission, 3, 60, 5);
-            _randomBuilding.SetMission(_nextMission);
-
-            UpdatePossibleMissionLocation(_randomBuilding, false);
-
-            createdMission?.Invoke(_nextMission);
+            CreateMission();
         }
+    }
+
+    private void CreateMission()
+    {
+        timerToCreateNextMission = 0;
+
+        //Select Random Location from a list of pre-determined Buildings positioned around the map
+        Building _randomBuilding = listOfPossibleMissionLocations[UnityEngine.Random.Range(0, listOfPossibleMissionLocations.Count)];
+        numberOfMission++;
+
+        //GAME DESIGN ADJUSTMENT TO BE MADE HERE
+        //Hardcoded numbers 2, 60 and 5 can be amended and randomised in accordance to an algorithm
+        Mission _nextMission = new Mission(numberOfMission, 3, 60, 5);
+        _randomBuilding.SetMission(_nextMission);
+
+        UpdatePossibleMissionLocation(_randomBuilding, false);
+
+        createdMission?.Invoke(_nextMission);
     }
 
     public void CompletedMission(Building building)

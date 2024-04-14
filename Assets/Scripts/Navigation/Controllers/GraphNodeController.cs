@@ -1,26 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Navigation.Graph
+namespace Navigation.Controllers
 {
-    public sealed class GraphNode : MonoBehaviour
+    public sealed class GraphNodeController : MonoBehaviour
     {
-        public List<GraphNode> NextNodes;
+        public List<GraphNodeController> NextNodes;
 
         public bool IsFinalNode => NextNodes.Count == 0;
-
-        public void SetNextNodes(bool active)
-        {
-            if (IsFinalNode)
-                return;
-
-            foreach (GraphNode node in NextNodes)
-            {
-                node.gameObject.SetActive(active);
-            }
-
-            gameObject.SetActive(!active);
-        }
 
         private void OnDrawGizmos()
         {

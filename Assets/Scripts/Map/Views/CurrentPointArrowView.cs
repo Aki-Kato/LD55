@@ -1,4 +1,4 @@
-using Navigation.Graph;
+using Navigation.Controllers;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,10 +8,10 @@ namespace Map.Views
     [RequireComponent(typeof(Button))]
     public sealed class CurrentPointArrowView : MonoBehaviour
     {
-        public event Action<GraphNode> Selected;
+        public event Action<GraphNodeController> Selected;
 
         private Button _button;
-        private GraphNode _graphNode;
+        private GraphNodeController _graphNode;
 
         private void Awake()
         {
@@ -29,7 +29,7 @@ namespace Map.Views
             Selected?.Invoke(_graphNode);
         }
 
-        public void LookAt(Vector3 destination, GraphNode node)
+        public void LookAt(Vector3 destination, GraphNodeController node)
         {
             Vector3 rotateTowards = destination - transform.position;
             transform.rotation = Quaternion.LookRotation(transform.forward, rotateTowards);

@@ -1,20 +1,17 @@
 using Employees.Controllers;
-using Navigation.Graph;
+using Navigation.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Map.Views;
 using UnityEngine.UI;
 
-namespace Navigation.Selector
+namespace Navigation.Views
 {
-    public sealed class NavigationPointsSelector : MonoBehaviour
+    public sealed class GraphView : MonoBehaviour
     {
         public event Action PathCompleted;
 
-        [SerializeField] private LayerMask selectionLayerMask;
-        [SerializeField] private MapView mapController;
         [SerializeField] private GraphController graphController;
         [Space]
         [SerializeField] private Button sendButton;

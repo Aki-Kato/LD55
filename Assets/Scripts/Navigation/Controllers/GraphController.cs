@@ -2,20 +2,20 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Navigation.Graph
+namespace Navigation.Controllers
 {
     public sealed class GraphController : MonoBehaviour
     {
-        public event Action<GraphNode> NodeSelected;
+        public event Action<GraphNodeController> NodeSelected;
         public event Action GraphCleared;
         public event Action<bool> FinalNodeReached;
 
-        [SerializeField] private GraphNode firstNode;
+        [SerializeField] private GraphNodeController firstNode;
         [SerializeField] private LineRenderer lineRenderer;
 
-        private LinkedList<GraphNode> _selectedGraphNodes = new LinkedList<GraphNode>();
+        private LinkedList<GraphNodeController> _selectedGraphNodes = new LinkedList<GraphNodeController>();
 
-        public LinkedList<GraphNode> SelectedGraphNodes => _selectedGraphNodes;
+        public LinkedList<GraphNodeController> SelectedGraphNodes => _selectedGraphNodes;
 
         public void StartBuildingPath()
         {
@@ -29,19 +29,9 @@ namespace Navigation.Graph
             GraphCleared?.Invoke();
         }
 
-        public void AddNode(GraphNode node)
+        public void AddNode(GraphNodeController node)
         {
-            if (_selectedGraphNodes.Count > 0)
-            {
-                var lastNode = _selectedGraphNodes.Last.Value;
-                foreach (GraphNode activeNode in lastNode.NextNodes) 
-                {
-                    activeNode.gameObject.SetActive(false);
-                }
-            }
-
             _selectedGraphNodes.AddLast(node);
-            node.SetNextNodes(true);
             NodeSelected?.Invoke(node);
 
             lineRenderer.positionCount++;
@@ -59,17 +49,15 @@ namespace Navigation.Graph
             if (_selectedGraphNodes.Count == 0)
                 return;
 
-            GraphNode newLast;
+            GraphNodeController newLast;
             do
             {
                 var removedNode = _selectedGraphNodes.Last.Value;
-                removedNode.SetNextNodes(false);
                 _selectedGraphNodes.RemoveLast();
                 if (removedNode.IsFinalNode)
                     FinalNodeReached?.Invoke(false);
 
                 newLast = _selectedGraphNodes.Last.Value;
-                newLast.SetNextNodes(true);
                 NodeSelected?.Invoke(newLast);
                 lineRenderer.positionCount--;
             }
@@ -80,8 +68,6 @@ namespace Navigation.Graph
         {
             while (_selectedGraphNodes.Count > 1)
             {
-                var removedNode = _selectedGraphNodes.Last.Value;
-                removedNode.SetNextNodes(false);
                 _selectedGraphNodes.RemoveLast();
                 lineRenderer.positionCount--;
             }

@@ -1,4 +1,4 @@
-using Navigation.Graph;
+using Navigation.Controllers;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -30,12 +30,12 @@ namespace Map.Views
                 arrow.Selected += Arrow_OnSelected;
         }
 
-        private void Arrow_OnSelected(GraphNode graphNode)
+        private void Arrow_OnSelected(GraphNodeController graphNode)
         {
             graphController.AddNode(graphNode);
         }
 
-        private void GraphController_OnNodeSelected(GraphNode node)
+        private void GraphController_OnNodeSelected(GraphNodeController node)
         {
             gameObject.SetActive(true);
             Vector2 position = map.GetWorldPositionOnMap(node.transform.position);
@@ -49,7 +49,7 @@ namespace Map.Views
             gameObject.SetActive(false);
         }
 
-        private void RotateArrowsTowardsNextNodes(List<GraphNode> nextNodes)
+        private void RotateArrowsTowardsNextNodes(List<GraphNodeController> nextNodes)
         {
             for (int i = 0; i < arrowViewsPool.Count; i++)
             {

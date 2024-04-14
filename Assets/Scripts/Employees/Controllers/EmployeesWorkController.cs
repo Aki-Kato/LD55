@@ -15,6 +15,7 @@ namespace Employees.Controllers
         [SerializeField] private TeleportView teleportView;
 
         private EmployeeController _lastSummonedEmployee;
+        private TravelOptions _lastSelectedTravelOption;
 
         private void Awake()
         {

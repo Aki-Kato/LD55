@@ -25,6 +25,8 @@ namespace Employees.Controllers
 
         private bool HasHorse;
 
+        private float speedBeforeCabbageCart;
+
         private void Awake()
         {
             agent.FinalDestinationReached += Agent_OnFinalDestinationReached;
@@ -77,6 +79,23 @@ namespace Employees.Controllers
                 agent.Speed *= FESTIVAL_SPEED_MODIFIER;
             else
                 agent.Speed /= FESTIVAL_SPEED_MODIFIER;
+        }
+
+        public void SetCabbageCartSpeed(bool value)
+        {
+            if (value)
+            {
+                //Store original speed (with/without horse)
+                speedBeforeCabbageCart = agent.Speed;
+
+                //Set speed to 0
+                SetSpeed(0);
+            }
+
+            else
+            {
+                SetSpeed(speedBeforeCabbageCart);
+            }
         }
 
         public void SendBy(LinkedList<Vector3> pathPoints)

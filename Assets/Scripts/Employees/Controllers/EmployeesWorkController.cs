@@ -1,35 +1,37 @@
-using Employees.Controllers;
 using Employees.Factories;
-using Navigation.Selector;
+using Navigation.Views;
 using UnityEngine;
 
-public sealed class EmployeesWorkController : MonoBehaviour
+namespace Employees.Controllers
 {
-    [Header("Game Controlling Systems")]
-    [SerializeField] private SummonSystem summonSystem;
-    [SerializeField] private EmployeeControllerFactory employeeControllerFactory;
-    [SerializeField] private NavigationPointsSelector pointsSelector;
-
-    private void Awake()
+    public sealed class EmployeesWorkController : MonoBehaviour
     {
-        summonSystem.sentEmployeeEvent += SummonSystem_OnSentEmployee;
-        pointsSelector.PathCompleted += PointsSelector_OnPathCompleted;
-    }
+        [Header("Game Controlling Systems")]
+        [SerializeField] private SummonSystem summonSystem;
+        [SerializeField] private EmployeeControllerFactory employeeControllerFactory;
+        [SerializeField] private GraphView graphView;
 
-    private void SummonSystem_OnSentEmployee(Employee employee)
-    {
-        EmployeeController controller = employeeControllerFactory.Create(employee);
-        EnableSelectionMode(controller);
-    }
+        private void Awake()
+        {
+            summonSystem.sentEmployeeEvent += SummonSystem_OnSentEmployee;
+            graphView.PathCompleted += PointsSelector_OnPathCompleted;
+        }
 
-    private void PointsSelector_OnPathCompleted()
-    {
-        pointsSelector.IsSelectionActive = false;
-    }
+        private void SummonSystem_OnSentEmployee(Employee employee)
+        {
+            EmployeeController controller = employeeControllerFactory.Create(employee);
+            EnableSelectionMode(controller);
+        }
 
-    private void EnableSelectionMode(EmployeeController controller)
-    {
-        pointsSelector.SetEmployeeForSelection(controller);
-        pointsSelector.IsSelectionActive = true;
+        private void PointsSelector_OnPathCompleted()
+        {
+            graphView.IsSelectionActive = false;
+        }
+
+        private void EnableSelectionMode(EmployeeController controller)
+        {
+            graphView.SetEmployeeForSelection(controller);
+            graphView.IsSelectionActive = true;
+        }
     }
 }

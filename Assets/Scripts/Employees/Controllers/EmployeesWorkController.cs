@@ -20,6 +20,9 @@ namespace Employees.Controllers
         private EmployeeController _lastSummonedEmployee;
         private TravelOptions _lastSelectedTravelOption;
 
+        public bool BlockHorse => _lastSummonedEmployee.IsEquinophobe;
+        public bool BlockCatapult => _lastSummonedEmployee.IsAviophobe;
+
         private void Awake()
         {
             summonSystem.sentEmployeeEvent += SummonSystem_OnSentEmployee;

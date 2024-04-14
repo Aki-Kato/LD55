@@ -56,8 +56,17 @@ namespace Employees.Controllers
             employeesWorkController.SelectTravelOption(travelOption);
         }
 
+        private bool IsBlocked()
+        {
+            return employeesWorkController.BlockHorse && travelOption == TravelOptions.Horse
+                || employeesWorkController.BlockCatapult && travelOption == TravelOptions.Catapult;
+        }
+
         private void SummonSystem_OnSummonedEmployee(Employee employee)
         {
+            if (IsBlocked())
+                return;
+
             _travelOptionSelectionMode = true;
             if (isInfinite || currentInstances > 0)
                 view.SetActive(true);
@@ -95,8 +104,10 @@ namespace Employees.Controllers
         private void AddCurrentInstances()
         {
             currentInstances++;
-            if (_travelOptionSelectionMode)
+            if (_travelOptionSelectionMode && !IsBlocked())
+            {
                 view.SetActive(true);
+            }
 
             SetCurrentAmount();
         }

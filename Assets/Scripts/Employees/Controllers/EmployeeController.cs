@@ -11,10 +11,6 @@ namespace Employees.Controllers
 {
     public sealed class EmployeeController : MonoBehaviour
     {
-        private float running_speed_perk_modifier = 1f;
-        private float horse_speed_perk_modifier = 1f;
-        public int work_contribution_perk_modifier = 1;
-        public bool isTrader, isGrumpy, isBrute, isDubious = false;
         private const float HORSE_SPEED_MODIFIER = 2f;
         private const float FESTIVAL_SPEED_MODIFIER = 0.5f;
 
@@ -29,10 +25,16 @@ namespace Employees.Controllers
         private bool HasGuards =>
             _travelOption == TravelOptions.Guard;
 
-        private bool HasHorse;
+        private Employee _employee;
 
-        private float speedBeforeCabbageCart;
-        private Employee thisEmployee;
+        private bool _hasHorse;
+        private float _speedBeforeCabbageCart;
+
+        private float _runningSpeedPerkModifier = 1f;
+        private float _horseSpeedPerkModifier = 1f;
+        public int _workContributionPerkModifier = 1;
+
+        public bool IsTrader, IsGrumpy, IsBrute, IsDubious, IsEquinophobe, IsAviophobe;
 
         private void Awake()
         {
@@ -41,56 +43,71 @@ namespace Employees.Controllers
 
         public void Initialise(Employee employee)
         {
+            _employee = employee;
             //Agile/Corpulent
-            var runningSpeedModifierPerk = employee.listOfPerks.FirstOrDefault(x => x.speedModifier != 1);
+            var runningSpeedModifierPerk = _employee.listOfPerks.FirstOrDefault(x => x.speedModifier != 1);
             if (runningSpeedModifierPerk != null)
             {
-                running_speed_perk_modifier *= runningSpeedModifierPerk.speedModifier;
+                _runningSpeedPerkModifier *= runningSpeedModifierPerk.speedModifier;
             }
 
             //Rider
-            var horseSpeedModifierPerk = employee.listOfPerks.FirstOrDefault(x => x.horseSpeedModifier != 1);
+            var horseSpeedModifierPerk = _employee.listOfPerks.FirstOrDefault(x => x.horseSpeedModifier != 1);
             if (horseSpeedModifierPerk != null)
             {
-                horse_speed_perk_modifier *= horseSpeedModifierPerk.horseSpeedModifier;
+                _horseSpeedPerkModifier *= horseSpeedModifierPerk.horseSpeedModifier;
             }
 
             //Talented
-            var workContributionModifierPerk = employee.listOfPerks.FirstOrDefault(x => x.workUnitModifier > 1);
+            var workContributionModifierPerk = _employee.listOfPerks.FirstOrDefault(x => x.workUnitModifier > 1);
             if (workContributionModifierPerk != null)
             {
-                work_contribution_perk_modifier *= workContributionModifierPerk.workUnitModifier;
+                _workContributionPerkModifier *= workContributionModifierPerk.workUnitModifier;
             }
 
             //Trader
-            var traderModifierPerk = employee.listOfPerks.FirstOrDefault(x => x.isTrader);
+            var traderModifierPerk = _employee.listOfPerks.FirstOrDefault(x => x.isTrader);
             if (traderModifierPerk != null)
             {
-                isTrader = traderModifierPerk.isTrader;
+                IsTrader = traderModifierPerk.isTrader;
             }
 
             //Grumpy
-            var grumpyModifierPerk = employee.listOfPerks.FirstOrDefault(x => x.isGrumpy);
+            var grumpyModifierPerk = _employee.listOfPerks.FirstOrDefault(x => x.isGrumpy);
             if (grumpyModifierPerk != null)
             {
-                isGrumpy = grumpyModifierPerk.isGrumpy;
+                IsGrumpy = grumpyModifierPerk.isGrumpy;
             }
 
             //Brute
-            var bruteModifierPerk = employee.listOfPerks.FirstOrDefault(x => x.isBrute);
+            var bruteModifierPerk = _employee.listOfPerks.FirstOrDefault(x => x.isBrute);
             if (bruteModifierPerk != null)
             {
-                isBrute = bruteModifierPerk.isBrute;
+                IsBrute = bruteModifierPerk.isBrute;
             }
 
             //Dubious
-            var dubiousModifierPerk = employee.listOfPerks.FirstOrDefault(x => x.isDubious);
+            var dubiousModifierPerk = _employee.listOfPerks.FirstOrDefault(x => x.isDubious);
             if (dubiousModifierPerk != null)
             {
-                isDubious = dubiousModifierPerk.isDubious;
+                IsDubious = dubiousModifierPerk.isDubious;
             }
 
-            SetSpeed(employee.speed * running_speed_perk_modifier);
+            //Loshadka-phobe
+            var equinophobeModifierPerk = _employee.listOfPerks.FirstOrDefault(x => x.isEquinophobe);
+            if (equinophobeModifierPerk != null)
+            {
+                IsEquinophobe = equinophobeModifierPerk.isEquinophobe;
+            }
+
+            //Aviophobe
+            var aviophobeModifierPerk = _employee.listOfPerks.FirstOrDefault(x => x.isAviophobe);
+            if (aviophobeModifierPerk != null)
+            {
+                IsAviophobe = aviophobeModifierPerk.isAviophobe;
+            }
+
+            SetSpeed(employee.speed * _runningSpeedPerkModifier);
 
             //Set Perks
             //Adjust running speed
@@ -111,20 +128,20 @@ namespace Employees.Controllers
 
         public void SetHorse()
         {
-            if (HasHorse)
+            if (_hasHorse || IsEquinophobe)
                 return;
 
-            HasHorse = true;
+            _hasHorse = true;
 
             //Ignore/Reverse running speed modifiers
-            var speed = agent.Speed / running_speed_perk_modifier * HORSE_SPEED_MODIFIER * horse_speed_perk_modifier;
+            var speed = agent.Speed / _runningSpeedPerkModifier * HORSE_SPEED_MODIFIER * _horseSpeedPerkModifier;
             SetSpeed(speed);
         }
 
         public void TryKidnap()
         {
             //Check for Guard
-            if (HasGuards || isDubious)
+            if (HasGuards || IsDubious)
             {
                 return;
             }
@@ -136,7 +153,7 @@ namespace Employees.Controllers
 
         public void SetFestivalSpeed(bool value)
         {
-            if (HasGuards || isGrumpy)
+            if (HasGuards || IsGrumpy)
                 return;
 
             if (value)
@@ -150,7 +167,7 @@ namespace Employees.Controllers
             if (value)
             {
                 //Store original speed (with/without horse)
-                speedBeforeCabbageCart = agent.Speed;
+                _speedBeforeCabbageCart = agent.Speed;
 
                 //Set speed to 0
                 SetSpeed(0);
@@ -158,7 +175,7 @@ namespace Employees.Controllers
 
             else
             {
-                SetSpeed(speedBeforeCabbageCart);
+                SetSpeed(_speedBeforeCabbageCart);
             }
         }
 

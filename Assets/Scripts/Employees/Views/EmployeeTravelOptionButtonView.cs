@@ -1,5 +1,5 @@
-using Employees.Controllers;
-using Employees.Enums;
+using System;
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,33 +9,58 @@ namespace Employees.Views
     [RequireComponent(typeof(Button))]
     public sealed class EmployeeTravelOptionButtonView : MonoBehaviour
     {
-        [SerializeField] private EmployeesWorkController workController;
-        [SerializeField] private TravelOptions travelOption;
         [SerializeField] private TextMeshProUGUI optionLabel;
+        [SerializeField] private TextMeshProUGUI amountLabel;
+        [SerializeField] private TextMeshProUGUI timeLabel;
+
+        [SerializeField] private GameObject lockedSlot;
 
         private Button _button;
+        private Action _onClickCallback;
+
+        public bool IsLocked => lockedSlot.activeSelf;
 
         private void Awake()
         {
             _button = GetComponent<Button>();
             _button.onClick.AddListener(OnClick);
-
-            optionLabel.text = travelOption.ToString();
         }
 
         private void OnDestroy()
         {
             _button.onClick.RemoveListener(OnClick);
         }
+        
+        public void Construct(string name, Action onClickCallback)
+        {
+            optionLabel.text = name;
+            _onClickCallback = onClickCallback;
+        }
 
         private void OnClick()
         {
-            workController.SelectTravelOption(travelOption);
+            _onClickCallback?.Invoke();
         }
 
-        public void SetActive(bool value)
+        public void SetLocked(bool value)
+        {
+            lockedSlot.SetActive(value);
+        }
+
+        public void SetActive(bool value, [CallerMemberName] string kek = "")
         {
             _button.interactable = value;
+        }
+
+        public void SetAmountText(string text)
+        {
+            amountLabel.text = text;
+        }
+
+        public void SetTimeLeft(int timeLeft)
+        {
+            timeLabel.gameObject.SetActive(timeLeft > 0);
+            timeLabel.text = timeLeft.ToString();
         }
     }
 }

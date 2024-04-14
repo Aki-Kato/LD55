@@ -20,8 +20,12 @@ namespace Employees.Controllers
 
         private TravelOptions _travelOption = TravelOptions.Run;
 
-        private bool HasGuards => 
+        private bool HasGuards =>
             _travelOption == TravelOptions.Guard;
+
+        private bool HasHorse;
+
+        private float speedBeforeCabbageCart;
 
         private void Awake()
         {
@@ -37,7 +41,7 @@ namespace Employees.Controllers
         {
             agent.Speed = speed;
         }
-        
+
         public void SetTravelOption(TravelOptions travelOptions)
         {
             _travelOption = travelOptions;
@@ -45,8 +49,25 @@ namespace Employees.Controllers
 
         public void SetHorse()
         {
+            if (HasHorse)
+                return;
+
+            HasHorse = true;
             var speed = agent.Speed * HORSE_SPEED_MODIFIER;
             SetSpeed(speed);
+        }
+
+        public void TryKidnap()
+        {
+            //Check for Guard
+            if (HasGuards)
+            {
+                return;
+            }
+
+            //Kidnaps employee
+            Destroy(gameObject);
+
         }
 
         public void SetFestivalSpeed(bool value)
@@ -58,6 +79,23 @@ namespace Employees.Controllers
                 agent.Speed *= FESTIVAL_SPEED_MODIFIER;
             else
                 agent.Speed /= FESTIVAL_SPEED_MODIFIER;
+        }
+
+        public void SetCabbageCartSpeed(bool value)
+        {
+            if (value)
+            {
+                //Store original speed (with/without horse)
+                speedBeforeCabbageCart = agent.Speed;
+
+                //Set speed to 0
+                SetSpeed(0);
+            }
+
+            else
+            {
+                SetSpeed(speedBeforeCabbageCart);
+            }
         }
 
         public void SendBy(LinkedList<Vector3> pathPoints)
@@ -85,7 +123,7 @@ namespace Employees.Controllers
                 Vector3 newPosition = Vector3.Lerp(startPosition, endPoint, time);
                 newPosition.y = catapultingCurve.Evaluate(time);
                 transform.position = newPosition;
-                
+
                 yield return waitForEndOfFrame;
                 time += Time.deltaTime / catapultingTime;
             }

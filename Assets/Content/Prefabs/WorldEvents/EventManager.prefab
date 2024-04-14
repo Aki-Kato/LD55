@@ -52,7 +52,7 @@ MonoBehaviour:
   debugPosition: {x: -30.9, y: -0.5799923, z: -18.1}
   debugRotation: 45
   debugColliderSize: {x: 50, y: 30}
-  intervalToCreateNewEvents: 2
+  intervalToCreateNewEvents: 30
   listOfFactories:
   - {fileID: 7118503385181381285}
   - {fileID: 8073142447099860793}

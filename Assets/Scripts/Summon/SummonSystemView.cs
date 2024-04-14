@@ -43,7 +43,10 @@ public class SummonSystemView : MonoBehaviour
         if (employee != null)
         {
             employeeStats.gameObject.SetActive(true);
-            employeeStats.text = $"Name: {employee.employeeName}\nSpeed: {employee.speed}";
+            
+            // Random name generation and perk for visual purposes, needs to be set up properly and as two different TextMeshPro objects
+            employeeStats.text = $"{NameGenerator.GenerateName()}\n{employee.listOfPerks[0].perkName}";
+            
             Debug.Log($"Employee: {employee.employeeName}. Speed: {employee.speed}");
         }
 
@@ -74,12 +77,12 @@ public class SummonSystemView : MonoBehaviour
             int numberOfEmployees = SummonSystem.instance.queueOfAvailableEmployees.Count;
             if (numberOfEmployees > 0)
             {
-                numberOfAvailableEmployeeText.text = $"{numberOfEmployees} Employees Available";
+                numberOfAvailableEmployeeText.text = $"{numberOfEmployees} Civil Servants";
             }
 
             else
             {
-                numberOfAvailableEmployeeText.text = "No Employees Available!";
+                numberOfAvailableEmployeeText.text = "No Civil Servants!";
             }
         }
 
@@ -87,7 +90,9 @@ public class SummonSystemView : MonoBehaviour
         {
             float countDownTimer = Mathf.CeilToInt(SummonSystem.instance.IntervalToNewEmployee - SummonSystem.instance.timerToNewEmployee);
 
-            timerToNewEmployeeText.text = $"Next Employee in: {countDownTimer}";
+            string timerTextValue = ((int)countDownTimer).ToString("D4");
+            timerTextValue = timerTextValue.Insert(2, ":");
+            timerToNewEmployeeText.text = $"Servant arrives in\n{timerTextValue}";
         }
     }
 }

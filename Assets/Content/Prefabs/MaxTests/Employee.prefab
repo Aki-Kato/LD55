@@ -65,7 +65,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1880149580859818102}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.05
   m_Speed: 8
   m_Acceleration: 8
   avoidancePriority: 50
@@ -125,6 +125,13 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   catapultingTime: 3
+  _workContributionPerkModifier: 1
+  IsTrader: 0
+  IsGrumpy: 0
+  IsBrute: 0
+  IsDubious: 0
+  IsEquinophobe: 0
+  IsAviophobe: 0
 --- !u!114 &6812378629957353106
 MonoBehaviour:
   m_ObjectHideFlags: 0

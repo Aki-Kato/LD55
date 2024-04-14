@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -21,7 +22,8 @@ namespace WorldEvent
         [SerializeField] private float intervalToCreateNewEvents;
 
         [SerializeField] private List<BaseEventFactory> listOfFactories;
-        [SerializeField] private List<GameObject> listOfSpawnPoints;
+        [SerializeField] private GameObject AuctionSpawnPrefab, BanditSpanwPrefab, CabbageCartSpawnPrefab, FairSpawnPrefab, FestivalSpawnPrefab;
+        [SerializeField] private List<GameObject> listOfAuctionSpawns, listOfBanditSpawns, listOfCabbageCartSpawns, listOfFairSpawns, listOfFestivalEventSpawns;
 
         public event Action<BaseEvent> EventCreated, EventDestroyed;
 
@@ -40,10 +42,10 @@ namespace WorldEvent
         void Update()
         {
             timerToNextEvent += Time.deltaTime;
-            if (timerToNextEvent >= intervalToCreateNewEvents && listOfSpawnPoints.Count > 0)
+            if (timerToNextEvent >= intervalToCreateNewEvents)
             {
                 timerToNextEvent = 0;
-                CreateNewEvent();
+                TryCreateNewEvent();
             }
 
             if (Input.GetKeyDown(KeyCode.P))
@@ -52,12 +54,41 @@ namespace WorldEvent
             }
         }
 
-        public void CreateNewEvent()
+        public void TryCreateNewEvent()
         {
             Debug.Log("Creating Event");
-            EventSpawnPoint selectedSpawnPoint = GetRandomPositionOnMap();
 
-            BaseEvent _event = listOfFactories[UnityEngine.Random.Range(0, listOfFactories.Count)].CreateEvent(selectedSpawnPoint.position, 0, selectedSpawnPoint.colliderSize);
+            BaseEventFactory baseEventFactory = listOfFactories[UnityEngine.Random.Range(0, listOfFactories.Count)];
+            Debug.Log(baseEventFactory);
+            EventSpawnPoint selectedSpawnPoint;
+            switch (baseEventFactory)
+            {
+                case AuctionEventFactory:
+                    selectedSpawnPoint = GetRandomPositionOnMap(listOfAuctionSpawns);
+                    break;
+
+                case BanditsEventFactory:
+                    selectedSpawnPoint = GetRandomPositionOnMap(listOfBanditSpawns);
+
+                    break;
+
+                case CabbageCartEventFactory:
+                    selectedSpawnPoint = GetRandomPositionOnMap(listOfCabbageCartSpawns);
+
+                    break;
+
+                case FairEventFactory:
+                    selectedSpawnPoint = GetRandomPositionOnMap(listOfFairSpawns);
+
+                    break;
+
+                //If all else, use festival event spawn
+                default:
+                    selectedSpawnPoint = GetRandomPositionOnMap(listOfFestivalEventSpawns);
+                    break;
+            }
+
+            BaseEvent _event = baseEventFactory.CreateEvent(selectedSpawnPoint.position, 0, selectedSpawnPoint.colliderSize, selectedSpawnPoint.transform);
 
             EventCreated?.Invoke(_event);
         }
@@ -66,14 +97,58 @@ namespace WorldEvent
         {
             Debug.Log("Recreating");
             //Recreate new EventSpawnPoint to add back into list - somehow is creating duplicates of gameObject SpawnPoint at Vector3.zero
-            GameObject _newColliderGameObject = Instantiate(new GameObject("SpawnPoint"), _event.transform.position, Quaternion.identity);
-            //Remove duplicate
-            Destroy(GameObject.Find("SpawnPoint"));
-            
-            BoxCollider _collider = _newColliderGameObject.AddComponent<BoxCollider>();
-            _collider.size = _event.gameObject.GetComponent<BoxCollider>().size;
+            GameObject _newColliderGameObject;
 
-            listOfSpawnPoints.Add(_newColliderGameObject);
+            //Remove duplicate
+
+            switch (_event)
+            {
+                case AuctionEvent:
+                    _newColliderGameObject = Instantiate(AuctionSpawnPrefab, _event.transform.position, Quaternion.identity);
+                    
+                    _newColliderGameObject.transform.rotation = _event.transform.rotation;
+                    _newColliderGameObject.transform.localScale = _event.transform.localScale;
+
+                    _newColliderGameObject.GetComponent<BoxCollider>().size = _event.gameObject.GetComponent<BoxCollider>().size;
+                    listOfAuctionSpawns.Add(_newColliderGameObject);
+                    break;
+
+                case BanditsEvent:
+                    _newColliderGameObject = Instantiate(BanditSpanwPrefab, _event.transform.position, Quaternion.identity);
+                    _newColliderGameObject.transform.rotation = _event.transform.rotation;
+                    _newColliderGameObject.transform.localScale = _event.transform.localScale;
+
+                    _newColliderGameObject.GetComponent<BoxCollider>().size = _event.gameObject.GetComponent<BoxCollider>().size;
+                    listOfBanditSpawns.Add(_newColliderGameObject);
+                    break;
+
+                case CabbageCartEvent:
+                    _newColliderGameObject = Instantiate(CabbageCartSpawnPrefab, _event.transform.position, Quaternion.identity);
+                    _newColliderGameObject.transform.rotation = _event.transform.rotation;
+                    _newColliderGameObject.transform.localScale = _event.transform.localScale;
+
+                    _newColliderGameObject.GetComponent<BoxCollider>().size = _event.gameObject.GetComponent<BoxCollider>().size;
+                    listOfCabbageCartSpawns.Add(_newColliderGameObject);
+                    break;
+
+                case FairEvent:
+                    _newColliderGameObject = Instantiate(FairSpawnPrefab, _event.transform.position, Quaternion.identity);
+                    _newColliderGameObject.transform.rotation = _event.transform.rotation;
+                    _newColliderGameObject.transform.localScale = _event.transform.localScale;
+                    _newColliderGameObject.GetComponent<BoxCollider>().size = _event.gameObject.GetComponent<BoxCollider>().size;
+                    listOfFairSpawns.Add(_newColliderGameObject);
+                    break;
+
+                case FestivalEvent:
+                    _newColliderGameObject = Instantiate(FestivalSpawnPrefab, _event.transform.position, Quaternion.identity);
+                    _newColliderGameObject.transform.rotation = _event.transform.rotation;
+                    _newColliderGameObject.transform.localScale = _event.transform.localScale;
+                    _newColliderGameObject.GetComponent<BoxCollider>().size = _event.gameObject.GetComponent<BoxCollider>().size;
+                    listOfFestivalEventSpawns.Add(_newColliderGameObject);
+                    break;
+
+            }
+
 
             EventDestroyed?.Invoke(_event);
         }
@@ -81,16 +156,18 @@ namespace WorldEvent
         public void DebugCreateNewEvent()
         {
             Debug.Log("Creating Event");
-            CreateNewEvent();
+            TryCreateNewEvent();
         }
 
-        EventSpawnPoint GetRandomPositionOnMap()
+        EventSpawnPoint GetRandomPositionOnMap(List<GameObject> _listOfSpawnPoints)
         {
             EventSpawnPoint eventSpawnPoint = new EventSpawnPoint();
-            GameObject selectedCollider = listOfSpawnPoints[UnityEngine.Random.Range(0, listOfSpawnPoints.Count)];
-            listOfSpawnPoints.Remove(selectedCollider);
+            GameObject selectedCollider = _listOfSpawnPoints[UnityEngine.Random.Range(0, _listOfSpawnPoints.Count)];
+            Debug.Log($"Selected Collider: {selectedCollider.name}");
+            _listOfSpawnPoints.Remove(selectedCollider);
             Destroy(selectedCollider);
 
+            eventSpawnPoint.transform = selectedCollider.transform;
             eventSpawnPoint.position = selectedCollider.transform.position;
             eventSpawnPoint.colliderSize = selectedCollider.GetComponent<BoxCollider>().size;
 

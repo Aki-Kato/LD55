@@ -5440,7 +5440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 754f085c48a784b429d8957c42ed5d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingEntry: {fileID: 735155283}
+  traderReachedDestinationExtraReward: 50
   currentMission:
     id: 0
     numberOfWorkRequired: 0
@@ -12024,14 +12024,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -6411961143019281681, guid: 30e6129fa323b6748bf23f4dfb588a7d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -3140334604577700035, guid: 30e6129fa323b6748bf23f4dfb588a7d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 30e6129fa323b6748bf23f4dfb588a7d, type: 3}
       propertyPath: m_Name
       value: Base_Road
@@ -13497,7 +13489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 754f085c48a784b429d8957c42ed5d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingEntry: {fileID: 0}
+  traderReachedDestinationExtraReward: 50
   currentMission:
     id: 0
     numberOfWorkRequired: 0
@@ -14476,7 +14468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 754f085c48a784b429d8957c42ed5d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingEntry: {fileID: 735155283}
+  traderReachedDestinationExtraReward: 50
   currentMission:
     id: 0
     numberOfWorkRequired: 0
@@ -14828,7 +14820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 754f085c48a784b429d8957c42ed5d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingEntry: {fileID: 0}
+  traderReachedDestinationExtraReward: 50
   currentMission:
     id: 0
     numberOfWorkRequired: 0
@@ -15849,14 +15841,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60b9567d8a6b76b4fb8db6b3a425ac7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  summonedEmployee: {fileID: 0}
+  currentEmployee:
+    employeeName: 
+    speed: 0
+    model: {fileID: 0}
+    listOfPerks: []
   timerToNewEmployee: 0
   intervalToNewEmployee: 5
+  modelsForEmployees: []
   debugEmployeeToStart:
-  - {fileID: 11400000, guid: eb9bf0b8e0228bd448c63f1f3f978bfb, type: 2}
-  - {fileID: 11400000, guid: eb9bf0b8e0228bd448c63f1f3f978bfb, type: 2}
-  - {fileID: 11400000, guid: eb9bf0b8e0228bd448c63f1f3f978bfb, type: 2}
-  debugEmployeeToQueue: {fileID: 11400000, guid: f12ee06e9d576a841979b7f662cd9a58, type: 2}
+  - employeeName: 
+    speed: 0
+    model: {fileID: 0}
+    listOfPerks: []
+  - employeeName: 
+    speed: 0
+    model: {fileID: 0}
+    listOfPerks: []
+  - employeeName: 
+    speed: 0
+    model: {fileID: 0}
+    listOfPerks: []
+  debugEmployeeToQueue:
+    employeeName: 
+    speed: 0
+    model: {fileID: 0}
+    listOfPerks: []
+  allPerks: []
 --- !u!114 &1939907607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15872,7 +15883,6 @@ MonoBehaviour:
   summonEmployeeButton: {fileID: 1511257131}
   numberOfAvailableEmployeeText: {fileID: 431358653}
   timerToNewEmployeeText: {fileID: 938339493}
-  sendEmployeeButton: {fileID: 728812847}
   employeeStats: {fileID: 378721660}
   hireNewEmployeeButton: {fileID: 1521140481}
   summonSystem: {fileID: 1939907606}

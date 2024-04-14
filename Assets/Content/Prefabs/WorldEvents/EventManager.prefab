@@ -59,7 +59,16 @@ MonoBehaviour:
   - {fileID: 6035731017577008975}
   - {fileID: 8073142447099860793}
   - {fileID: 5461009281211261029}
-  listOfSpawnPoints: []
+  AuctionSpawnPrefab: {fileID: 558909633595126353, guid: 089ba7e7d336e8a42a397aeabb52f695, type: 3}
+  BanditSpanwPrefab: {fileID: 887055992715556290, guid: d58c06e0360a84c42bc7dbd530bf2a02, type: 3}
+  CabbageCartSpawnPrefab: {fileID: 498712220259134962, guid: 1a5bb4fdf6ae43c4ea697c16557eacec, type: 3}
+  FairSpawnPrefab: {fileID: 8197388571758827756, guid: 591bdc9d9b14ae84db4ecb247f542fcc, type: 3}
+  FestivalSpawnPrefab: {fileID: 4183025218909247288, guid: ac92022ff5467fa49888da8ba14d9c36, type: 3}
+  listOfAuctionSpawns: []
+  listOfBanditSpawns: []
+  listOfCabbageCartSpawns: []
+  listOfFairSpawns: []
+  listOfFestivalEventSpawns: []
 --- !u!1 &5179169337313871638
 GameObject:
   m_ObjectHideFlags: 0

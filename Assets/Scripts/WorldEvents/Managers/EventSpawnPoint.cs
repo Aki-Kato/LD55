@@ -6,4 +6,5 @@ public class EventSpawnPoint
 {
     public Vector3 position;
     public Vector3 colliderSize;
+    public Transform transform;
 }

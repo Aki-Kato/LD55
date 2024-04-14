@@ -36,11 +36,5 @@ namespace Map.Views
         {
             Selected?.Invoke(_graphNode);
         }
-
-        private void OnValidate()
-        {
-            if (!_graphNode.IsFinalNode)
-                Debug.LogWarning("Selected graph node is not final!", gameObject);
-        }
     }
 }

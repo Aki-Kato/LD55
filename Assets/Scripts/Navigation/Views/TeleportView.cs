@@ -54,7 +54,7 @@ namespace Navigation.Views
                 endNodeView.Construct(node, position);
                 endNodeView.Selected += EndNodeView_OnSelected;
                 _endNodeViews.Add(endNodeView);
-                gameObject.SetActive(false);
+                endNodeView.gameObject.SetActive(false);
             }
         }
 

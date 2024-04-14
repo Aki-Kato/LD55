@@ -32,13 +32,15 @@ namespace Employees.Controllers
 
         public void SelectTravelOption(TravelOptions travelOption)
         {
+            graphView.IsSelectionActive = false;
+            teleportView.IsSelectionActive = false;
             if ((travelOption & TravelOptions.GraphMovement) > 0)
             {
-                EnableGraphMode(_lastSummonedEmployee);
+                EnableMode(graphView, _lastSummonedEmployee);
             }
             else
             {
-                EnableTeleportMode(_lastSummonedEmployee);
+                EnableMode(teleportView, _lastSummonedEmployee);
             }
         }
 
@@ -57,15 +59,10 @@ namespace Employees.Controllers
             teleportView.IsSelectionActive = false;
         }
 
-        private void EnableGraphMode(EmployeeController controller)
+        private void EnableMode(AbstractPathSelectionView selector, EmployeeController controller)
         {
-            graphView.SetEmployeeForSelection(controller);
-            graphView.IsSelectionActive = true;
-        }
-
-        private void EnableTeleportMode(EmployeeController controller)
-        {
-            teleportView.IsSelectionActive = true;
+            selector.SetEmployeeForSelection(controller);
+            selector.IsSelectionActive = true;
         }
     }
 }

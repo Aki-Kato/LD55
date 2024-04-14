@@ -48,13 +48,19 @@ namespace Employees.Controllers
                 yield return waitForEndOfFrame;
                 time += Time.deltaTime / catapultingTime;
             }
+
+            OnFinalDestinationReached();
         }
 
         private void Agent_OnFinalDestinationReached(EmployeeAgent employeeAgent)
         {
-            throw new System.NotImplementedException();
+            OnFinalDestinationReached();
         }
 
+        private void OnFinalDestinationReached()
+        {
+            FinalDestinationReached?.Invoke();
+        }
     }
 }
 

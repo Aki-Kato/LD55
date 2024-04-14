@@ -7,16 +7,19 @@ public class FestivalEvent : BaseEvent
 {
     public float eventRadius;
 
-    public override void EmployeeEnterEvent()
+    public override void OnTriggerEnter(Collider collider)
     {
-        //Employees move at half speed
-
         throw new System.NotImplementedException();
     }
 
-    public override void EmployeeExitEvent()
+    public override void OnTriggerStay(Collider collider)
     {
-        //If Employees exit, make them move full speed
+        //Slow Employee
+        throw new System.NotImplementedException();
+    }
+
+    public override void OnTriggerExit(Collider collider)
+    {
         throw new System.NotImplementedException();
     }
 

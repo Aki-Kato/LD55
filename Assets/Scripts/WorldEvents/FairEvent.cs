@@ -1,4 +1,5 @@
 using System.Collections;
+using Employees.Controllers;
 using UnityEngine;
 using WorldEvent;
 
@@ -6,20 +7,28 @@ public class FairEvent : BaseEvent
 {
     public float eventReward;
 
-    public override void EmployeeEnterEvent()
+    public override void OnTriggerEnter(Collider collider)
     {
-        //Grant Gold to PlayerMoneyManager
+        if (collider.TryGetComponent(out EmployeeController employee)){
+            //Grant Gold to PlayerMoneyManager
 
-        //Immediately Ends Event After
-        EndEvent();
+            //Immediately Ends Event After
+            EndEvent();
+        }
     }
 
-    public override void EmployeeExitEvent()
+    public override void OnTriggerStay(Collider collider)
     {
         throw new System.NotImplementedException();
     }
 
-    protected override void EndEvent(){
+    public override void OnTriggerExit(Collider collider)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override void EndEvent()
+    {
         throw new System.NotImplementedException();
     }
 

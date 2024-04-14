@@ -9,10 +9,11 @@ namespace WorldEvent
     {
         public float eventDuration;
         private float currentEventDuration;
-        public abstract void EmployeeEnterEvent();
-        public abstract void EmployeeExitEvent();
+        public abstract void OnTriggerEnter(Collider collider);
+        public abstract void OnTriggerStay(Collider collider);
+        public abstract void OnTriggerExit(Collider collider);
 
-        public event Action EventInitialise, EmployeeEnter, EmployeeExit, EventEnd;
+        public event Action EventInitialise;
 
         public virtual void Initialise(){
             EventInitialise?.Invoke();

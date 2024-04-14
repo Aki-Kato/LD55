@@ -26,6 +26,7 @@ namespace Navigation.Graph
         public void StopBuildingPath()
         {
             _selectedGraphNodes.Clear();
+            lineRenderer.positionCount = 0;
             GraphCleared?.Invoke();
         }
 

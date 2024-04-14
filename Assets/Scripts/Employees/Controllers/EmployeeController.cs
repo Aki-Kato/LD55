@@ -9,15 +9,19 @@ namespace Employees.Controllers
 {
     public sealed class EmployeeController : MonoBehaviour
     {
+        private const float HORSE_SPEED_MODIFIER = 2f;
+        private const float FESTIVAL_SPEED_MODIFIER = 0.5f;
+
         public event Action FinalDestinationReached;
 
         [SerializeField] private EmployeeAgent agent;
         [SerializeField] private AnimationCurve catapultingCurve;
         [SerializeField] private float catapultingTime;
 
-        private float _baseSpeed;
-        private bool _hasGuard;
-        private bool _hasHorse;
+        private TravelOptions _travelOption = TravelOptions.Run;
+
+        private bool HasGuards => 
+            _travelOption == TravelOptions.Guard;
 
         private void Awake()
         {
@@ -26,16 +30,43 @@ namespace Employees.Controllers
 
         public void Initialise(float speed)
         {
-            _baseSpeed = speed;
+            SetSpeed(speed);
+        }
+
+        private void SetSpeed(float speed)
+        {
+            agent.Speed = speed;
+        }
+        
+        public void SetTravelOption(TravelOptions travelOptions)
+        {
+            _travelOption = travelOptions;
         }
 
         public void SetHorse()
         {
-
+            var speed = agent.Speed * HORSE_SPEED_MODIFIER;
+            SetSpeed(speed);
         }
 
-        public void SendBy(LinkedList<Vector3> pathPoints) =>
+        public void SetFestivalSpeed(bool value)
+        {
+            if (HasGuards)
+                return;
+
+            if (value)
+                agent.Speed *= FESTIVAL_SPEED_MODIFIER;
+            else
+                agent.Speed /= FESTIVAL_SPEED_MODIFIER;
+        }
+
+        public void SendBy(LinkedList<Vector3> pathPoints)
+        {
+            if (_travelOption == TravelOptions.Horse)
+                SetHorse();
+
             agent.SendBy(pathPoints);
+        }
 
         public void CatapultTo(Vector3 point)
         {

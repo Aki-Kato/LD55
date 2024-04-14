@@ -38,8 +38,7 @@ namespace Employees.Controllers
             bool isGraphMovement = (travelOption & TravelOptions.GraphMovement) > 0;
             AbstractPathSelectionView view = isGraphMovement ? graphView : teleportView;
 
-            if (isGraphMovement)
-                _lastSummonedEmployee.SetGraphTravelOption(travelOption);
+            _lastSummonedEmployee.SetTravelOption(travelOption);
 
             EnableMode(view, _lastSummonedEmployee);
         }

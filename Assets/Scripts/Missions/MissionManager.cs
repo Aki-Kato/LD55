@@ -68,6 +68,7 @@ public class MissionManager : MonoBehaviour
 
     public void CompletedMission(Building building)
     {
+        PlayerMoneyManager.instance.IncrementMoney(building.currentMission.reward);
         completedMission?.Invoke(building.currentMission);
         UpdatePossibleMissionLocation(building, true);
 

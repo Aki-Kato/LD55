@@ -10,7 +10,7 @@ public class Mission
     [SerializeField] private int numberOfWorkRequired;
     private float currentDuration;
     [SerializeField] private float missionDuration;
-    public float reward;
+    public int reward;
     public bool ifMissionAvailable = false;
 
     public int CurrentWorkDone => currentWorkDone;
@@ -18,7 +18,7 @@ public class Mission
     public float CurrentDuration => currentDuration;
     public float MissionDuration => missionDuration;
 
-    public Mission(int missionId, int numberOfWorkUnits, float missionDuration, float missionReward)
+    public Mission(int missionId, int numberOfWorkUnits, float missionDuration, int missionReward)
     {
         id = missionId;
         currentWorkDone = 0;

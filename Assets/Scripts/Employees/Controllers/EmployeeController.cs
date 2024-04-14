@@ -20,7 +20,7 @@ namespace Employees.Controllers
 
         private TravelOptions _travelOption = TravelOptions.Run;
 
-        private bool HasGuards => 
+        private bool HasGuards =>
             _travelOption == TravelOptions.Guard;
 
         private void Awake()
@@ -37,7 +37,7 @@ namespace Employees.Controllers
         {
             agent.Speed = speed;
         }
-        
+
         public void SetTravelOption(TravelOptions travelOptions)
         {
             _travelOption = travelOptions;
@@ -47,6 +47,19 @@ namespace Employees.Controllers
         {
             var speed = agent.Speed * HORSE_SPEED_MODIFIER;
             SetSpeed(speed);
+        }
+
+        public void TryKidnap()
+        {
+            //Check for Guard
+            if (HasGuards)
+            {
+                return;
+            }
+
+            //Kidnaps employee
+            Destroy(gameObject);
+
         }
 
         public void SetFestivalSpeed(bool value)
@@ -85,7 +98,7 @@ namespace Employees.Controllers
                 Vector3 newPosition = Vector3.Lerp(startPosition, endPoint, time);
                 newPosition.y = catapultingCurve.Evaluate(time);
                 transform.position = newPosition;
-                
+
                 yield return waitForEndOfFrame;
                 time += Time.deltaTime / catapultingTime;
             }

@@ -10,22 +10,24 @@ public class BanditsEvent : BaseEvent
     {
         if (collider.TryGetComponent(out EmployeeController employee))
         {
-            if (Random.Range(0, 101) <= chanceForKidnap)
+            float _RNG = Random.Range(0, 101);
+            Debug.Log($"Current RNG: {_RNG}");
+            if (_RNG <= chanceForKidnap)
             {
+                Debug.Log($"Tried Kidnapping");
+
                 //Chance to kidnap employee when crossing
-                Destroy(employee.gameObject);
+                employee.TryKidnap();
             }
         }
     }
 
     public override void OnTriggerStay(Collider collider)
     {
-        throw new System.NotImplementedException();
     }
 
     public override void OnTriggerExit(Collider collider)
     {
-        throw new System.NotImplementedException();
     }
 
     protected override void EndEvent()

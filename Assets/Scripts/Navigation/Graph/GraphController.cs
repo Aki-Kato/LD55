@@ -46,6 +46,9 @@ namespace Navigation.Graph
 
             lineRenderer.positionCount++;
             lineRenderer.SetPosition(lineRenderer.positionCount - 1, node.transform.position);
+
+            if (node.NextNodes.Count == 1)
+                AddNode(node.NextNodes[0]);
         }
 
         public void RemoveLastNode()
@@ -53,15 +56,19 @@ namespace Navigation.Graph
             if (_selectedGraphNodes.Count == 0)
                 return;
 
-            var removedNode = _selectedGraphNodes.Last.Value;
-            removedNode.SetNextNodes(false);
-            _selectedGraphNodes.RemoveLast();
+            GraphNode newLast;
+            do
+            {
+                var removedNode = _selectedGraphNodes.Last.Value;
+                removedNode.SetNextNodes(false);
+                _selectedGraphNodes.RemoveLast();
 
-            var newLast = _selectedGraphNodes.Last.Value;
-            newLast.SetNextNodes(true);
-            NodeSelected?.Invoke(newLast);
-
-            lineRenderer.positionCount--;
+                newLast = _selectedGraphNodes.Last.Value;
+                newLast.SetNextNodes(true);
+                NodeSelected?.Invoke(newLast);
+                lineRenderer.positionCount--;
+            }
+            while (newLast.NextNodes.Count == 1 && _selectedGraphNodes.Count > 1);
         }
     }
 }

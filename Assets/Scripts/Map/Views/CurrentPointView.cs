@@ -30,7 +30,7 @@ namespace Map.Views
             Vector2 position = map.GetWorldPositionOnMap(node.transform.position);
             transform.position = position;
 
-            RotateArrowsTowardsNextNodes(node, node.NextNodes);
+            RotateArrowsTowardsNextNodes(node.NextNodes);
         }
 
         private void GraphController_OnGraphCleared()
@@ -38,7 +38,7 @@ namespace Map.Views
             gameObject.SetActive(false);
         }
 
-        private void RotateArrowsTowardsNextNodes(GraphNode currentNode, List<GraphNode> nextNodes)
+        private void RotateArrowsTowardsNextNodes(List<GraphNode> nextNodes)
         {
             for (int i = 0; i < arrowViewsPool.Count; i++)
             {
@@ -47,16 +47,9 @@ namespace Map.Views
                 if (lessNodesThenArrows)
                     return;
 
-                Vector2 mapPosition = GetFirstCornerOfPath(currentNode, nextNodes[i]);
+                Vector2 mapPosition = map.GetWorldPositionOnMap(nextNodes[i].transform.position);
                 arrowViewsPool[i].LookAt(mapPosition);
             }
-        }
-
-        private Vector2 GetFirstCornerOfPath(GraphNode currentNode, GraphNode nextNode)
-        {
-            NavMeshPath path = new NavMeshPath();
-            NavMesh.CalculatePath(currentNode.transform.position, nextNode.transform.position, NavMesh.AllAreas, path);
-            return map.GetWorldPositionOnMap(path.corners[1]);
         }
     }
 }

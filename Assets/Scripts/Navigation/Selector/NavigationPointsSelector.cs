@@ -13,8 +13,6 @@ namespace Navigation.Selector
         public event Action PathCompleted;
 
         [SerializeField] private LayerMask selectionLayerMask;
-        [SerializeField] private NavigationPointView selectedPointPrefab;
-
         [SerializeField] private MapView mapController;
         [SerializeField] private GraphController graphController;
 

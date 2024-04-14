@@ -1143,6 +1143,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e93736edb44cd074da1ec6eb55ce3aec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  employeesWorkController: {fileID: 936535782}
+  travelOption: 16
   isInfinite: 0
   currentInstances: 0
   maxInstances: 0
@@ -1161,8 +1163,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae7eb5fc76e78bb4397874cd3e0c8af3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  workController: {fileID: 936535782}
-  travelOption: 16
   optionLabel: {fileID: 1853443929}
   amountLabel: {fileID: 1469321272}
   lockedSlot: {fileID: 806911568}
@@ -5006,6 +5006,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e93736edb44cd074da1ec6eb55ce3aec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  employeesWorkController: {fileID: 936535782}
+  travelOption: 2
   isInfinite: 0
   currentInstances: 0
   maxInstances: 1
@@ -5024,8 +5026,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae7eb5fc76e78bb4397874cd3e0c8af3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  workController: {fileID: 936535782}
-  travelOption: 2
   optionLabel: {fileID: 950653306}
   amountLabel: {fileID: 1038632594}
   lockedSlot: {fileID: 1462573270}
@@ -5524,6 +5524,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e93736edb44cd074da1ec6eb55ce3aec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  employeesWorkController: {fileID: 936535782}
+  travelOption: 8
   isInfinite: 0
   currentInstances: 0
   maxInstances: 0
@@ -5542,8 +5544,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae7eb5fc76e78bb4397874cd3e0c8af3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  workController: {fileID: 936535782}
-  travelOption: 8
   optionLabel: {fileID: 348472863}
   amountLabel: {fileID: 780753639}
   lockedSlot: {fileID: 793612316}
@@ -7083,11 +7083,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae7eb5fc76e78bb4397874cd3e0c8af3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  workController: {fileID: 936535782}
-  travelOption: 1
   optionLabel: {fileID: 1258097858}
-  amountLabel: {fileID: 956450793}
-  lockedSlot: {fileID: 2055145023}
+  amountLabel: {fileID: 0}
+  lockedSlot: {fileID: 0}
 --- !u!114 &1574680727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7182,6 +7180,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e93736edb44cd074da1ec6eb55ce3aec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  employeesWorkController: {fileID: 936535782}
+  travelOption: 1
   isInfinite: 1
   currentInstances: 0
   maxInstances: 0
@@ -7877,6 +7877,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e93736edb44cd074da1ec6eb55ce3aec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  employeesWorkController: {fileID: 936535782}
+  travelOption: 4
   isInfinite: 0
   currentInstances: 0
   maxInstances: 1
@@ -7895,8 +7897,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae7eb5fc76e78bb4397874cd3e0c8af3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  workController: {fileID: 936535782}
-  travelOption: 4
   optionLabel: {fileID: 1673074658}
   amountLabel: {fileID: 1385511367}
   lockedSlot: {fileID: 1436984061}

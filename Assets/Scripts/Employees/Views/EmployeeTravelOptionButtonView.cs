@@ -1,5 +1,3 @@
-using Employees.Controllers;
-using Employees.Enums;
 using System;
 using TMPro;
 using UnityEngine;
@@ -38,7 +36,6 @@ namespace Employees.Views
         private void OnClick()
         {
             _onClickCallback?.Invoke();
-            workController.SelectTravelOption(travelOption);
         }
 
         public void SetLocked(bool value)

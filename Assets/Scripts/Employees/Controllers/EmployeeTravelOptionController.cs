@@ -17,13 +17,14 @@ namespace Employees.Controllers
         [SerializeField] private Button buyInstanceButton;
         [SerializeField] private EmployeeTravelOptionButtonView view;
 
-        private void Awake()
+        private void Start()
         {
             view.Construct(travelOption.ToString(), OnClick);
 
             if (isInfinite)
                 return;
 
+            employeesWorkController.TravelOptionUsed += EmployeesWorkController_OnTravelOptionUsed;
             buyInstanceButton.onClick.AddListener(OnBuyInstanceButtonClick);
             if (maxInstances == 0)
                 view.SetLocked(true);
@@ -44,6 +45,15 @@ namespace Employees.Controllers
             employeesWorkController.SelectTravelOption(travelOption);
         }
 
+        private void EmployeesWorkController_OnTravelOptionUsed(TravelOptions travelOption)
+        {
+            if (isInfinite || this.travelOption != travelOption)
+                return;
+
+            currentInstances--;
+            SetCurrentAmount();
+        }
+
         private void OnBuyInstanceButtonClick()
         {
             if (PlayerMoneyManager.instance.TryDecrementMoney(cost))
@@ -60,12 +70,15 @@ namespace Employees.Controllers
         {
             maxInstances++;
             currentInstances++;
+            view.SetActive(true);
             SetCurrentAmount();
         }
 
         private void SetCurrentAmount()
         {
             view.SetAmountText($"{currentInstances}/{maxInstances}");
+            if (currentInstances == 0)
+                view.SetActive(false);
         }
     }
 }

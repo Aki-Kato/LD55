@@ -10,18 +10,14 @@ namespace WorldEvent
     {
         public static EventManager instance = null;
 
-        /// <summary>
-        /// Debug code, for testing
-        /// </summary>
-        public Vector3 debugPosition;
-        public float debugRotation;
-        public Vector2 debugColliderSize;
+        [SerializeField] private float baseIntervalBetweenEvents;
 
-        private float timerToNextEvent;
-        [SerializeField] private float intervalToCreateNewEvents;
-
+        [Space]
         [SerializeField] private List<BaseEventFactory> listOfFactories;
-
+        //Private Parameteres
+        private float timerToNextEvent;
+        private float intervalToCreateNewEvents;
+        //Events
         public event Action<BaseEvent> EventCreated, EventDestroyed;
 
         void Awake()
@@ -31,6 +27,8 @@ namespace WorldEvent
 
             else if (instance != this)
                 Destroy(gameObject);
+
+            intervalToCreateNewEvents = baseIntervalBetweenEvents;
         }
 
         void Start()
@@ -50,6 +48,13 @@ namespace WorldEvent
                 DebugCreateNewEvent();
             }
         }
+
+        private void UpdateIntervalBetweenEvents()
+        {
+
+        }
+
+
 
         public void CreateNewEvent()
         {

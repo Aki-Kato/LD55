@@ -29,11 +29,20 @@ namespace Navigation.Employee
                 enabled = value;
             } 
         }
-        public float Speed { get => _agent.speed; set => _agent.speed = value; }
+        public float Speed 
+        { 
+            get => _agent.speed;
+            set => _agent.speed = value;
+        }
 
         private void Awake()
         {
             _agent = GetComponent<NavMeshAgent>();
+        }
+
+        private void Update()
+        {
+            _agent.velocity = _agent.desiredVelocity;
         }
 
         public void SendBy(LinkedList<Vector3> pathPoints)

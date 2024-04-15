@@ -8,7 +8,7 @@ namespace WorldEvent
     public abstract class BaseEvent : MonoBehaviour
     {
         public float eventDuration;
-        private float currentEventDuration;
+        public float currentEventDuration;
         public abstract void OnTriggerEnter(Collider collider);
         public abstract void OnTriggerStay(Collider collider);
         public abstract void OnTriggerExit(Collider collider);

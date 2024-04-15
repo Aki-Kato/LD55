@@ -6,9 +6,6 @@ using UnityEngine.UI;
 
 public class SummonSystemView : MonoBehaviour
 {
-    //Summon Employee
-    public Button summonEmployeeButton;
-
     public TMP_Text numberOfAvailableEmployeeText;
     public TMP_Text timerToNewEmployeeText;
 
@@ -67,9 +64,8 @@ public class SummonSystemView : MonoBehaviour
     {
         //If there are no more employees, enable the Hire New Employee button, and disable the summonEmployee button. Otherwise, do the opposite.
         int employeeCount = SummonSystem.instance.queueOfAvailableEmployees.Count;
-        bool ifNoMoreEmployee = employeeCount == 0 ? true : false;
-        hireNewEmployeeButton.gameObject.SetActive(ifNoMoreEmployee);
-        summonEmployeeButton.gameObject.SetActive(!ifNoMoreEmployee);
+        bool anyEmployees = employeeCount > 0;
+        hireNewEmployeeButton.gameObject.SetActive(!anyEmployees);
     }
 
     void Update()

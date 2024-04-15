@@ -1,0 +1,141 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4160807841216253223
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7570095043073286739}
+  - component: {fileID: 3379816719349991016}
+  - component: {fileID: 2942695184717542494}
+  - component: {fileID: 9045779363483808440}
+  m_Layer: 0
+  m_Name: SummonManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7570095043073286739
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4160807841216253223}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.000061035156, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3379816719349991016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4160807841216253223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60b9567d8a6b76b4fb8db6b3a425ac7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  employeeFactory: {fileID: 9045779363483808440}
+  currentEmployee:
+    employeeName: 
+    baseRunSpeed: 0
+    baseHorseSpeed: 0
+    employeeModel: {fileID: 0}
+    horseModel: {fileID: 0}
+    listOfPerks: []
+  numberOfEmployeesToStart: 3
+  intervalToNewEmployee: 20
+  debugEmployeeToStart:
+  - employeeName: Equinophobe
+    baseRunSpeed: 0
+    baseHorseSpeed: 0
+    employeeModel: {fileID: 0}
+    horseModel: {fileID: 0}
+    listOfPerks:
+    - {fileID: 11400000, guid: 2c453519304995043b85630c765a8f27, type: 2}
+  - employeeName: Aviophobe
+    baseRunSpeed: 0
+    baseHorseSpeed: 0
+    employeeModel: {fileID: 0}
+    horseModel: {fileID: 0}
+    listOfPerks:
+    - {fileID: 11400000, guid: 222fe739600d6324fa21c04fdad60ca8, type: 2}
+  - employeeName: Dubious
+    baseRunSpeed: 0
+    baseHorseSpeed: 0
+    employeeModel: {fileID: 0}
+    horseModel: {fileID: 0}
+    listOfPerks:
+    - {fileID: 11400000, guid: bab2a160ac4c088448b9137f27e807ca, type: 2}
+  debugEmployeeToQueue:
+    employeeName: test444
+    baseRunSpeed: 0
+    baseHorseSpeed: 0
+    employeeModel: {fileID: 0}
+    horseModel: {fileID: 0}
+    listOfPerks:
+    - {fileID: 11400000, guid: 725e714b5e4d68344923eb5e7075d5c2, type: 2}
+    - {fileID: 11400000, guid: d3b0c7276a873574cb0e328a704824ae, type: 2}
+  timerToNewEmployee: 0
+--- !u!114 &2942695184717542494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4160807841216253223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f482be2d952f80740917a63f99a9972b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  summonEmployeeButton: {fileID: 0}
+  numberOfAvailableEmployeeText: {fileID: 0}
+  timerToNewEmployeeText: {fileID: 0}
+  employeeName: {fileID: 0}
+  employeePerk: {fileID: 0}
+  employeePerkDescription: {fileID: 0}
+  hireNewEmployeeButton: {fileID: 0}
+  summonSystem: {fileID: 3379816719349991016}
+--- !u!114 &9045779363483808440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4160807841216253223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e390ecb0d8e22b243a15a21d62602011, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  employeeBaseRunSpeed: 3
+  employeeeBaseHorseSpeed: 5
+  employeeBaseCatapultSpeed: 20
+  allPerks:
+  - {fileID: 11400000, guid: 725e714b5e4d68344923eb5e7075d5c2, type: 2}
+  - {fileID: 11400000, guid: 222fe739600d6324fa21c04fdad60ca8, type: 2}
+  - {fileID: 11400000, guid: bab2a160ac4c088448b9137f27e807ca, type: 2}
+  - {fileID: 11400000, guid: d3b0c7276a873574cb0e328a704824ae, type: 2}
+  - {fileID: 11400000, guid: 248c02025afc5b34bad2e2bf4851dc7b, type: 2}
+  - {fileID: 11400000, guid: 2c453519304995043b85630c765a8f27, type: 2}
+  - {fileID: 11400000, guid: efdd021792dc57646a5eaba3b7a9e8ef, type: 2}
+  - {fileID: 11400000, guid: f05c1d13c00c4d34897fc22a0b9986bc, type: 2}
+  - {fileID: 11400000, guid: 9de18f3ba258f7144bb39279322b7fee, type: 2}
+  - {fileID: 11400000, guid: dc0c6d4df02bee34d8fe65dd81fd92e6, type: 2}
+  modelsForEmployees:
+  - {fileID: 919132149155446097, guid: 4fa20bbbb5db2c94ba0f9837265d32d4, type: 3}
+  - {fileID: 919132149155446097, guid: b513b5c59ebc35b4eb2e3b9b0fa68402, type: 3}
+  - {fileID: 919132149155446097, guid: 921b057d0d5337f4f8cab9d1ee8f4a4f, type: 3}
+  horseModelforEmployee: {fileID: 919132149155446097, guid: 34dc9cea35131ee4597ad02f91c9865e, type: 3}

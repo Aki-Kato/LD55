@@ -21,7 +21,6 @@ namespace WorldEvent
         [SerializeField] private float intervalToCreateNewEvents;
 
         [SerializeField] private List<BaseEventFactory> listOfFactories;
-        [SerializeField] private List<GameObject> listOfSpawnPoints;
 
         public event Action<BaseEvent> EventCreated, EventDestroyed;
 
@@ -40,7 +39,7 @@ namespace WorldEvent
         void Update()
         {
             timerToNextEvent += Time.deltaTime;
-            if (timerToNextEvent >= intervalToCreateNewEvents && listOfSpawnPoints.Count > 0)
+            if (timerToNextEvent >= intervalToCreateNewEvents)
             {
                 timerToNextEvent = 0;
                 CreateNewEvent();
@@ -55,26 +54,16 @@ namespace WorldEvent
         public void CreateNewEvent()
         {
             Debug.Log("Creating Event");
-            EventSpawnPoint selectedSpawnPoint = GetRandomPositionOnMap();
-
-            BaseEvent _event = listOfFactories[UnityEngine.Random.Range(0, listOfFactories.Count)].CreateEvent(selectedSpawnPoint.position, 0, selectedSpawnPoint.colliderSize);
-
-            EventCreated?.Invoke(_event);
+            //Select random event
+            BaseEventFactory eventFactory = listOfFactories[UnityEngine.Random.Range(0, listOfFactories.Count)];
+            BaseEvent _event = eventFactory.CreateEvent(eventFactory.SelectAvailablePosition());
+            
+            if (_event != null)
+                EventCreated?.Invoke(_event);
         }
 
         public void DestroyedEvent(BaseEvent _event)
         {
-            Debug.Log("Recreating");
-            //Recreate new EventSpawnPoint to add back into list - somehow is creating duplicates of gameObject SpawnPoint at Vector3.zero
-            GameObject _newColliderGameObject = Instantiate(new GameObject("SpawnPoint"), _event.transform.position, Quaternion.identity);
-            //Remove duplicate
-            Destroy(GameObject.Find("SpawnPoint"));
-            
-            BoxCollider _collider = _newColliderGameObject.AddComponent<BoxCollider>();
-            _collider.size = _event.gameObject.GetComponent<BoxCollider>().size;
-
-            listOfSpawnPoints.Add(_newColliderGameObject);
-
             EventDestroyed?.Invoke(_event);
         }
 
@@ -82,19 +71,6 @@ namespace WorldEvent
         {
             Debug.Log("Creating Event");
             CreateNewEvent();
-        }
-
-        EventSpawnPoint GetRandomPositionOnMap()
-        {
-            EventSpawnPoint eventSpawnPoint = new EventSpawnPoint();
-            GameObject selectedCollider = listOfSpawnPoints[UnityEngine.Random.Range(0, listOfSpawnPoints.Count)];
-            listOfSpawnPoints.Remove(selectedCollider);
-            Destroy(selectedCollider);
-
-            eventSpawnPoint.position = selectedCollider.transform.position;
-            eventSpawnPoint.colliderSize = selectedCollider.GetComponent<BoxCollider>().size;
-
-            return eventSpawnPoint;
         }
     }
 }

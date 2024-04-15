@@ -17,15 +17,12 @@ public class EmployeeFactory : MonoBehaviour
 
     private List<PerkBase> InitialisePerksForEmployee()
     {
-        //Random
-        int _RNG = Random.Range(0, 3);
-        List<PerkBase> _perks = new List<PerkBase>();
-        for (int i = 0; i < _RNG; i++)
+        List<PerkBase> perks = new List<PerkBase>()
         {
-            _perks.Add(allPerks[Random.Range(0, allPerks.Count)]);
-        }
+            allPerks[Random.Range(0, allPerks.Count)]
+        };
 
-        return _perks;
+        return perks;
     }
 
     public Employee GenerateNewEmployee()

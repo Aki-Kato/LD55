@@ -55,7 +55,7 @@ MonoBehaviour:
     horseModel: {fileID: 0}
     listOfPerks: []
   numberOfEmployeesToStart: 3
-  intervalToNewEmployee: 20
+  intervalToNewEmployee: 15
   debugEmployeeToStart:
   - employeeName: Equinophobe
     baseRunSpeed: 0

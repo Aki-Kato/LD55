@@ -2879,6 +2879,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1880028706062303578, guid: 94f096c79896b3d4c8eeb2c30c3a10a0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 3184772614499526555, guid: 94f096c79896b3d4c8eeb2c30c3a10a0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 94f096c79896b3d4c8eeb2c30c3a10a0, type: 3}
 --- !u!4 &324292515 stripped
 Transform:
@@ -7652,7 +7655,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &995138528
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7672,9 +7675,9 @@ RectTransform:
   - {fileID: 1016651025}
   m_Father: {fileID: 1237116654}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 87.835, y: -288.24655}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &995138529
@@ -8791,7 +8794,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 754f085c48a784b429d8957c42ed5d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  traderReachedDestinationExtraReward: 50
+  traderReachedDestinationExtraReward: 40
   currentMission:
     missionId: 0
     numberOfWorkRequired: 0
@@ -10679,8 +10682,8 @@ RectTransform:
   m_Children:
   - {fileID: 6640238010804037239}
   - {fileID: 1574548982}
-  - {fileID: 1669096276}
   - {fileID: 1507388342}
+  - {fileID: 1669096276}
   - {fileID: 995138528}
   m_Father: {fileID: 761039733}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10860,7 +10863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 754f085c48a784b429d8957c42ed5d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  traderReachedDestinationExtraReward: 50
+  traderReachedDestinationExtraReward: 20
   currentMission:
     missionId: 0
     numberOfWorkRequired: 0
@@ -15013,7 +15016,7 @@ MonoBehaviour:
   travelOption: 4
   isInfinite: 0
   currentInstances: 0
-  maxInstances: 1
+  maxInstances: 0
   cost: 6400000096000000e60000005e0100001202000020030000
   secondsToIncrease: 15
   buyInstanceButton: {fileID: 1716989711}
@@ -17726,7 +17729,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 754f085c48a784b429d8957c42ed5d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  traderReachedDestinationExtraReward: 50
+  traderReachedDestinationExtraReward: 30
   currentMission:
     missionId: 0
     numberOfWorkRequired: 0

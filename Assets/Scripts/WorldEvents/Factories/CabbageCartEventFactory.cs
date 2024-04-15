@@ -12,7 +12,7 @@ namespace WorldEvent
             _event.transform.parent.gameObject.SetActive(true);
 
             //Set Properties of Events
-            _event.eventDuration = eventDurationToSet;
+            _event.eventDuration = 60f;
             _event.Initialise();
 
             return _event;

@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dc8079b06d8e764793d6105783802ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missionCreationInterval: 30
+  missionCreationInterval: 25
   listOfPossibleMissionLocations:
   - {fileID: 0}
   - {fileID: 0}
@@ -114,13 +114,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d25625342a0dd44da6ff14cd16e9c91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PalaceBaseIncome: 60
-  TeaHouseBaseIncome: 40
-  UniversityBaseIncome: 20
-  HospitalBaseIncome: 10
-  PalaceBaseTime: 60
-  TeaHouseBaseTime: 50
-  UniversityBaseTime: 40
-  HospitalBaseTime: 40
-  intervalToIncreaseWorkers: 20
+  PalaceBaseIncome: 100
+  TeaHouseBaseIncome: 70
+  UniversityBaseIncome: 30
+  HospitalBaseIncome: 50
+  PalaceBaseTime: 40
+  TeaHouseBaseTime: 35
+  UniversityBaseTime: 25
+  HospitalBaseTime: 30
+  intervalToIncreaseWorkers: 30
   additionalWorkersRequired: 0

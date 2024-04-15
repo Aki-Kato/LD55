@@ -1,28 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using Buildings;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class MissionGenerator
+public class MissionFactory : MonoBehaviour
 {
-    public const int PalaceBaseIncome = 30;
-    public const int TeaHouseBaseIncome = 30;
-    public const int UniversityBaseIncome = 30;
-    public const int HospitalBaseIncome = 30;
-    public const int PalaceBaseTime = 30;
-    public const int TeaHouseBaseTime = 30;
-    public const int UniversityBaseTime = 30;
-    public const int HospitalBaseTime = 30;
+    
+    [SerializeField] private int PalaceBaseIncome = 30;
+    [SerializeField] private int TeaHouseBaseIncome = 30;
+    [SerializeField] private int UniversityBaseIncome = 30;
+    [SerializeField] private int HospitalBaseIncome = 30;
+    [Space]
+    [SerializeField] private int PalaceBaseTime = 30;
+    [SerializeField] private int TeaHouseBaseTime = 30;
+    [SerializeField] private int UniversityBaseTime = 30;
+    [SerializeField] private int HospitalBaseTime = 30;
+    [Space]
+    [SerializeField] private float intervalToIncreaseWorkers = 60;
 
-    //Linear pacing - game balancing may go out of hand.
-    public const float intervalToIncreaseWorkers = 60;
-    public int additionalWorkersRequired = 0;
-    private float timeSinceCalled = 0;
+    //Other data
+    [HideInInspector] public int additionalWorkersRequired = 0;
+    [HideInInspector] private float timeSinceCalled = 0;
 
     public int GenerateWorkersRequired()
     {
-        //Pacing for increase in additionalWorkers
+        //Linear pacing - game balancing may go out of hand.
         float _interval = Time.time - timeSinceCalled;
         if (_interval > intervalToIncreaseWorkers)
         {

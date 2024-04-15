@@ -8623,7 +8623,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   traderReachedDestinationExtraReward: 50
   currentMission:
-    id: 0
+    missionId: 0
     numberOfWorkRequired: 0
     missionDuration: 0
     reward: 0
@@ -10809,7 +10809,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   traderReachedDestinationExtraReward: 50
   currentMission:
-    id: 0
+    missionId: 0
     numberOfWorkRequired: 0
     missionDuration: 0
     reward: 0
@@ -11579,7 +11579,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   traderReachedDestinationExtraReward: 50
   currentMission:
-    id: 0
+    missionId: 0
     numberOfWorkRequired: 0
     missionDuration: 0
     reward: 0
@@ -16922,6 +16922,7 @@ GameObject:
   - component: {fileID: 1912336652}
   - component: {fileID: 1912336654}
   - component: {fileID: 1912336653}
+  - component: {fileID: 1912336655}
   m_Layer: 0
   m_Name: MissionManager
   m_TagString: Untagged
@@ -16956,12 +16957,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dc8079b06d8e764793d6105783802ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missionCreationInterval: 999
+  missionCreationInterval: 2
   listOfPossibleMissionLocations:
   - {fileID: 1977036606}
   - {fileID: 1069845259}
   - {fileID: 1273397141}
   - {fileID: 1354627265}
+  missionGenerator: {fileID: 1912336655}
 --- !u!54 &1912336653
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -17010,6 +17012,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1912336655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912336650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d25625342a0dd44da6ff14cd16e9c91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PalaceBaseIncome: 60
+  TeaHouseBaseIncome: 40
+  UniversityBaseIncome: 20
+  HospitalBaseIncome: 10
+  PalaceBaseTime: 60
+  TeaHouseBaseTime: 50
+  UniversityBaseTime: 40
+  HospitalBaseTime: 30
+  intervalToIncreaseWorkers: 2
+  additionalWorkersRequired: 0
 --- !u!1 &1921754436
 GameObject:
   m_ObjectHideFlags: 0
@@ -17909,7 +17933,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   traderReachedDestinationExtraReward: 50
   currentMission:
-    id: 0
+    missionId: 0
     numberOfWorkRequired: 0
     missionDuration: 0
     reward: 0

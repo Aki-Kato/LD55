@@ -18,7 +18,7 @@ public class MissionManager : MonoBehaviour
     public event Action<Building> completedMission;
     public event Action<Building> failedMission;
 
-    [SerializeField] private MissionGenerator missionGenerator;
+    [SerializeField] private MissionFactory missionGenerator;
     void Awake()
     {
         if (instance == null)

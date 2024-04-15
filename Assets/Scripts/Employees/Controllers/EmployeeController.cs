@@ -13,7 +13,7 @@ namespace Employees.Controllers
     {
         private const float HORSE_SPEED_MODIFIER = 2f;
         private const float FESTIVAL_SPEED_MODIFIER = 0.5f;
-
+        
         public event Action FinalDestinationReached;
 
         [SerializeField] private EmployeeAgent agent;
@@ -38,6 +38,8 @@ namespace Employees.Controllers
 
         public Transform ModelRoot;
         private Animator _anim;
+
+        public AudioClip cannon;
         
         private void Awake()
         {
@@ -214,6 +216,8 @@ namespace Employees.Controllers
 
         private IEnumerator CatapultingRoutine(Vector3 endPoint)
         {
+            GetComponent<AudioSource>().PlayOneShot(cannon);
+            
             Vector3 startPosition = transform.position;
             
             WaitForEndOfFrame waitForEndOfFrame = new WaitForEndOfFrame();

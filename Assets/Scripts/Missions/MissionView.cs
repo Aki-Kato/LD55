@@ -14,7 +14,8 @@ public class MissionView : MonoBehaviour, IPointerEnterHandler
 
     private float currentDuration;
     public float durationToHideFullPanel;
-
+    private string currentMissionDescription;
+    
     void Awake()
     {
         gameObject.SetActive(true);
@@ -30,6 +31,7 @@ public class MissionView : MonoBehaviour, IPointerEnterHandler
     {
         MissionManager missionManager = FindObjectOfType<MissionManager>();
         missionManager.createdMission += EnableShow;
+        missionManager.createdMission += GenerateJobDescription;
         missionManager.completedMission += DisableShow;
     }
 
@@ -37,6 +39,7 @@ public class MissionView : MonoBehaviour, IPointerEnterHandler
     {
         MissionManager missionManager = FindObjectOfType<MissionManager>();
         missionManager.createdMission -= EnableShow;
+        missionManager.createdMission -= GenerateJobDescription;
         missionManager.completedMission -= DisableShow;
     }
 
@@ -61,6 +64,11 @@ public class MissionView : MonoBehaviour, IPointerEnterHandler
         }
     }
 
+    private void GenerateJobDescription(Building building)
+    {
+        currentMissionDescription = JobGenerator.GenerateJob(building);
+    }
+    
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (showPanel)
@@ -103,7 +111,7 @@ public class MissionView : MonoBehaviour, IPointerEnterHandler
                 Mission currentMission = buildingTiedTo.currentMission;
                 if (fullPanel.gameObject.activeInHierarchy)
                 {
-                    fullPanel.SetText(currentMission.CurrentWorkDone, currentMission.NumberOfWorkRequired, currentMission.reward, currentMission.DurationLeft);
+                    fullPanel.SetText(currentMissionDescription, currentMission.CurrentWorkDone, currentMission.NumberOfWorkRequired, currentMission.reward, currentMission.DurationLeft);
                 }
 
                 if (smallPanel.gameObject.activeInHierarchy)

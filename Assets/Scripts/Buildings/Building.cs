@@ -9,6 +9,7 @@ namespace Buildings
     {
         public int traderReachedDestinationExtraReward = 50;
         public Mission currentMission = null;
+        public BuildingType buildingType;
         public void SetMission(Mission mission)
         {
             currentMission = mission;
@@ -87,6 +88,12 @@ namespace Buildings
         }
     }
 
-
+    public enum BuildingType
+    {
+        University,
+        Hospital,
+        Teahouse,
+        Palace,
+    }
 }
 

@@ -68,7 +68,7 @@ namespace Employees.Views
         {
             if (upgradeCostLabel != null)
             {
-                upgradeCostLabel.text = "$" + _cost;
+                upgradeCostLabel.text = _cost.ToString();
                 if (_cost == 999999)
                 {
                     upgradeCostLabel.text = "MAX";
@@ -79,7 +79,16 @@ namespace Employees.Views
         public void SetTimeLeft(int timeLeft)
         {
             timeLabel.gameObject.SetActive(timeLeft > 0);
-            timeLabel.text = timeLeft.ToString();
+            timeLabel.text = $"{FormatTime(timeLeft)}";
+        }
+    
+        private string FormatTime(float seconds)
+        {
+            int totalSeconds = (int)seconds;
+            int minutes = totalSeconds / 60;
+            int remainingSeconds = totalSeconds % 60;
+
+            return string.Format("{0:D2}:{1:D2}", minutes, remainingSeconds);
         }
     }
 }

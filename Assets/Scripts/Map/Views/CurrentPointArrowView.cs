@@ -38,10 +38,15 @@ namespace Map.Views
 
         private void Update()
         {
-            if (((Input.GetKeyDown(KeyCode.DownArrow) && currentDirection == Direction.Down) || 
-                (Input.GetKeyDown(KeyCode.UpArrow) && currentDirection == Direction.Up) || 
-                (Input.GetKeyDown(KeyCode.LeftArrow) && currentDirection == Direction.Left) || 
-                (Input.GetKeyDown(KeyCode.RightArrow) && currentDirection == Direction.Right)) &&
+            bool pressedDown = Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S);
+            bool pressedUp = Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W);
+            bool pressedLeft = Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A);
+            bool pressedRight = Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D);
+            
+            if (((pressedDown && currentDirection == Direction.Down) || 
+                (pressedUp && currentDirection == Direction.Up) || 
+                (pressedLeft && currentDirection == Direction.Left) || 
+                (pressedRight && currentDirection == Direction.Right)) &&
                 !NavigationInput.Blocked)
             {
                 OnClicked();

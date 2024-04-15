@@ -22,7 +22,7 @@ public class PlayerMoneyManagerView : MonoBehaviour
 
     public void onMoneyChangedEvent()
     {
-        currentPlayerMoneyText.text = "$" + playerMoneyManager.playerMoney;
+        currentPlayerMoneyText.text = playerMoneyManager.playerMoney.ToString();
     }
 
 }

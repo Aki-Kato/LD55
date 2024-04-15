@@ -2410,6 +2410,10 @@ PrefabInstance:
       propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4964113961531803369, guid: 3aa27207b80a9634789e889e7c0d622b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fee5aa5ef6727664baae08ae2189f57e, type: 2}
     - target: {fileID: 5519517615891118298, guid: 3aa27207b80a9634789e889e7c0d622b, type: 3}
       propertyPath: m_Name
       value: Employee 1
@@ -2520,6 +2524,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8667987874013336571, guid: 632931809c2d5494fa60254050299dc5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fee5aa5ef6727664baae08ae2189f57e, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2538,6 +2546,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2914123893726845874}
     m_Modifications:
+    - target: {fileID: 3810011899693447392, guid: 5f3ad80f571e84f4292f08a57ff58cb6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fee5aa5ef6727664baae08ae2189f57e, type: 2}
     - target: {fileID: 8217616488789083426, guid: 5f3ad80f571e84f4292f08a57ff58cb6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.1472802

@@ -1863,6 +1863,7 @@ GameObject:
   - component: {fileID: 163659898}
   - component: {fileID: 163659900}
   - component: {fileID: 163659899}
+  - component: {fileID: 163659901}
   m_Layer: 0
   m_Name: SummonManager
   m_TagString: Untagged
@@ -1915,17 +1916,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60b9567d8a6b76b4fb8db6b3a425ac7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  employeeFactory: {fileID: 163659901}
   currentEmployee:
     employeeName: 
     speed: 0
     model: {fileID: 0}
     listOfPerks: []
-  timerToNewEmployee: 0
+  numberOfEmployeesToStart: 3
   intervalToNewEmployee: 20
-  modelsForEmployees:
-  - {fileID: 919132149155446097, guid: 4fa20bbbb5db2c94ba0f9837265d32d4, type: 3}
-  - {fileID: 919132149155446097, guid: b513b5c59ebc35b4eb2e3b9b0fa68402, type: 3}
-  - {fileID: 919132149155446097, guid: 921b057d0d5337f4f8cab9d1ee8f4a4f, type: 3}
   debugEmployeeToStart:
   - employeeName: Equinophobe
     speed: 3
@@ -1949,6 +1947,23 @@ MonoBehaviour:
     listOfPerks:
     - {fileID: 11400000, guid: 725e714b5e4d68344923eb5e7075d5c2, type: 2}
     - {fileID: 11400000, guid: d3b0c7276a873574cb0e328a704824ae, type: 2}
+  timerToNewEmployee: 0
+--- !u!114 &163659901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163659897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e390ecb0d8e22b243a15a21d62602011, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modelsForEmployees:
+  - {fileID: 5519517615891118298, guid: 3aa27207b80a9634789e889e7c0d622b, type: 3}
+  - {fileID: 2529200766735639936, guid: 632931809c2d5494fa60254050299dc5, type: 3}
+  - {fileID: 8339982445696153959, guid: 5f3ad80f571e84f4292f08a57ff58cb6, type: 3}
   allPerks:
   - {fileID: 11400000, guid: 725e714b5e4d68344923eb5e7075d5c2, type: 2}
   - {fileID: 11400000, guid: 222fe739600d6324fa21c04fdad60ca8, type: 2}
@@ -2095,6 +2110,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3f45b1ba1438b5e4aa785993413f4a8a, type: 3}
       propertyPath: m_Name
       value: Tree_01 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3f45b1ba1438b5e4aa785993413f4a8a, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2273,7 +2292,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 247
+    m_Bits: 119
   m_UseGeometry: 0
   m_DefaultArea: 0
   m_GenerateLinks: 0
@@ -4768,6 +4787,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bamboo (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0c0ac11e57e27d54a9a58198d80d515e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6814,6 +6837,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bamboo (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0c0ac11e57e27d54a9a58198d80d515e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8430,6 +8457,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree_01 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3f45b1ba1438b5e4aa785993413f4a8a, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8623,7 +8654,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   traderReachedDestinationExtraReward: 50
   currentMission:
-    id: 0
+    missionId: 0
     numberOfWorkRequired: 0
     missionDuration: 0
     reward: 0
@@ -10169,6 +10200,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree_01 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3f45b1ba1438b5e4aa785993413f4a8a, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10809,7 +10844,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   traderReachedDestinationExtraReward: 50
   currentMission:
-    id: 0
+    missionId: 0
     numberOfWorkRequired: 0
     missionDuration: 0
     reward: 0
@@ -10947,6 +10982,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3f45b1ba1438b5e4aa785993413f4a8a, type: 3}
       propertyPath: m_Name
       value: Tree_01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3f45b1ba1438b5e4aa785993413f4a8a, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11579,7 +11618,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   traderReachedDestinationExtraReward: 50
   currentMission:
-    id: 0
+    missionId: 0
     numberOfWorkRequired: 0
     missionDuration: 0
     reward: 0
@@ -13291,6 +13330,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bamboo (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0c0ac11e57e27d54a9a58198d80d515e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14098,6 +14141,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0c0ac11e57e27d54a9a58198d80d515e, type: 3}
       propertyPath: m_Name
       value: Bamboo (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0c0ac11e57e27d54a9a58198d80d515e, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15830,6 +15877,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree_01 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3f45b1ba1438b5e4aa785993413f4a8a, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15891,6 +15942,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0c0ac11e57e27d54a9a58198d80d515e, type: 3}
       propertyPath: m_Name
       value: Bamboo (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0c0ac11e57e27d54a9a58198d80d515e, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16278,6 +16333,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3f45b1ba1438b5e4aa785993413f4a8a, type: 3}
       propertyPath: m_Name
       value: Tree_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3f45b1ba1438b5e4aa785993413f4a8a, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16922,6 +16981,7 @@ GameObject:
   - component: {fileID: 1912336652}
   - component: {fileID: 1912336654}
   - component: {fileID: 1912336653}
+  - component: {fileID: 1912336655}
   m_Layer: 0
   m_Name: MissionManager
   m_TagString: Untagged
@@ -16956,12 +17016,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dc8079b06d8e764793d6105783802ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missionCreationInterval: 999
+  missionCreationInterval: 2
   listOfPossibleMissionLocations:
   - {fileID: 1977036606}
   - {fileID: 1069845259}
   - {fileID: 1273397141}
   - {fileID: 1354627265}
+  missionGenerator: {fileID: 1912336655}
 --- !u!54 &1912336653
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -17010,6 +17071,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1912336655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912336650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d25625342a0dd44da6ff14cd16e9c91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PalaceBaseIncome: 60
+  TeaHouseBaseIncome: 40
+  UniversityBaseIncome: 20
+  HospitalBaseIncome: 10
+  PalaceBaseTime: 60
+  TeaHouseBaseTime: 50
+  UniversityBaseTime: 40
+  HospitalBaseTime: 30
+  intervalToIncreaseWorkers: 2
+  additionalWorkersRequired: 0
 --- !u!1 &1921754436
 GameObject:
   m_ObjectHideFlags: 0
@@ -17909,7 +17992,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   traderReachedDestinationExtraReward: 50
   currentMission:
-    id: 0
+    missionId: 0
     numberOfWorkRequired: 0
     missionDuration: 0
     reward: 0

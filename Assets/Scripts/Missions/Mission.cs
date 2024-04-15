@@ -5,7 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class Mission
 {
-    public int id;
+    public static int id = 0;
+    public int missionId;
     private int currentWorkDone;
     [SerializeField] private int numberOfWorkRequired;
     private float currentDuration;
@@ -23,9 +24,10 @@ public class Mission
     }
     public float MissionDuration => missionDuration;
 
-    public Mission(int missionId, int numberOfWorkUnits, float missionDuration, int missionReward)
+    public Mission(int numberOfWorkUnits, float missionDuration, int missionReward)
     {
-        id = missionId;
+        id++;
+        missionId = id;
         currentWorkDone = 0;
         numberOfWorkRequired = numberOfWorkUnits;
         this.missionDuration = missionDuration;

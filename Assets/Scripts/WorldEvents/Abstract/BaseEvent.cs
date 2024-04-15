@@ -24,6 +24,8 @@ namespace WorldEvent
 
         void OnDisable()
         {
+            EventManager eventManager = FindObjectOfType<EventManager>();
+            eventManager.EventCreated -= OnCreateEvent;
         }
         public virtual void Initialise()
         {

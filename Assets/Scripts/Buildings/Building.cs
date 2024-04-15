@@ -82,7 +82,7 @@ namespace Buildings
                 }
 
 
-                Destroy(employee);
+                Destroy(employee.gameObject);
             }
         }
     }

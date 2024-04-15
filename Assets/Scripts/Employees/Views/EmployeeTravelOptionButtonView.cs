@@ -12,8 +12,11 @@ namespace Employees.Views
         [SerializeField] private TextMeshProUGUI optionLabel;
         [SerializeField] private TextMeshProUGUI amountLabel;
         [SerializeField] private TextMeshProUGUI timeLabel;
-
         [SerializeField] private GameObject lockedSlot;
+
+        [Space]
+        [SerializeField] private TextMeshProUGUI upgradeCostLabel;
+        [SerializeField] private Button upgradeButton;
 
         private Button _button;
         private Action _onClickCallback;
@@ -30,7 +33,7 @@ namespace Employees.Views
         {
             _button.onClick.RemoveListener(OnClick);
         }
-        
+
         public void Construct(string name, Action onClickCallback)
         {
             optionLabel.text = name;
@@ -55,6 +58,22 @@ namespace Employees.Views
         public void SetAmountText(string text)
         {
             amountLabel.text = text;
+        }
+
+        public void SetUpgradeLocked(bool _state)
+        {
+            upgradeButton.interactable = _state;
+        }
+        public void SetUpgradeCostText(int _cost)
+        {
+            if (upgradeCostLabel != null)
+            {
+                upgradeCostLabel.text = "$" + _cost;
+                if (_cost == 999999)
+                {
+                    upgradeCostLabel.text = "MAX";
+                }
+            }
         }
 
         public void SetTimeLeft(int timeLeft)

@@ -36,6 +36,10 @@ public class PlayerMoneyManager : MonoBehaviour
         playerMoney += _delta;
         UpdateMoney();
     }
+
+    public bool CheckIfEnoughMoney(int _cost){
+        return playerMoney >= _cost;
+    }
     public bool TryDecrementMoney(int _cost)
     {
         if (playerMoney >= _cost)

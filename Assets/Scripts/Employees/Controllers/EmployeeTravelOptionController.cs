@@ -1,6 +1,8 @@
 using Employees.Enums;
 using Employees.Views;
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -16,11 +18,13 @@ namespace Employees.Controllers
         [SerializeField] private bool isInfinite;
         [SerializeField] private int currentInstances;
         [SerializeField] private int maxInstances;
-        [SerializeField] private int cost;
+        [SerializeField] private List<int> cost;
         [SerializeField] private int secondsToIncrease;
         [Space]
         [SerializeField] private Button buyInstanceButton;
         [SerializeField] private EmployeeTravelOptionButtonView view;
+
+        private int travelOptionLevel = 0;
 
         private bool _travelOptionSelectionMode = false;
         private Coroutine _timerCoroutine;
@@ -42,6 +46,12 @@ namespace Employees.Controllers
                 view.SetLocked(true);
 
             SetCurrentAmount();
+            view.SetUpgradeCostText(cost[travelOptionLevel]);
+        }
+
+        private void Update(){
+            if (buyInstanceButton != null)
+                view.SetUpgradeLocked(PlayerMoneyManager.instance.CheckIfEnoughMoney(GetCurrentCost()) ? true : false);  
         }
 
         private void OnDestroy()
@@ -89,20 +99,32 @@ namespace Employees.Controllers
 
         private void OnBuyInstanceButtonClick()
         {
-            if (PlayerMoneyManager.instance.TryDecrementMoney(cost))
+            if (PlayerMoneyManager.instance.TryDecrementMoney(GetCurrentCost()))
             {
                 onSuccessfulPurchase.Invoke();
+
+                travelOptionLevel++;
+                view.SetUpgradeCostText(GetCurrentCost());
 
                 view.SetLocked(false);
                 AddMaxInstances();
                 return;
             }
 
-            else {
+            else
+            {
                 onFailedPurchased.Invoke();
             }
 
             Debug.Log("Not enough money!");
+        }
+
+        private int GetCurrentCost(){
+            if (travelOptionLevel <= cost.Count){
+                return cost[travelOptionLevel];
+            }
+
+            else return 999999;
         }
 
         private void AddMaxInstances()

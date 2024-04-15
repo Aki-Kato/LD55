@@ -1,5 +1,8 @@
 using Navigation.Controllers;
+using Navigation.Input;
 using System;
+using System.Collections;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +17,8 @@ namespace Map.Views
         private GraphNodeController _graphNode;
 
         private Direction currentDirection;
+
+        private bool _inputBlocked;
         
         private void Awake()
         {
@@ -33,11 +38,22 @@ namespace Map.Views
 
         private void Update()
         {
-            if ((Input.GetKeyDown(KeyCode.DownArrow) && currentDirection == Direction.Down) || 
+            if (((Input.GetKeyDown(KeyCode.DownArrow) && currentDirection == Direction.Down) || 
                 (Input.GetKeyDown(KeyCode.UpArrow) && currentDirection == Direction.Up) || 
                 (Input.GetKeyDown(KeyCode.LeftArrow) && currentDirection == Direction.Left) || 
-                (Input.GetKeyDown(KeyCode.RightArrow) && currentDirection == Direction.Right))
+                (Input.GetKeyDown(KeyCode.RightArrow) && currentDirection == Direction.Right)) &&
+                !NavigationInput.Blocked)
+            {
                 OnClicked();
+                NavigationInput.Blocked = true;
+                UnblockInputAsync();
+            }
+        }
+
+        private async void UnblockInputAsync()
+        {
+            await Task.Delay(50);
+            NavigationInput.Blocked = false;
         }
         
         public void LookAt(Vector3 destination, GraphNodeController node)

@@ -1727,6 +1727,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 0f7a67e07e11215489fbdbb669101ee4, type: 2}
     - target: {fileID: -3838950152313394470, guid: ae192b4021acf7343a9d72b70a85dc9b, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: d9eac1cbff4fbc54ea049c3e2bf9fc2d, type: 2}
+    - target: {fileID: -3838950152313394470, guid: ae192b4021acf7343a9d72b70a85dc9b, type: 3}
       propertyPath: m_Materials.Array.data[3]
       value: 
       objectReference: {fileID: 2100000, guid: 0f7a67e07e11215489fbdbb669101ee4, type: 2}
@@ -2013,7 +2017,7 @@ PrefabInstance:
     - target: {fileID: 7293059144023096718, guid: ae192b4021acf7343a9d72b70a85dc9b, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: 0f7a67e07e11215489fbdbb669101ee4, type: 2}
+      objectReference: {fileID: 2100000, guid: e2ecbc72fd4fe9c43a3e34ecfaebf04c, type: 2}
     - target: {fileID: 7293059144023096718, guid: ae192b4021acf7343a9d72b70a85dc9b, type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
@@ -17100,6 +17104,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a8854163d549f75499ce5bbb04b7639f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fee5aa5ef6727664baae08ae2189f57e, type: 2}
     - target: {fileID: 919132149155446097, guid: a8854163d549f75499ce5bbb04b7639f, type: 3}
       propertyPath: m_Name
       value: Buildings_Set_02
@@ -23445,6 +23453,54 @@ PrefabInstance:
       propertyPath: onSuccessfulPurchase.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1066219841}
+    - target: {fileID: 2466729813989453611, guid: 193794a536303904cb9bfec2480f4442, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2466729813989453611, guid: 193794a536303904cb9bfec2480f4442, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2466729813989453611, guid: 193794a536303904cb9bfec2480f4442, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2466729813989453611, guid: 193794a536303904cb9bfec2480f4442, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2795878728182100833, guid: 193794a536303904cb9bfec2480f4442, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2795878728182100833, guid: 193794a536303904cb9bfec2480f4442, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2795878728182100833, guid: 193794a536303904cb9bfec2480f4442, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2795878728182100833, guid: 193794a536303904cb9bfec2480f4442, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4645098590820861683, guid: 193794a536303904cb9bfec2480f4442, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4645098590820861683, guid: 193794a536303904cb9bfec2480f4442, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4645098590820861683, guid: 193794a536303904cb9bfec2480f4442, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4645098590820861683, guid: 193794a536303904cb9bfec2480f4442, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4722946753765951672, guid: 193794a536303904cb9bfec2480f4442, type: 3}
       propertyPath: summonSystem
       value: 
@@ -23461,6 +23517,22 @@ PrefabInstance:
       propertyPath: employeesWorkController
       value: 
       objectReference: {fileID: 1059844524}
+    - target: {fileID: 8310570160554813673, guid: 193794a536303904cb9bfec2480f4442, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8310570160554813673, guid: 193794a536303904cb9bfec2480f4442, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8310570160554813673, guid: 193794a536303904cb9bfec2480f4442, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8310570160554813673, guid: 193794a536303904cb9bfec2480f4442, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8376865317994273587, guid: 193794a536303904cb9bfec2480f4442, type: 3}
       propertyPath: m_Name
       value: Travel Panel

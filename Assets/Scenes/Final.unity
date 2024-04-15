@@ -23266,14 +23266,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 1945383478}
     m_Modifications:
     - target: {fileID: 1900966169287975559, guid: 17512d6f44d9d4f4cbb37fda41074aad, type: 3}
-      propertyPath: winGameThreshold
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1900966169287975559, guid: 17512d6f44d9d4f4cbb37fda41074aad, type: 3}
-      propertyPath: loseGameThreshold
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1900966169287975559, guid: 17512d6f44d9d4f4cbb37fda41074aad, type: 3}
       propertyPath: onWinGame.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}

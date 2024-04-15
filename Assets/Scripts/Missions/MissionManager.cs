@@ -15,9 +15,9 @@ public class MissionManager : MonoBehaviour
     [SerializeField] private List<Building> listOfPossibleMissionLocations;
     private List<Building> listOfNonPossibleMissionLocations = new List<Building>();
 
-    public event Action<Mission> createdMission;
-    public event Action<Mission> completedMission;
-    public event Action<Mission> failedMission;
+    public event Action<Building> createdMission;
+    public event Action<Building> completedMission;
+    public event Action<Building> failedMission;
     void Awake()
     {
         if (instance == null)
@@ -68,25 +68,25 @@ public class MissionManager : MonoBehaviour
 
         //GAME DESIGN ADJUSTMENT TO BE MADE HERE
         //Hardcoded numbers 2, 60 and 5 can be amended and randomised in accordance to an algorithm
-        Mission _nextMission = new Mission(numberOfMission, 3, 60, 5);
+        Mission _nextMission = new Mission(numberOfMission, 3, 90, 5);
         _randomBuilding.SetMission(_nextMission);
 
         UpdatePossibleMissionLocation(_randomBuilding, false);
 
-        createdMission?.Invoke(_nextMission);
+        createdMission?.Invoke(_randomBuilding);
     }
 
     public void CompletedMission(Building building)
     {
         PlayerMoneyManager.instance.IncrementMoney(building.currentMission.reward);
-        completedMission?.Invoke(building.currentMission);
+        completedMission?.Invoke(building);
         UpdatePossibleMissionLocation(building, true);
 
     }
 
     public void FailedMission(Building building)
     {
-        failedMission?.Invoke(building.currentMission);
+        failedMission?.Invoke(building);
         UpdatePossibleMissionLocation(building, true);
     }
 

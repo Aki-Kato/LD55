@@ -5,12 +5,17 @@ using WorldEvent;
 
 public class AuctionEvent : BaseEvent
 {
+    public AudioClip horse;
+    public GameObject soundPlayer;
+    
     public override void OnTriggerEnter(Collider collider)
     {
         if (collider.TryGetComponent(out EmployeeController employee))
         {
             //Give Employee horse travel option
             employee.SetHorse();
+            Instantiate(soundPlayer).GetComponent<AudioSource>().PlayOneShot(horse);
+            EndEvent();
         }
     }
 

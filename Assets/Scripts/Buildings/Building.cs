@@ -10,6 +10,10 @@ namespace Buildings
         public int traderReachedDestinationExtraReward = 50;
         public Mission currentMission = null;
         public BuildingType buildingType;
+
+        public AudioClip progress, success, coins;
+        public GameObject soundPlayer;
+        
         public void SetMission(Mission mission)
         {
             currentMission = mission;
@@ -47,6 +51,12 @@ namespace Buildings
                 Debug.Log($"Contributed {_workUnit} workunits");
                 if (currentMission.CurrentWorkDone >= currentMission.NumberOfWorkRequired)
                     CompleteMission();
+                else
+                {
+                    var audio = Instantiate(soundPlayer).GetComponent<AudioSource>();
+                    audio.volume = 0.4f;
+                    audio.PlayOneShot(progress);
+                }
             }
         }
 
@@ -54,6 +64,13 @@ namespace Buildings
         {
             Debug.Log("Mission Complete");
             MissionManager.instance.CompletedMission(this);
+            
+            Instantiate(soundPlayer).GetComponent<AudioSource>().PlayOneShot(coins);
+            
+            var audio = Instantiate(soundPlayer).GetComponent<AudioSource>();
+            audio.volume = 0.4f;
+            audio.PlayOneShot(success);
+            
             EndMission();
         }
 

@@ -120,6 +120,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventDuration: 0
+  currentEventDuration: 0
+  otherMutuallyExclusiveEvents: []
+  horse: {fileID: 8300000, guid: 5a42c3e0ab2355041886c3432076319f, type: 3}
+  soundPlayer: {fileID: 7131555174630075975, guid: bfb5dbf7a606b7c4e877093f3d4fb075, type: 3}
 --- !u!54 &7339856154554149130
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -5,11 +5,14 @@ using TMPro;
 
 public class UiMissionFullPanel : MonoBehaviour
 {
-    public TMP_Text LeftText, RightText;
+    public TMP_Text JobText, Reward, Progress, Time;
     
-    public void SetText(string description, int workLeft, int totalWork, int reward, float TimeLeft){
-        LeftText.text = $"{description} {workLeft}/{totalWork}\n${reward}";
-        RightText.text = $"{FormatTime(TimeLeft)}";
+    public void SetText(string description, int workLeft, int totalWork, int reward, float TimeLeft)
+    {
+        JobText.text = description;
+        Reward.text = $"{reward}";
+        Progress.text = $"{workLeft}/{totalWork}";
+        Time.text = $"{FormatTime(TimeLeft)}";
     }
     
     private string FormatTime(float seconds)

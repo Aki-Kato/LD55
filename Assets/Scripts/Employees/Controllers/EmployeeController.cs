@@ -111,7 +111,7 @@ namespace Employees.Controllers
                 IsAviophobe = aviophobeModifierPerk.isAviophobe;
             }
 
-            SetSpeed(employee.speed * _runningSpeedPerkModifier);
+            SetSpeed(employee.baseRunSpeed * _runningSpeedPerkModifier);
 
             //Set Perks
             //Adjust running speed

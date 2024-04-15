@@ -47,7 +47,7 @@ public class SummonSystemView : MonoBehaviour
             // Random name generation and perk for visual purposes, needs to be set up properly and as two different TextMeshPro objects
             employeeStats.text = $"{NameGenerator.GenerateName()}\n{employee.listOfPerks[0].perkName}";
             
-            Debug.Log($"Employee: {employee.employeeName}. Speed: {employee.speed}");
+            Debug.Log($"Employee: {employee.employeeName}. Speed: {employee.baseRunSpeed}");
         }
 
         else

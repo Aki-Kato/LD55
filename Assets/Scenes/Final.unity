@@ -1938,7 +1938,8 @@ MonoBehaviour:
     employeeName: 
     baseRunSpeed: 0
     baseHorseSpeed: 0
-    model: {fileID: 0}
+    employeeModel: {fileID: 0}
+    horseModel: {fileID: 0}
     listOfPerks: []
   numberOfEmployeesToStart: 3
   intervalToNewEmployee: 20
@@ -1946,26 +1947,30 @@ MonoBehaviour:
   - employeeName: Equinophobe
     baseRunSpeed: 0
     baseHorseSpeed: 0
-    model: {fileID: 919132149155446097, guid: 4fa20bbbb5db2c94ba0f9837265d32d4, type: 3}
+    employeeModel: {fileID: 0}
+    horseModel: {fileID: 0}
     listOfPerks:
     - {fileID: 11400000, guid: 2c453519304995043b85630c765a8f27, type: 2}
   - employeeName: Aviophobe
     baseRunSpeed: 0
     baseHorseSpeed: 0
-    model: {fileID: 919132149155446097, guid: b513b5c59ebc35b4eb2e3b9b0fa68402, type: 3}
+    employeeModel: {fileID: 0}
+    horseModel: {fileID: 0}
     listOfPerks:
     - {fileID: 11400000, guid: 222fe739600d6324fa21c04fdad60ca8, type: 2}
   - employeeName: Dubious
     baseRunSpeed: 0
     baseHorseSpeed: 0
-    model: {fileID: 919132149155446097, guid: b513b5c59ebc35b4eb2e3b9b0fa68402, type: 3}
+    employeeModel: {fileID: 0}
+    horseModel: {fileID: 0}
     listOfPerks:
     - {fileID: 11400000, guid: bab2a160ac4c088448b9137f27e807ca, type: 2}
   debugEmployeeToQueue:
     employeeName: test444
     baseRunSpeed: 0
     baseHorseSpeed: 0
-    model: {fileID: 0}
+    employeeModel: {fileID: 0}
+    horseModel: {fileID: 0}
     listOfPerks:
     - {fileID: 11400000, guid: 725e714b5e4d68344923eb5e7075d5c2, type: 2}
     - {fileID: 11400000, guid: d3b0c7276a873574cb0e328a704824ae, type: 2}
@@ -2000,6 +2005,7 @@ MonoBehaviour:
   - {fileID: 919132149155446097, guid: 4fa20bbbb5db2c94ba0f9837265d32d4, type: 3}
   - {fileID: 919132149155446097, guid: b513b5c59ebc35b4eb2e3b9b0fa68402, type: 3}
   - {fileID: 919132149155446097, guid: 921b057d0d5337f4f8cab9d1ee8f4a4f, type: 3}
+  horseModelforEmployee: {fileID: 919132149155446097, guid: 34dc9cea35131ee4597ad02f91c9865e, type: 3}
 --- !u!1 &169509294
 GameObject:
   m_ObjectHideFlags: 0
@@ -6762,6 +6768,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0c0ac11e57e27d54a9a58198d80d515e, type: 3}
   m_PrefabInstance: {fileID: 844938319}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &873241969 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7118503385181381285, guid: ce88ec18b6461aa4782a54fba0d5269e, type: 3}
+  m_PrefabInstance: {fileID: 2065473370}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 615756140109b5140a9b141bedb930e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &876805039
 GameObject:
   m_ObjectHideFlags: 0
@@ -18506,9 +18523,25 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1409956525370335015, guid: ce88ec18b6461aa4782a54fba0d5269e, type: 3}
+      propertyPath: baseIntervalBetweenEvents
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1409956525370335015, guid: ce88ec18b6461aa4782a54fba0d5269e, type: 3}
+      propertyPath: listOfFactories.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1409956525370335015, guid: ce88ec18b6461aa4782a54fba0d5269e, type: 3}
       propertyPath: listOfSpawnPoints.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1409956525370335015, guid: ce88ec18b6461aa4782a54fba0d5269e, type: 3}
+      propertyPath: listOfFactories.Array.data[0]
+      value: 
+      objectReference: {fileID: 873241969}
+    - target: {fileID: 1409956525370335015, guid: ce88ec18b6461aa4782a54fba0d5269e, type: 3}
+      propertyPath: listOfFactories.Array.data[1]
+      value: 
+      objectReference: {fileID: 873241969}
     - target: {fileID: 1409956525370335015, guid: ce88ec18b6461aa4782a54fba0d5269e, type: 3}
       propertyPath: listOfSpawnPoints.Array.data[0]
       value: 

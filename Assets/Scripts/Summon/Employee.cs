@@ -7,7 +7,8 @@ public class Employee
     public string employeeName;
     public float baseRunSpeed;
     public float baseHorseSpeed;
-    public GameObject model;
+    public GameObject employeeModel;
+    public GameObject horseModel;
 
     public List<PerkBase> listOfPerks;
 

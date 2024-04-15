@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Dubious
   m_EditorClassIdentifier: 
   perkName: Dubious
+  perkDescription: Dabbles with criminals
   speedModifier: 1
   workUnitModifier: 1
   isTrader: 0

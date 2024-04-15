@@ -6,6 +6,8 @@ using UnityEngine;
 public class PerkBase : ScriptableObject
 {
     public string perkName;
+
+    public string perkDescription;
     //Agile/Corpulent
     public float speedModifier;
     //Talented

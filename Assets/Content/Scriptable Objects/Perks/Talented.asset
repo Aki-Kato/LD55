@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Talented
   m_EditorClassIdentifier: 
   perkName: Talented
+  perkDescription: Does a job for two
   speedModifier: 1
   workUnitModifier: 2
   isTrader: 0

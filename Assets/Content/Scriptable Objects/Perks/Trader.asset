@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Trader
   m_EditorClassIdentifier: 
   perkName: Trader
+  perkDescription: Earns money at destination
   speedModifier: 1
   workUnitModifier: 1
   isTrader: 1

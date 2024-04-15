@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Equinophobe
   m_EditorClassIdentifier: 
   perkName: Equinophobe
+  perkDescription: Afraid of horses
   speedModifier: 1
   workUnitModifier: 1
   isTrader: 0

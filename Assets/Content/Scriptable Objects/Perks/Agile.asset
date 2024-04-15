@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Agile
   m_EditorClassIdentifier: 
   perkName: Agile
+  perkDescription: Fast as a wind
   speedModifier: 2
   workUnitModifier: 1
   isTrader: 0

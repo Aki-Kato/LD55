@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: Corpulent
   m_EditorClassIdentifier: 
   perkName: Corpulent
+  perkDescription: Slow and steady
   speedModifier: 0.5
   workUnitModifier: 1
   isTrader: 0
   horseSpeedModifier: 1
   isEquinophobe: 0
   isAviophobe: 0
-  isGrumpy: 0
+  isGrumpy: 1
   isBrute: 0
   isDubious: 0

@@ -13,7 +13,7 @@ public class SummonSystemView : MonoBehaviour
     public TMP_Text timerToNewEmployeeText;
 
     //Send Employee
-    public TMP_Text employeeStats;
+    public TMP_Text employeeName, employeePerk, employeePerkDescription;
 
     //HireNewEmployee Immediately
     public Button hireNewEmployeeButton;
@@ -42,10 +42,12 @@ public class SummonSystemView : MonoBehaviour
     {
         if (employee != null)
         {
-            employeeStats.gameObject.SetActive(true);
+            //employeeStats.gameObject.SetActive(true);
             
             // Random name generation and perk for visual purposes, needs to be set up properly and as two different TextMeshPro objects
-            employeeStats.text = $"{NameGenerator.GenerateName()}\nPerk name";
+            employeeName.text = NameGenerator.GenerateName();
+            employeePerk.text = employee.listOfPerks.Count > 0 ? employee.listOfPerks[0].perkName : "Missing perk name";
+            employeePerkDescription.text = employee.listOfPerks.Count > 0 ? employee.listOfPerks[0].perkDescription : "Missing perk description";
             
             Debug.Log($"Employee: {employee.employeeName}. Speed: {employee.baseRunSpeed}");
         }
@@ -58,7 +60,7 @@ public class SummonSystemView : MonoBehaviour
 
     void onSentEmployee(Employee employee)
     {
-        employeeStats.gameObject.SetActive(false);
+        //employeeStats.gameObject.SetActive(false);
     }
 
     void onChangedEmployeeCount()

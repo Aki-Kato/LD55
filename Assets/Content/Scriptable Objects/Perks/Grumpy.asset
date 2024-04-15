@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Grumpy
   m_EditorClassIdentifier: 
   perkName: Grumpy
+  perkDescription: Ignores festivals
   speedModifier: 1
   workUnitModifier: 1
   isTrader: 0

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5618421818300902336}
   - component: {fileID: 3575258089316181927}
   m_Layer: 8
-  m_Name: Festival
+  m_Name: FestivalZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

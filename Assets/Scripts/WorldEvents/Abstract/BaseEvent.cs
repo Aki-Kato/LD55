@@ -7,12 +7,13 @@ namespace WorldEvent
 {
     public abstract class BaseEvent : MonoBehaviour
     {
-        [HideInInspector] public float eventDuration;
+        public float eventDuration;
         private float currentEventDuration;
         public abstract void OnTriggerEnter(Collider collider);
         public abstract void OnTriggerStay(Collider collider);
         public abstract void OnTriggerExit(Collider collider);
 
+        [SerializeField] private List<BaseEvent> otherMutuallyExclusiveEvents;
 
         void OnEnable()
         {
@@ -52,6 +53,15 @@ namespace WorldEvent
             transform.parent.gameObject.SetActive(false);
         }
 
+        public bool IfCanCreateEvent()
+        {
+            for (int i = 0; i < otherMutuallyExclusiveEvents.Count; i++)
+            {
+                if (otherMutuallyExclusiveEvents[i].gameObject.activeInHierarchy)
+                    return false;
+            }
 
+            return true;
+        }
     }
 }

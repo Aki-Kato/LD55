@@ -128,6 +128,9 @@ namespace Employees.Controllers
         public void SetTravelOption(TravelOptions travelOptions)
         {
             _travelOption = travelOptions;
+
+            //Enable/Disable Horse Model based on travel options
+            SetHorseModel(travelOptions == TravelOptions.Horse ? true : false);
         }
 
         public void SetHorse()
@@ -136,10 +139,19 @@ namespace Employees.Controllers
                 return;
 
             _hasHorse = true;
+            SetHorseModel(true);
 
             //Ignore/Reverse running speed modifiers
             var speed = agent.Speed / _runningSpeedPerkModifier * HORSE_SPEED_MODIFIER * _horseSpeedPerkModifier;
             SetSpeed(speed);
+        }
+
+        private void SetHorseModel(bool _state){
+            foreach (Transform child in transform){
+                if (child.transform.Find("Horse") != null){
+                    child.transform.Find("Horse").gameObject.SetActive(_state);
+                }
+            }
         }
 
         public void TryKidnap()

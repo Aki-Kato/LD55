@@ -14,8 +14,14 @@ namespace Employees.Factories
             controller.Initialise(employee);
 
             //Instantiates Model for Employees with offset
-            GameObject model = Instantiate(employee.model, controller.ModelRoot);
+            GameObject model = Instantiate(employee.employeeModel, controller.ModelRoot);
             model.transform.localPosition = new Vector3(0,-0.75f,0);
+
+            //Instantiate Horse Model for Employees and disables them at Start
+            GameObject horseModel = Instantiate(employee.horseModel, controller.ModelRoot);
+            horseModel.name = "Horse";
+            horseModel.transform.localPosition = new Vector3(0,-1,0);
+            horseModel.SetActive(false);
 
             return controller;
         }

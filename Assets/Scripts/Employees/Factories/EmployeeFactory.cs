@@ -12,6 +12,7 @@ public class EmployeeFactory : MonoBehaviour
     public List<PerkBase> allPerks;
     [Space]
     [SerializeField] private List<GameObject> modelsForEmployees;
+    [SerializeField] private GameObject horseModelforEmployee;
 
 
     private List<PerkBase> InitialisePerksForEmployee()
@@ -36,7 +37,9 @@ public class EmployeeFactory : MonoBehaviour
             //Algorithm for determining speed to be included here.
             baseRunSpeed = employeeBaseRunSpeed,
 
-            model = modelsForEmployees[Random.Range(0, modelsForEmployees.Count)],
+            employeeModel = modelsForEmployees[Random.Range(0, modelsForEmployees.Count)],
+
+            horseModel = horseModelforEmployee,
 
             listOfPerks = InitialisePerksForEmployee()
         };

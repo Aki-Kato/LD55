@@ -6,7 +6,7 @@ public class EmployeeRoomController : MonoBehaviour
 {
     public Animator _anim;
 
-    public void Summmon()
+    public void Summon()
     {
         _anim.SetTrigger("PickUp");
     }

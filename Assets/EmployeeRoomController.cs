@@ -12,7 +12,7 @@ public class EmployeeRoomController : MonoBehaviour
     public List<GameObject> employees;
     public Transform spawnPosition;
     
-    private string[] leaveAnimationTriggers = {/* "Leave", "ManyNods", */"LeaveWrongWay" };
+    private string[] leaveAnimationTriggers = { "Leave", "ManyNods", "LeaveWrongWay" };
     
     public void Summon()
     {

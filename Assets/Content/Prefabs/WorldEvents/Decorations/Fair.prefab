@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 4281220773034311379}
   - component: {fileID: 1337795026446619141}
   - component: {fileID: 4427055980337533045}
+  - component: {fileID: 2576087853039460764}
   m_Layer: 8
   m_Name: FairZone
   m_TagString: Untagged
@@ -272,6 +273,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2576087853039460764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5232270809521897514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0dd83860ea47734489bced1c28a6db4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  secondsToHide: 3
+  eventViewParent: {fileID: 0}
+  eventViewPrefab: {fileID: 4164461918206169206, guid: 3ff3e2766cd3d4b4e95a0d32ae10ccf9, type: 3}
+  eventName: Fair
+  eventDescription: Gives you some money
 --- !u!1001 &1082794315647260952
 PrefabInstance:
   m_ObjectHideFlags: 0

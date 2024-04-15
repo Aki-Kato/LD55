@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class SummonEmployeeButtonView : MonoBehaviour
 {
     private Button _button;
+    private int _previousEmployeeCount;
 
     private void Awake()
     {
@@ -26,13 +27,17 @@ public class SummonEmployeeButtonView : MonoBehaviour
 
     private void Instance_OnChangeEmployeeCountEvent()
     {
-        TryEnable();
+        if (_previousEmployeeCount == 0)
+            TryEnable();
     }
 
     public void TryEnable()
     {
-        bool anyEmployee = SummonSystem.instance.queueOfAvailableEmployees.Count > 0;
+        var employeeCount = SummonSystem.instance.queueOfAvailableEmployees.Count;
+        bool anyEmployee = employeeCount > 0;
         if (anyEmployee)
             gameObject.SetActive(true);
+
+        _previousEmployeeCount = employeeCount;
     }
 }

@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EmployeeRoomController : MonoBehaviour
 {
+    public UnityEvent EmployeeLeaved;
+
     public Animator _anim;
 
     public List<Transform> employeePositions;
@@ -48,8 +51,13 @@ public class EmployeeRoomController : MonoBehaviour
         yield return new WaitForSeconds(2f);
         var firstEmployee = employees[0];
         firstEmployee.transform.position = spawnPosition.position;
-        firstEmployee.GetComponent<Animator>().SetTrigger("Reset");
+        var animator = firstEmployee.GetComponent<Animator>();
+        animator.SetTrigger("Reset");
         employees.Remove(firstEmployee);
         employees.Add(firstEmployee);
+        // I hope memory heap will feel itself fine...
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+        EmployeeLeaved?.Invoke();
     }
 }

@@ -74,7 +74,7 @@ public class MissionView : MonoBehaviour, IPointerEnterHandler
     {
         currentDuration += Time.deltaTime;
 
-        if (currentDuration >= durationToHideFullPanel)
+        if (showPanel && currentDuration >= durationToHideFullPanel)
         {
             ShowSmallPanel();
         }

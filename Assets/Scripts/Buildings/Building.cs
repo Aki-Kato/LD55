@@ -41,7 +41,6 @@ namespace Buildings
         /// <param name="_workUnit"></param>
         public void ContributeToMission(int _workUnit)
         {
-            Debug.Log($"Contributing to: " + currentMission.id);
             if (currentMission.ifMissionAvailable)
             {
                 currentMission.IncrementWorkUnit(_workUnit);

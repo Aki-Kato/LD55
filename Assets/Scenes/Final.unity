@@ -13142,8 +13142,8 @@ MonoBehaviour:
   isInfinite: 0
   currentInstances: 0
   maxInstances: 0
-  cost: c80000002c010000c2010000a8020000fc030000fa050000
-  secondsToIncrease: 15
+  cost: 64000000c80000002c010000c20100005802000020030000
+  secondsToIncrease: 20
   buyInstanceButton: {fileID: 1117678368}
   view: {fileID: 1507388344}
   onSuccessfulPurchase:
@@ -13531,7 +13531,7 @@ MonoBehaviour:
   isInfinite: 0
   currentInstances: 0
   maxInstances: 1
-  cost: 320000005000000078000000b40000000e0100009a010000
+  cost: 320000005000000078000000b40000000e01000090010000
   secondsToIncrease: 15
   buyInstanceButton: {fileID: 881868023}
   view: {fileID: 1574548984}
@@ -15017,8 +15017,8 @@ MonoBehaviour:
   isInfinite: 0
   currentInstances: 0
   maxInstances: 0
-  cost: 6400000096000000e60000005e0100001202000020030000
-  secondsToIncrease: 15
+  cost: c80000002c010000c20100008a02000052030000e8030000
+  secondsToIncrease: 25
   buyInstanceButton: {fileID: 1716989711}
   view: {fileID: 1669096278}
   onSuccessfulPurchase:

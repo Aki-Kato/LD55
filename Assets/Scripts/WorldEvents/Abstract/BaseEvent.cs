@@ -14,14 +14,15 @@ namespace WorldEvent
         public abstract void OnTriggerExit(Collider collider);
 
 
-        void OnEnable(){
+        void OnEnable()
+        {
             //Must be added, otherwise there is error
             EventManager eventManager = FindObjectOfType<EventManager>();
             eventManager.EventCreated += OnCreateEvent;
         }
 
-        void OnDisable(){
-
+        void OnDisable()
+        {
         }
         public virtual void Initialise()
         {
@@ -46,8 +47,9 @@ namespace WorldEvent
 
         protected virtual void EndEvent()
         {
+            currentEventDuration = 0;
             EventManager.instance.DestroyedEvent(this);
-            Destroy(gameObject);
+            transform.parent.gameObject.SetActive(false);
         }
 
 

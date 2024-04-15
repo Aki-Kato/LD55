@@ -7,6 +7,7 @@ public class FestivalEvent : BaseEvent
 {
     public override void OnTriggerEnter(Collider collider)
     {
+        Debug.Log("Entered");
         if (collider.TryGetComponent(out EmployeeController employee))
         {
             employee.SetFestivalSpeed(true);

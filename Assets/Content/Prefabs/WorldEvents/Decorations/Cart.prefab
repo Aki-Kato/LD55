@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1794976834384343497}
   - component: {fileID: 5040795974796499532}
   - component: {fileID: 432388621055744216}
+  - component: {fileID: 2785138488411090501}
   m_Layer: 8
   m_Name: CartZone
   m_TagString: Untagged
@@ -105,6 +106,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2785138488411090501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1347177941449184076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63aa2f56dfb2c1f4f96404a090a891b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventDuration: 0
 --- !u!1 &1400165267491450495
 GameObject:
   m_ObjectHideFlags: 0

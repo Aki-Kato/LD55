@@ -7,26 +7,25 @@ namespace WorldEvent
     public class FairEventFactory : BaseEventFactory
     {
         public int eventRewardToSet;
-        [SerializeField] private GameObject fairEventPrefab;
-        public override BaseEvent CreateEvent(Vector3 position,float _rotation, Vector3 collidersSize)
+        public override BaseEvent CreateEvent(BaseEvent _event)
         {
-            //Instantiate Prefab in a Vector3 position, rotated around Y-axis by _rotation angles.
-            GameObject instance = Instantiate(fairEventPrefab.gameObject, position, Quaternion.Euler(0,_rotation,0));
+            //Enable Event
+            _event.transform.parent.gameObject.SetActive(true);
 
-            //Set Colliders Size based on length and width only. Height is ignored.
-            BoxCollider collider = instance.GetComponent<BoxCollider>();
-            collider.size = collidersSize;
+            //Set Properties of Events
+            _event.eventDuration = eventDurationToSet;
+            _event.Initialise();
 
-            //Initialise Event Properties (for Fair Event)
-            FairEvent fairEvent = instance.GetComponent<FairEvent>();
-            fairEvent.eventDuration = eventDurationToSet;
-            fairEvent.eventReward = eventRewardToSet;
-
-            fairEvent.Initialise();
-
-            return fairEvent;
+            return _event;
         }
 
+        public override BaseEvent DestroyEvent(BaseEvent _event)
+        {
+            UpdateAvailableEventLocation(_event as FairEvent, true);
+            return _event;
+        }
+
+        
     }
 }
 

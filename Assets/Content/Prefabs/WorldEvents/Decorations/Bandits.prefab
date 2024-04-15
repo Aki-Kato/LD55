@@ -79,6 +79,7 @@ GameObject:
   - component: {fileID: 5598363853445184210}
   - component: {fileID: 3861464471783261520}
   - component: {fileID: 3389822129047536733}
+  - component: {fileID: 4074588010604782579}
   m_Layer: 8
   m_Name: BanditZone
   m_TagString: Untagged
@@ -172,6 +173,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4074588010604782579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8020226690939829905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd6c70bbde97724e8e72f42e8db8e92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventDuration: 0
+  chanceForKidnap: 50
 --- !u!1001 &915062199954583782
 PrefabInstance:
   m_ObjectHideFlags: 0

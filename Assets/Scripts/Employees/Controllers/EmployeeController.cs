@@ -36,9 +36,13 @@ namespace Employees.Controllers
 
         public bool IsTrader, IsGrumpy, IsBrute, IsDubious, IsEquinophobe, IsAviophobe;
 
+        public Transform ModelRoot;
+        private Animator _anim;
+        
         private void Awake()
         {
             agent.FinalDestinationReached += Agent_OnFinalDestinationReached;
+            _anim = GetComponent<Animator>();
         }
 
         public void Initialise(Employee employee)
@@ -199,8 +203,11 @@ namespace Employees.Controllers
         private IEnumerator CatapultingRoutine(Vector3 endPoint)
         {
             Vector3 startPosition = transform.position;
-
+            
             WaitForEndOfFrame waitForEndOfFrame = new WaitForEndOfFrame();
+            
+            _anim.SetTrigger("Fly");
+            
             float time = 0f;
             while (time < 1f)
             {

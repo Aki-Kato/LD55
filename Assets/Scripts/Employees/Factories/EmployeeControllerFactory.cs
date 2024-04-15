@@ -14,8 +14,8 @@ namespace Employees.Factories
             controller.Initialise(employee);
 
             //Instantiates Model for Employees with offset
-            GameObject model = Instantiate(employee.model, controller.transform);
-            model.transform.localPosition = new Vector3(0,-0.5f,0);
+            GameObject model = Instantiate(employee.model, controller.ModelRoot);
+            model.transform.localPosition = new Vector3(0,-0.75f,0);
 
             return controller;
         }

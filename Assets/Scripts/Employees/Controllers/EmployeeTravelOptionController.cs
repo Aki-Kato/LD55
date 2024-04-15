@@ -2,6 +2,7 @@ using Employees.Enums;
 using Employees.Views;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Employees.Controllers
@@ -23,6 +24,9 @@ namespace Employees.Controllers
 
         private bool _travelOptionSelectionMode = false;
         private Coroutine _timerCoroutine;
+
+        [Space]
+        public UnityEvent onSuccessfulPurchase, onFailedPurchased;
 
         private void Start()
         {
@@ -87,9 +91,15 @@ namespace Employees.Controllers
         {
             if (PlayerMoneyManager.instance.TryDecrementMoney(cost))
             {
+                onSuccessfulPurchase.Invoke();
+
                 view.SetLocked(false);
                 AddMaxInstances();
                 return;
+            }
+
+            else {
+                onFailedPurchased.Invoke();
             }
 
             Debug.Log("Not enough money!");

@@ -14,6 +14,7 @@ namespace WorldEvent
 
             //Set Properties of Events
             _event.eventDuration = eventDurationToSet;
+            _event.GetComponent<FairEvent>().eventReward = eventRewardToSet;
             _event.Initialise();
 
             return _event;
@@ -25,7 +26,7 @@ namespace WorldEvent
             return _event;
         }
 
-        
+
     }
 }
 

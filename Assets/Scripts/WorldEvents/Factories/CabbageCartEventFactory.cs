@@ -6,7 +6,6 @@ namespace WorldEvent
 {
     public class CabbageCartEventFactory : BaseEventFactory
     {
-        [SerializeField] private GameObject cabbageCartEventPrefab;
         public override BaseEvent CreateEvent(BaseEvent _event)
         {
             //Enable Event

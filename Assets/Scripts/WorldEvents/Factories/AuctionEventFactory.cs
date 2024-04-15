@@ -6,7 +6,6 @@ namespace WorldEvent
 {
     public class AuctionEventFactory : BaseEventFactory
     {
-        [SerializeField] private GameObject auctionEventPrefab;
         public override BaseEvent CreateEvent(BaseEvent _event)
         {
             //Enable Event
@@ -21,7 +20,7 @@ namespace WorldEvent
 
         public override BaseEvent DestroyEvent(BaseEvent _event)
         {
-            UpdateAvailableEventLocation(_event as FestivalEvent, true);
+            UpdateAvailableEventLocation(_event as AuctionEvent, true);
             return _event;
         }
     }

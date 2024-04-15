@@ -7,7 +7,6 @@ namespace WorldEvent
     public class BanditsEventFactory : BaseEventFactory
     {
         public float setChanceForKidnap;
-        [SerializeField] private GameObject banditsEventPrefab;
         public override BaseEvent CreateEvent(BaseEvent _event)
         {
             //Enable Event
@@ -15,6 +14,7 @@ namespace WorldEvent
 
             //Set Properties of Events
             _event.eventDuration = eventDurationToSet;
+            _event.GetComponent<BanditsEvent>().chanceForKidnap = setChanceForKidnap;
             _event.Initialise();
 
             return _event;

@@ -10,7 +10,6 @@ public class MissionManager : MonoBehaviour
 {
     public static MissionManager instance = null;
     private float timerToCreateNextMission;
-    private static int numberOfMission = 0;
     [SerializeField] private float missionCreationInterval = 20f;
     [SerializeField] private List<Building> listOfPossibleMissionLocations;
     private List<Building> listOfNonPossibleMissionLocations = new List<Building>();
@@ -18,6 +17,8 @@ public class MissionManager : MonoBehaviour
     public event Action<Building> createdMission;
     public event Action<Building> completedMission;
     public event Action<Building> failedMission;
+
+    [SerializeField] private MissionGenerator missionGenerator;
     void Awake()
     {
         if (instance == null)
@@ -64,11 +65,11 @@ public class MissionManager : MonoBehaviour
 
         //Select Random Location from a list of pre-determined Buildings positioned around the map
         Building _randomBuilding = listOfPossibleMissionLocations[UnityEngine.Random.Range(0, listOfPossibleMissionLocations.Count)];
-        numberOfMission++;
 
         //GAME DESIGN ADJUSTMENT TO BE MADE HERE
         //Hardcoded numbers 2, 60 and 5 can be amended and randomised in accordance to an algorithm
-        Mission _nextMission = new Mission(numberOfMission, 3, 90, 5);
+        Mission _nextMission = missionGenerator.GenerateMissionAtBuilding(_randomBuilding);
+
         _randomBuilding.SetMission(_nextMission);
 
         UpdatePossibleMissionLocation(_randomBuilding, false);

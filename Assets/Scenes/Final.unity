@@ -24808,6 +24808,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EventManager
       objectReference: {fileID: 0}
+    - target: {fileID: 1409956525370335015, guid: ce88ec18b6461aa4782a54fba0d5269e, type: 3}
+      propertyPath: baseIntervalBetweenEvents
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 6834576995580071261, guid: ce88ec18b6461aa4782a54fba0d5269e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.949615
@@ -28115,6 +28119,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 6842086448476813440, guid: 2c896d7938c17444a8bf2fcf416f4800, type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6921687929402006689, guid: 2c896d7938c17444a8bf2fcf416f4800, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -28567,7 +28575,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1512555473385708728, guid: 8e32f54b283e48c40a9b8bf512c7bb54, type: 3}
       propertyPath: playerMoney
-      value: 1030
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2992212389932960202, guid: 8e32f54b283e48c40a9b8bf512c7bb54, type: 3}
       propertyPath: m_LocalPosition.x

@@ -240,7 +240,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventDuration: 0
+  currentEventDuration: 0
+  otherMutuallyExclusiveEvents: []
   eventReward: 0
+  coins: {fileID: 8300000, guid: d7ba508dd206e1c4b8f9cc7ceca7f918, type: 3}
+  soundSource: {fileID: 7131555174630075975, guid: bfb5dbf7a606b7c4e877093f3d4fb075, type: 3}
 --- !u!54 &4427055980337533045
 Rigidbody:
   m_ObjectHideFlags: 0

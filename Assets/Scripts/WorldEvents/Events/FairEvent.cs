@@ -6,7 +6,8 @@ using WorldEvent;
 public class FairEvent : BaseEvent
 {
     [HideInInspector] public int eventReward;
-
+    public AudioClip coins;
+    public GameObject soundSource;
     
     public override void OnTriggerEnter(Collider collider)
     {
@@ -15,6 +16,8 @@ public class FairEvent : BaseEvent
             //Grant Gold to PlayerMoneyManager
             PlayerMoneyManager.instance.IncrementMoney(eventReward);
 
+            Instantiate(soundSource).GetComponent<AudioSource>().PlayOneShot(coins);
+            
             //Immediately Ends Event After
             EndEvent();
         }

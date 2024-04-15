@@ -2308,10 +2308,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 953038603798896217, guid: 49321104c280d3d45966872b37ecbe17, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -22
+      objectReference: {fileID: 0}
     - target: {fileID: 2479585200178157373, guid: 49321104c280d3d45966872b37ecbe17, type: 3}
       propertyPath: buildingTiedTo
       value: 
       objectReference: {fileID: 1273397141}
+    - target: {fileID: 4828606303266196448, guid: 49321104c280d3d45966872b37ecbe17, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 22
+      objectReference: {fileID: 0}
     - target: {fileID: 6950439515419601158, guid: 49321104c280d3d45966872b37ecbe17, type: 3}
       propertyPath: m_Name
       value: UniversityMissionPanel
@@ -5871,6 +5879,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1689677836}
     m_Modifications:
+    - target: {fileID: 1747887522783200951, guid: fd827e04bb53a124c93ce9d8dd60c939, type: 3}
+      propertyPath: otherMutuallyExclusiveEvents.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1747887522783200951, guid: fd827e04bb53a124c93ce9d8dd60c939, type: 3}
+      propertyPath: otherMutuallyExclusiveEvents.Array.data[0]
+      value: 
+      objectReference: {fileID: 700706997}
+    - target: {fileID: 1747887522783200951, guid: fd827e04bb53a124c93ce9d8dd60c939, type: 3}
+      propertyPath: otherMutuallyExclusiveEvents.Array.data[1]
+      value: 
+      objectReference: {fileID: 1341330033}
     - target: {fileID: 1937786223219126773, guid: fd827e04bb53a124c93ce9d8dd60c939, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.69
@@ -6096,6 +6116,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd827e04bb53a124c93ce9d8dd60c939, type: 3}
+--- !u!114 &614912345 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1747887522783200951, guid: fd827e04bb53a124c93ce9d8dd60c939, type: 3}
+  m_PrefabInstance: {fileID: 614912344}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8985fbc82a133c0499965a6ad3610308, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &618809325
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6760,11 +6791,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bandits (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 4074588010604782579, guid: b9a0ea4ea69472b43bbdeae7a567fc8e, type: 3}
+      propertyPath: otherMutuallyExclusiveEvents.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074588010604782579, guid: b9a0ea4ea69472b43bbdeae7a567fc8e, type: 3}
+      propertyPath: otherMutuallyExclusiveEvents.Array.data[0]
+      value: 
+      objectReference: {fileID: 614912345}
+    - target: {fileID: 4074588010604782579, guid: b9a0ea4ea69472b43bbdeae7a567fc8e, type: 3}
+      propertyPath: otherMutuallyExclusiveEvents.Array.data[1]
+      value: 
+      objectReference: {fileID: 1341330033}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9a0ea4ea69472b43bbdeae7a567fc8e, type: 3}
+--- !u!114 &700706997 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4074588010604782579, guid: b9a0ea4ea69472b43bbdeae7a567fc8e, type: 3}
+  m_PrefabInstance: {fileID: 700706996}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd6c70bbde97724e8e72f42e8db8e92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &735341944
 GameObject:
   m_ObjectHideFlags: 0
@@ -13361,6 +13415,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2016023737}
     m_Modifications:
+    - target: {fileID: 1230541722709081675, guid: 2ad103128ff250b45ac18a9ad119dae9, type: 3}
+      propertyPath: otherMutuallyExclusiveEvents.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1230541722709081675, guid: 2ad103128ff250b45ac18a9ad119dae9, type: 3}
+      propertyPath: otherMutuallyExclusiveEvents.Array.data[0]
+      value: 
+      objectReference: {fileID: 614912345}
+    - target: {fileID: 1230541722709081675, guid: 2ad103128ff250b45ac18a9ad119dae9, type: 3}
+      propertyPath: otherMutuallyExclusiveEvents.Array.data[1]
+      value: 
+      objectReference: {fileID: 700706997}
     - target: {fileID: 1410020453004645816, guid: 2ad103128ff250b45ac18a9ad119dae9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 14.199997
@@ -13410,6 +13476,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ad103128ff250b45ac18a9ad119dae9, type: 3}
+--- !u!114 &1341330033 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1230541722709081675, guid: 2ad103128ff250b45ac18a9ad119dae9, type: 3}
+  m_PrefabInstance: {fileID: 1341330032}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5087f5163d9d0e489fb88eb9a169c50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1342607438
 GameObject:
   m_ObjectHideFlags: 0
@@ -19297,10 +19374,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 953038603798896217, guid: 49321104c280d3d45966872b37ecbe17, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -22
+      objectReference: {fileID: 0}
     - target: {fileID: 2479585200178157373, guid: 49321104c280d3d45966872b37ecbe17, type: 3}
       propertyPath: buildingTiedTo
       value: 
       objectReference: {fileID: 1977036606}
+    - target: {fileID: 4828606303266196448, guid: 49321104c280d3d45966872b37ecbe17, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 22
+      objectReference: {fileID: 0}
     - target: {fileID: 6950439515419601158, guid: 49321104c280d3d45966872b37ecbe17, type: 3}
       propertyPath: m_Name
       value: HospitalMissionPanel
@@ -22115,10 +22200,6 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1409956525370335015, guid: ce88ec18b6461aa4782a54fba0d5269e, type: 3}
-      propertyPath: intervalToCreateNewEvents
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1409956525370335015, guid: ce88ec18b6461aa4782a54fba0d5269e, type: 3}
       propertyPath: listOfSpawnPoints.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -23310,10 +23391,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 953038603798896217, guid: 49321104c280d3d45966872b37ecbe17, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -22
+      objectReference: {fileID: 0}
     - target: {fileID: 2479585200178157373, guid: 49321104c280d3d45966872b37ecbe17, type: 3}
       propertyPath: buildingTiedTo
       value: 
       objectReference: {fileID: 1069845259}
+    - target: {fileID: 4828606303266196448, guid: 49321104c280d3d45966872b37ecbe17, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 22
+      objectReference: {fileID: 0}
     - target: {fileID: 6950439515419601158, guid: 49321104c280d3d45966872b37ecbe17, type: 3}
       propertyPath: m_Name
       value: TeaHouseMissionPanel
@@ -23455,7 +23544,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 483129174564098282, guid: 49321104c280d3d45966872b37ecbe17, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 118.599976
+      value: 118.6001
       objectReference: {fileID: 0}
     - target: {fileID: 483129174564098282, guid: 49321104c280d3d45966872b37ecbe17, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -23473,10 +23562,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 953038603798896217, guid: 49321104c280d3d45966872b37ecbe17, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -22
+      objectReference: {fileID: 0}
     - target: {fileID: 2479585200178157373, guid: 49321104c280d3d45966872b37ecbe17, type: 3}
       propertyPath: buildingTiedTo
       value: 
       objectReference: {fileID: 1354627265}
+    - target: {fileID: 4828606303266196448, guid: 49321104c280d3d45966872b37ecbe17, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 22
+      objectReference: {fileID: 0}
     - target: {fileID: 6950439515419601158, guid: 49321104c280d3d45966872b37ecbe17, type: 3}
       propertyPath: m_Name
       value: PalaceMissionPanel

@@ -10,12 +10,17 @@ public class Mission
     [SerializeField] private int numberOfWorkRequired;
     private float currentDuration;
     [SerializeField] private float missionDuration;
+
+    //Public
     public int reward;
     public bool ifMissionAvailable = false;
-
     public int CurrentWorkDone => currentWorkDone;
     public int NumberOfWorkRequired => numberOfWorkRequired;
     public float CurrentDuration => currentDuration;
+    public float DurationLeft
+    {
+        get { return Mathf.Ceil(missionDuration - currentDuration); }
+    }
     public float MissionDuration => missionDuration;
 
     public Mission(int missionId, int numberOfWorkUnits, float missionDuration, int missionReward)
@@ -37,7 +42,8 @@ public class Mission
         currentDuration += _time;
     }
 
-    public void SetMissionAvailability(bool _state){
+    public void SetMissionAvailability(bool _state)
+    {
         ifMissionAvailable = _state;
     }
 }

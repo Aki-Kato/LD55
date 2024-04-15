@@ -13,6 +13,8 @@ namespace Map.Views
         private Button _button;
         private GraphNodeController _graphNode;
 
+        private Direction currentDirection;
+        
         private void Awake()
         {
             _button = GetComponent<Button>();
@@ -29,11 +31,65 @@ namespace Map.Views
             Selected?.Invoke(_graphNode);
         }
 
+        private void Update()
+        {
+            if ((Input.GetKeyDown(KeyCode.DownArrow) && currentDirection == Direction.Down) || 
+                (Input.GetKeyDown(KeyCode.UpArrow) && currentDirection == Direction.Up) || 
+                (Input.GetKeyDown(KeyCode.LeftArrow) && currentDirection == Direction.Left) || 
+                (Input.GetKeyDown(KeyCode.RightArrow) && currentDirection == Direction.Right))
+                OnClicked();
+        }
+        
         public void LookAt(Vector3 destination, GraphNodeController node)
         {
             Vector3 rotateTowards = destination - transform.position;
             transform.rotation = Quaternion.LookRotation(transform.forward, rotateTowards);
             _graphNode = node;
+
+            CalculateDirection();
         }
+
+        public void CalculateDirection()
+        {
+            float number = transform.rotation.eulerAngles.z;
+            float multiple = 90f;
+
+            int result;
+            
+            float remainder = number % multiple;
+            if (Math.Abs(remainder) < multiple / 2)
+                result = (int)(number - remainder);
+            else
+                result = (int)(number + (multiple - Math.Abs(remainder)) * Math.Sign(remainder));
+
+            switch (result)
+            {
+                case 0:
+                case 360:
+                    currentDirection = Direction.Up;
+                    break;
+                case 90:
+                    currentDirection = Direction.Left;
+                    break;
+                case 180:
+                    currentDirection = Direction.Down;
+                    break;
+                case 270:
+                    currentDirection = Direction.Right;
+                    break;
+                default:
+                    currentDirection = Direction.Up;
+                    Debug.Log("Direction not normalized");
+                    break;
+            }
+        }
+    }
+
+    enum Direction
+    {
+        Up,
+        Right,
+        Down,
+        Left,
     }
 }

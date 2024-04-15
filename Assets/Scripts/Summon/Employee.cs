@@ -5,7 +5,8 @@ using UnityEngine;
 public class Employee
 {
     public string employeeName;
-    public float speed;
+    public float baseRunSpeed;
+    public float baseHorseSpeed;
     public GameObject model;
 
     public List<PerkBase> listOfPerks;

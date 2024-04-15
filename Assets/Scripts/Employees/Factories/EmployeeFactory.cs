@@ -5,8 +5,14 @@ using UnityEngine;
 public class EmployeeFactory : MonoBehaviour
 {
 
-    [SerializeField] private List<GameObject> modelsForEmployees;
+    [SerializeField] private float employeeBaseRunSpeed = 3;
+    [SerializeField] private float employeeeBaseHorseSpeed = 5;
+    [SerializeField] private float employeeBaseCatapultSpeed = 20;
+    [Space]
     public List<PerkBase> allPerks;
+    [Space]
+    [SerializeField] private List<GameObject> modelsForEmployees;
+
 
     private List<PerkBase> InitialisePerksForEmployee()
     {
@@ -28,7 +34,7 @@ public class EmployeeFactory : MonoBehaviour
             employeeName = NameGenerator.GenerateName(),
 
             //Algorithm for determining speed to be included here.
-            speed = 3,
+            baseRunSpeed = employeeBaseRunSpeed,
 
             model = modelsForEmployees[Random.Range(0, modelsForEmployees.Count)],
 

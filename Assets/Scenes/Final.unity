@@ -1922,7 +1922,7 @@ MonoBehaviour:
     speed: 0
     model: {fileID: 0}
     listOfPerks: []
-  numberOfEmployeesToStart: 1
+  numberOfEmployeesToStart: 3
   intervalToNewEmployee: 20
   debugEmployeeToStart:
   - employeeName: Equinophobe
